@@ -5,6 +5,7 @@
 :root {
     --white: white;
     --blue: #00AFDB;
+    --mid-blue: #3355BB;
     --light-grey: #f5f6f7;
 }
 
@@ -97,6 +98,15 @@ a {
 
 }
 
+a:hover {
+   opacity: 0.5;
+
+}
+
+a.active {
+    border-bottom: 2px solid white;
+}
+
 .text-white {
     color: var(--white);
 
@@ -116,6 +126,10 @@ a {
 
 }
 
+.btn-main:hover {
+    background-color: var(--mid-blue);
+}
+
 .icons {
     margin-top: 180px;
 
@@ -124,6 +138,10 @@ a {
 .icons img {
     margin-left: 13px;
     margin-right: 13px;
+}
+
+.icons img:hover {
+    opacity: 0.5;
 }
 
 .promo-section {
@@ -198,18 +216,16 @@ p {
 
 
 
-.sing-up input[type="text"] {
+.sing-up input[type="email"] {
     border: none;
     padding-left: 10px;
     padding-top: 3px;
     padding-bottom: 3px;
-
-
     background: #fff;
     width: 340px;
     height: 40px;
     font-size: 14px;
-    
+
 }
 
 .sing-up input[type="submit"] {
@@ -220,9 +236,16 @@ p {
     width: 66px;
     height: 46px;
     cursor: pointer;
-   
+
 
 }
+
+.sing-up input[type="submit"]:hover {
+   opacity: 0.5;
+
+
+}
+
 .search-bar {
     display: flex;
     margin: 5px;
@@ -235,6 +258,7 @@ p {
     flex-direction: column;
     align-items: center;
 }
+
 .button-group {
     margin: 20px;
     display: flex;
@@ -247,15 +271,15 @@ footer {
     background-color: black;
     display: flex;
     align-items: center;
-    justify-content:center;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
 footer ul {
     display: flex;
     align-items: center;
-    justify-content: center;  
-  
+    justify-content: center;
+
 
 }
 
@@ -273,4 +297,23 @@ footer ul li a {
 
 .copyrights {
     color: gray;
+}
+
+#slider div {
+    font-size: 20px;
+    display: flex;
+    margin-top: -30px;
+
+}
+
+
+#slider a {
+    color: black;
+    margin: 0 5px;
+}
+
+
+
+.button-group span:hover {
+    opacity: 0.5;
 }
