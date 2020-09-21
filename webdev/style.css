@@ -1,0 +1,164 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+:root {
+    --white: white;
+    --blue: #00AFDB;
+    --light-grey:#f5f6f7;
+}
+
+.container {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.main-banner {
+    background-image: url("assets/bg-image-wrapper.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 744px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+header {
+    height: 95px;
+    display: flex;
+}
+
+h1,
+h2 {
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: 64px;
+    margin-top: 135px;
+    line-height: 75px;
+    letter-spacing: 4px;
+    text-align: center;
+
+}
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    line-height: 28px;
+    letter-spacing: 1px;
+   
+}
+
+h3 {
+    margin-top: 23px;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 140%;
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+h4 {
+    margin-top: 23px;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 140%;
+    text-transform: uppercase;
+}
+
+nav {
+    display: flex;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+
+nav ul li {
+    list-style: none;
+    padding: 0 45px;
+}
+
+nav ul li a {
+    font-size: 14px;
+    line-height: 140%;
+}
+
+
+a {
+    color: var(--white);
+    text-decoration: none;
+
+}
+
+.text-white {
+    color: var(--white);
+
+}
+
+.btn-main {
+    width: 184px;
+    height: 46px;
+    background-color: var(--blue);
+    text-transform: uppercase;
+    outline: none;
+    border: none;
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 16px;
+
+}
+
+.icons {
+    margin-top: 180px;
+
+}
+
+.icons img {
+    margin-left: 13px;
+    margin-right: 13px;
+}
+
+.promo-section {
+    height: 842px;
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+
+}
+
+.mt-2 {
+    margin-top: 20px;
+}
+
+.mt-3 {
+    margin-top: 30px;
+}
+
+.mb-2 {
+    margin-bottom: 20px;
+}
+
+
+.mb-3 {
+    margin-bottom: 30px;
+}
+
+p {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.community-section {
+    height: 504px;
+    background-color: var(--light-grey);
+    display: flex;
+    j ustify-content:space-evenly;
+    align-items: center;
+}
