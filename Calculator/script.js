@@ -1,94 +1,108 @@
-const numbers = document.querySelectorAll('.number');
-const operations = document.querySelectorAll('.operator');
-const clearBtns = document.querySelectorAll('.clear-btn');
-const decimalBtn = document.getElementById('decimal');
-const result = document.getElementById('result');
-const display = document.getElementById('display');
-let MemoryCurrentNumber = 0;
-let MemoryNewNumber = false;
-let MemoryPendingOperation = '';
+const calcTable = document.querySelector('.calc-table');
+calcTable.addEventListener('click', takeButton);
+display.value = '0';
+let memory = 0;
+let isSecondArg = false;
+let secondArg = 0;
 
-for (var i = 0; i < numbers.length; i++) {
-  var number = numbers[i];
-  number.addEventListener('click', function (e) {
-    numberPress(e.target.textContent);
-  });
+function takeButton(e) {
+    let inputChar = e.target.innerText
+    if (!isNaN(inputChar)) inputDigits(inputChar);
+    if (isNaN(inputChar)) inputOperators(inputChar);
 }
 
-for (var i = 0; i < operations.length; i++) {
-  var operationBtn = operations[i];
-  operationBtn.addEventListener('click', function (e) {
-    operationPress(e.target.textContent);
-  });
-}
-
-for (var i = 0; i < clearBtns.length; i++) {
-  var clearBtn = clearBtns[i];
-  clearBtn.addEventListener('click', function (e) {
-    clear(e.target.textContent);
-  });
-}
-
-decimalBtn.addEventListener('click', decimal);
-
-function numberPress(number) {
-  if (MemoryNewNumber) {
-    display.value = number;
-    MemoryNewNumber = false;
-  } else {
-    if (display.value === '0') {
-      display.value = number;
-    } else {
-      display.value += number;
-    }
-  }
-}
-
-function operationPress(op) {
-  let localOperationMemory = display.value;
-
-  if (MemoryNewNumber && MemoryPendingOperation !== '=') {
-    display.value = MemoryCurrentNumber;
-  } else {
-    MemoryNewNumber = true;
-    if (MemoryPendingOperation === '+') {
-      MemoryCurrentNumber += +localOperationMemory;
-    } else if (MemoryPendingOperation === '-') {
-      MemoryCurrentNumber -= +localOperationMemory;
-    } else if (MemoryPendingOperation === '*') {
-      MemoryCurrentNumber *= +localOperationMemory;
-    } else if (MemoryPendingOperation === '/') {
-      MemoryCurrentNumber /= +localOperationMemory;
-    } else {
-      MemoryCurrentNumber = +localOperationMemory;
-    }
-    display.value = MemoryCurrentNumber;
-    MemoryPendingOperation = op;
-  }
-}
-
-function decimal(argument) {
-  let localDecimalMemory = display.value;
-
-  if (MemoryNewNumber) {
-    localDecimalMemory = '0.';
-    MemoryNewNumber = false;
-  } else {
-    if (localDecimalMemory.indexOf('.') === -1) {
-      localDecimalMemory += '.';
-    }
-  }
-  display.value = localDecimalMemory;
-}
-
-function clear(id) {
-  if (id === 'ce') {
+function clearCE() {
     display.value = '0';
-    MemoryNewNumber = true;
-  } else if (id === 'c') {
+    memory = 0;
+}
+
+function clearC() {
     display.value = '0';
-    MemoryNewNumber = true;
-    MemoryCurrentNumber = 0;
-    MemoryPendingOperation = '';
-  }
+}
+
+function inputDigits(inputChar) {
+    console.log('#inputDigits');
+    if (display.value === '0' || isSecondArg) {
+        console.log('#inputDigits 0');
+        display.value = inputChar;
+        isSecondArg = false
+    } else {
+        console.log('#inputDigits +');
+        display.value += inputChar;
+    }
+}
+
+function inputOperators(inputChar) {
+    if (inputChar === 'CE') clearCE();
+    else if (inputChar === 'C') clearC();
+    else if (inputChar === '.') inputDot(inputChar);
+    else if ((display.value === '0' && inputChar === '-') || (inputChar === '-' && isSecondArg)) inputMines(inputChar);
+    else if (inputChar === '+') operationPlus(inputChar);
+    else if (inputChar === '=') operationEquals(inputChar);
+    else if (inputChar === '-') operationMinus(inputChar);
+    else if (inputChar === '*') operationMulti(inputChar);
+    else if (inputChar === '/') operationDivision(inputChar);
+}
+
+function inputDot(inputChar) {
+    console.log('#inputDot');
+    if (display.value.indexOf(inputChar) === -1) {
+        if(display.value === '-') display.value += `0${inputChar}`;
+        else display.value += inputChar;      
+    }
+}
+
+function inputMines(inputChar) {
+    display.value = inputChar;
+    isSecondArg = false;
+
+}
+
+function operationPlus(inputChar) {
+    memory = +display.value;
+    currentOperation = '+';
+    isSecondArg = true;
+}
+
+function operationEquals(inputChar) {
+    secondArg = +display.value;
+    if (currentOperation === '+') memory += secondArg;
+    if (currentOperation === '-') memory -= secondArg;
+    if (currentOperation === '*') memory *= secondArg;
+    if (currentOperation === '/') memory /= secondArg;
+
+    memory = gaussRound(memory, 5);
+
+    display.value = memory;
+    isSecondArg = true;
+    currentOperation = '';
+}
+
+function operationMinus(inputChar) {
+    memory = +display.value;
+    currentOperation = `-`;
+    isSecondArg = true;
+}
+
+function operationMulti(inputChar) {
+    memory = +display.value;
+    currentOperation = `*`;
+    isSecondArg = true;
+}
+
+function operationDivision(inputChar) {
+    memory = +display.value;
+    currentOperation = `/`;
+    isSecondArg = true;
+}
+
+function gaussRound(num, decimalPlaces) {
+    let d = decimalPlaces || 0,
+    m = Math.pow(10, d),
+    n = +(d ? num * m : num).toFixed(8),
+    i = Math.floor(n), f = n - i,
+    e = 1e-8,
+    r = (f > 0.5 - e && f < 0.5 + e) ?
+ ((i % 2 == 0) ? i : i + 1) : Math.round(n);
+    return d ? r / m : r;
 }
