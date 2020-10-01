@@ -86,7 +86,7 @@ function operationEquals(inputChar) {
     if (currentOperation === '/') memory /= secondArg;
     if (currentOperation === 'Xⁿ') memory = Math.pow(memory, secondArg)
 
-    memory = gaussRound(memory, 5);
+    memory = gaussRound(memory, 18);
 
     display.value = memory;
     isSecondArg = true;
