@@ -18,10 +18,11 @@ function inputDigits(inputChar) {
 
         display.value = inputChar;
         isSecondArg = false;
-    } else {
-
+    } else if (display.value == '-0') display.value = '-' + inputChar;
+    else {
         display.value += inputChar;
     }
+
 }
 
 function inputOperators(inputChar) {
