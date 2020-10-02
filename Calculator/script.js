@@ -86,7 +86,7 @@ function operationEquals(inputChar) {
     if (currentOperation === '/') memory /= secondArg;
     if (currentOperation === 'Xⁿ') memory = Math.pow(memory, secondArg)
 
-    memory = gaussRound(memory, 18);
+    memory = gaussRound(memory, 16);
 
     display.value = memory;
     isSecondArg = true;
@@ -114,7 +114,7 @@ function operationDivision(inputChar) {
 
 function operationSquareRoot(inputChar) {
     if (+display.value < 0) display.value = 0;
-    else display.value = Math.sqrt(+display.value);
+    else display.value = gaussRound(Math.sqrt(+display.value), 16);
     isSecondArg = true;
 
 }
