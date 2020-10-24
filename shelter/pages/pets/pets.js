@@ -9,7 +9,7 @@ a.forEach(function (element) {
 
         if (targ.dataset.status != undefined && targ.dataset.status == 'disabled') {
 
-            targ.style.color = "#cdcdcd";
+            targ.style.color = "#292929";
             targ.style.cursor = "default";
         }
     });
@@ -59,11 +59,11 @@ function create_card(index) {
     const cardBodyTitle = document.createElement('h4');
     const cardButton = document.createElement('button');
 
-    card.className = 'pets__slider__card';
-    cardHeader.className = 'pets__card__header';
-    cardBody.className = 'pets__card__body';
-    cardBodyTitle.className = 'pets__card__title';
-    cardButton.className = 'pets__card__button';
+    card.className = 'friends__card';
+    cardHeader.className = 'friends__card__header';
+    cardBody.className = 'friends__card__body';
+    cardBodyTitle.className = 'friends__card__title';
+    cardButton.className = 'friends__card__button';
 
     cardBodyTitle.textContent = pets[index].name;
     cardButton.textContent = 'Learn more';
@@ -106,7 +106,7 @@ function set_cards(pets, direction) {
         }, 20);
     }
 
-    for (let index = 0; index < 3; index++) {
+    for (let index = 0; index < 8; index++) {
         card = create_card(start);
         start = (start + 1) % 8;
         if (direction == "prev")
