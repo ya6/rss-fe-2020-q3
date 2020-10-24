@@ -143,7 +143,7 @@ function openPopup(index) {
 function closePopup() {
     petsPopup.classList.remove('active')
     petsBlackout.classList.remove('active')
-    body.classList.remove('scroll')
+    document.body.classList.remove('scroll')
 }
 
 
