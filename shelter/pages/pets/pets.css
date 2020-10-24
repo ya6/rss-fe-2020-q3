@@ -298,6 +298,21 @@ ul {
   justify-content: center;
 }
 
+.slider_way {
+  margin-top: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  row-gap: 30px;
+  -webkit-column-gap: 40px;
+  column-gap: 40px;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
 @media (max-width: 1020px) {
   .friends__cards {
     margin-top: 30px;
