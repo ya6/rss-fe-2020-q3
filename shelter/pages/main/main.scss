@@ -1,5 +1,21 @@
 
-
+$color_primary: #F1CDB3;
+$color_light_xl: #FFFFFF;
+$color_light_l: #F6F6F6;
+$color_light_s: #FAFAFA;
+$color_dark_s: #CDCDCD;
+$color_dark_m: #B2B2B2;
+$color_dark_l: #545454;
+$color_dark-_l: #4C4C4C;
+$color_dark_2xl: #444444;
+$color_dark_3xl: #292929;
+$color_primary_light: #FDDCC4;
+$start_screen_gradient_background: url(../../assets/images/noise_transparent@2X.png),
+radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%),
+#211F20;
+$footer_gradient_background: url(../../assets/images/noise_transparent@2X.png),
+radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%),
+#211F20;
 
 *,
 :before,
@@ -1308,3 +1324,227 @@ ul {
   }
 }
 
+
+.pets__blackout {
+  height: 100vh;
+  width: 100%;
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  background-color: #292929;
+  -webkit-transition: opacity 0.25s linear, visibility 0.25s linear;
+  transition: opacity 0.25s linear, visibility 0.25s linear;
+  position: fixed;
+  top: 0;
+  left: 0
+}
+
+.pets__blackout.active {
+  opacity: 0.6;
+  visibility: visible
+}
+
+.pets__popup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 0.25s linear, visibility 0.25s linear;
+  transition: opacity 0.25s linear, visibility 0.25s linear;
+  background-color: #fff;
+  border-radius: 9px
+}
+
+.pets__popup.active {
+  opacity: 1;
+  visibility: visible
+}
+
+.pets__popup__img {
+  width: 500px;
+  height: 500px
+}
+
+.pets__popup__img img {
+  display: block;
+  width: 100%;
+  border-radius: 0 0 9px 9px
+}
+
+@media (max-width: 1279px) {
+  .pets__popup__img {
+      width: 350px;
+      height: 350px
+  }
+}
+
+@media (max-width: 767.98px) {
+  .pets__popup__img {
+      display: none
+  }
+}
+
+.pets__popup__content {
+  margin: 50px 20px 0 29px;
+  width: 351px
+}
+
+@media (max-width: 1279px) {
+  .pets__popup__content {
+      margin: 10px 9px 0 11px;
+      width: 265px
+  }
+}
+
+@media (max-width: 767.98px) {
+  .pets__popup__content {
+      margin: 10px;
+      width: 220px
+  }
+}
+
+.pets__popup__name {
+  margin-bottom: 10px;
+  font-size: 2.33333rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  line-height: 1.3
+}
+
+@media (max-width: 767.98px) {
+  .pets__popup__name {
+      text-align: center
+  }
+}
+
+.pets__popup__type {
+  margin-bottom: 40px;
+  font-size: 1.33333rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  line-height: 1.15
+}
+
+@media (max-width: 1279px) {
+  .pets__popup__type {
+      margin-bottom: 20px
+  }
+}
+
+@media (max-width: 767.98px) {
+  .pets__popup__type {
+      text-align: center
+  }
+}
+
+.pets__popup__description {
+  margin-bottom: 40px;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  line-height: 1.1;
+  line-height: normal
+}
+
+@media (max-width: 1279px) {
+  .pets__popup__description {
+      margin-bottom: 20px;
+      font-size: .86667rem;
+      line-height: 1.1
+  }
+}
+
+@media (max-width: 767.98px) {
+  .pets__popup__description {
+      margin-bottom: 24px;
+      text-align: justify
+  }
+}
+
+.pets__popup__info {
+  list-style-type: disc;
+  padding-left: 14px
+}
+
+.pets__popup__info li {
+  margin-bottom: 12px;
+  color: #f1cdb3;
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 1.1;
+  letter-spacing: 0.06em
+}
+
+.pets__popup__info li:last-child {
+  margin-bottom: 0
+}
+
+@media (max-width: 1279px) {
+  .pets__popup__info li {
+      margin-bottom: 7px
+  }
+
+  .pets__popup__info li:last-child {
+      margin-bottom: 0
+  }
+}
+
+.pets__popup__info li strong {
+  color: #000
+}
+
+.pets__popup__info li span {
+  color: #000;
+  font-weight: 400
+}
+
+.pets__close {
+  width: 50px;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 2px solid #f1cdb3;
+  -webkit-transition: background-color 0.25s linear;
+  transition: background-color 0.25s linear;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: -52px;
+  margin-right: -42px
+}
+
+.pets__close:hover {
+  background-color: #f1cdb3
+}
+
+.pets__close.active {
+  background-color: #f1cdb3
+}
+
+@media (max-width: 767.98px) {
+  .pets__close {
+      margin-right: -26px
+  }
+}
+
+body.scroll {
+  overflow: hidden
+}
