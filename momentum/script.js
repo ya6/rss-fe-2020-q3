@@ -17,8 +17,12 @@ function showTime() {
  
   // Output Time
   time.innerHTML = `${addZero(hour)}<span>:</span>${addZero(min)}<span>:</span>${addZero(
-    sec
-  )}`;
+    sec)}`;
+  
+    // change back every hour  
+   if (min == 0 && sec == 0 ) setBgGreet();
+   //if (sec % 5 == 0 ) setBgGreet();
+
 
   setTimeout(showTime, 1000);
 }
@@ -31,12 +35,15 @@ function addZero(n) {
 //YA Add date
 
 function showDate() {
-  const days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четрерг', 'Пятница', 'Субботв'];
+  const days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
   let clock_date = document.querySelector('.current_date__self');
   let date = new Date(); 
-  //let dayoftheweek = days[date.getDay()];
   let format_date = days[date.getDay()]+'    '+date.getDate() +'-'+(date.getMonth() + 1)+'-'+date.getFullYear();
   clock_date.innerHTML = format_date;
+}
+
+function random(min, max) {
+  return Math.round(min + Math.random() * (max - min));
 }
 
 // Set Background and Greeting
@@ -47,22 +54,22 @@ function setBgGreet() {
     if (hour >= 0 && hour < 5 ) {
       // Night
       document.body.style.backgroundImage =
-        "url('https://i.ibb.co/7vDLJFb/morning.jpg')";
+      "url('./assets/images/night/"+ addZero(random(1,20)) +".jpg')";
       greeting.textContent = 'Good Night, ';
     } else if (hour >= 5 && hour < 12 ) {
     // Morning
     document.body.style.backgroundImage =
-      "url('https://i.ibb.co/7vDLJFb/morning.jpg')";
+    "url('./assets/images/morning/"+ addZero(random(1,20)) +".jpg')";
     greeting.textContent = 'Good Morning, ';
   } else if (hour >= 12 &&  hour < 18) {
     // Afternoon
     document.body.style.backgroundImage =
-      "url('https://i.ibb.co/3mThcXc/afternoon.jpg')";
+    "url('./assets/images/day/"+ addZero(random(1,20)) +".jpg')";
     greeting.textContent = 'Good Afternoon, ';
   } else {
     // Evening
     document.body.style.backgroundImage =
-      "url('https://i.ibb.co/924T2Wv/night.jpg')";
+      "url('./assets/images/evening/"+ addZero(random(1,20)) +".jpg')";
     greeting.textContent = 'Good Evening, ';
     document.body.style.color = 'white';
   }
