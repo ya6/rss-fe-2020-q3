@@ -14,14 +14,14 @@ function showTime() {
     min = today.getMinutes(),
     sec = today.getSeconds();
 
- 
+
   // Output Time
   time.innerHTML = `${addZero(hour)}<span>:</span>${addZero(min)}<span>:</span>${addZero(
     sec)}`;
-  
-    // change back every hour  
-   if (min == 0 && sec == 0 ) setBgGreet();
-   //if (sec % 5 == 0 ) setBgGreet();
+
+  // change back every hour  
+  if (min == 0 && sec == 0) setBgGreet();
+  //if (sec % 5 == 0 ) setBgGreet();
 
 
   setTimeout(showTime, 1000);
@@ -33,12 +33,33 @@ function addZero(n) {
 }
 
 //YA Add date
+name.addEventListener('click', (e) => {
+  name.textContent = '!';
+});
+
+focus.addEventListener('click', (e) => {
+  focus.textContent = '!';
+});
+
+name.addEventListener('blur', (e) => {
+
+  if (name.textContent == '!' || name.textContent == '')
+    getName();
+});
+
+focus.addEventListener('blur', (e) => {
+  if (focus.textContent == '!' || focus.textContent == '')
+    getFocus();
+});
+
+
+
 
 function showDate() {
   const days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
   let clock_date = document.querySelector('.current_date__self');
-  let date = new Date(); 
-  let format_date = days[date.getDay()]+'    '+date.getDate() +'-'+(date.getMonth() + 1)+'-'+date.getFullYear();
+  let date = new Date();
+  let format_date = days[date.getDay()] + '    ' + date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
   clock_date.innerHTML = format_date;
 }
 
@@ -51,25 +72,25 @@ function setBgGreet() {
   let today = new Date(),
     hour = today.getHours();
 
-    if (hour >= 0 && hour < 5 ) {
-      // Night
-      document.body.style.backgroundImage =
-      "url('./assets/images/night/"+ addZero(random(1,20)) +".jpg')";
-      greeting.textContent = 'Good Night, ';
-    } else if (hour >= 5 && hour < 12 ) {
+  if (hour >= 0 && hour < 5) {
+    // Night
+    document.body.style.backgroundImage =
+      "url('./assets/images/night/" + addZero(random(1, 20)) + ".jpg')";
+    greeting.textContent = 'Good Night, ';
+  } else if (hour >= 5 && hour < 12) {
     // Morning
     document.body.style.backgroundImage =
-    "url('./assets/images/morning/"+ addZero(random(1,20)) +".jpg')";
+      "url('./assets/images/morning/" + addZero(random(1, 20)) + ".jpg')";
     greeting.textContent = 'Good Morning, ';
-  } else if (hour >= 12 &&  hour < 18) {
+  } else if (hour >= 12 && hour < 18) {
     // Afternoon
     document.body.style.backgroundImage =
-    "url('./assets/images/day/"+ addZero(random(1,20)) +".jpg')";
+      "url('./assets/images/day/" + addZero(random(1, 20)) + ".jpg')";
     greeting.textContent = 'Good Afternoon, ';
   } else {
     // Evening
     document.body.style.backgroundImage =
-      "url('./assets/images/evening/"+ addZero(random(1,20)) +".jpg')";
+      "url('./assets/images/evening/" + addZero(random(1, 20)) + ".jpg')";
     greeting.textContent = 'Good Evening, ';
     document.body.style.color = 'white';
   }
@@ -77,7 +98,7 @@ function setBgGreet() {
 
 // Get Name
 function getName() {
-  if (localStorage.getItem('name') === null) {
+  if (localStorage.getItem('name') === null || localStorage.getItem('name') === '' || localStorage.getItem('name') === '!') {
     name.textContent = '[Enter Name]';
   } else {
     name.textContent = localStorage.getItem('name');
@@ -99,7 +120,7 @@ function setName(e) {
 
 // Get Focus
 function getFocus() {
-  if (localStorage.getItem('focus') === null) {
+  if (localStorage.getItem('focus') === null || localStorage.getItem('focus') === '' || localStorage.getItem('focus') === '!') {
     focus.textContent = '[Enter Focus]';
   } else {
     focus.textContent = localStorage.getItem('focus');
