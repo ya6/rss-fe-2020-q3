@@ -105,7 +105,30 @@ function slideBackgrounds() {
 
 }
 
-slide.addEventListener('click', slideBackgrounds )
+slide.addEventListener('click', slideBackgrounds );
+
+change.addEventListener('click', changeBackground );
+
+function changeBackground() {
+  console.log('changeBackground');
+  document.body.style.animation = 'none';
+  setTimeout(function () {
+  document.body.style.animation = 'next 3.0s'
+  }, 50);
+
+  let hour = new Date().getHours();
+  
+  backs[hour] = backs[hour].slice(0,backs[hour].length-6)+addZero(random(1, 20)) + '.jpg';
+
+  
+  
+  document.body.style.backgroundImage =
+  `url(${getBackground(hour)})`;
+
+
+  
+}
+
 
 function setBgGreet() {
   let today = new Date(),
