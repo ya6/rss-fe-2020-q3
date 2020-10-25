@@ -28,17 +28,33 @@ function addZero(n) {
   return (parseInt(n, 10) < 10 ? '0' : '') + n;
 }
 
+//YA Add date
+
+function showDate() {
+  const days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четрерг', 'Пятница', 'Субботв'];
+  let clock_date = document.querySelector('.current_date__self');
+  let date = new Date(); 
+  //let dayoftheweek = days[date.getDay()];
+  let format_date = days[date.getDay()]+'    '+date.getDate() +'-'+(date.getMonth() + 1)+'-'+date.getFullYear();
+  clock_date.innerHTML = format_date;
+}
+
 // Set Background and Greeting
 function setBgGreet() {
   let today = new Date(),
     hour = today.getHours();
 
-  if (hour < 12) {
+    if (hour >= 0 && hour < 5 ) {
+      // Night
+      document.body.style.backgroundImage =
+        "url('https://i.ibb.co/7vDLJFb/morning.jpg')";
+      greeting.textContent = 'Good Night, ';
+    } else if (hour >= 5 && hour < 12 ) {
     // Morning
     document.body.style.backgroundImage =
       "url('https://i.ibb.co/7vDLJFb/morning.jpg')";
     greeting.textContent = 'Good Morning, ';
-  } else if (hour < 18) {
+  } else if (hour >= 12 &&  hour < 18) {
     // Afternoon
     document.body.style.backgroundImage =
       "url('https://i.ibb.co/3mThcXc/afternoon.jpg')";
@@ -103,6 +119,7 @@ focus.addEventListener('blur', setFocus);
 
 // Run
 showTime();
+showDate();
 setBgGreet();
 getName();
 getFocus();

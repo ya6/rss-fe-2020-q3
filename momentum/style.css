@@ -34,3 +34,14 @@ h2 {
     font-size: 6rem;
   }
 }
+
+/* YA */
+.current_date__container {
+  width: 26%;
+  display: flex;
+  justify-content: end;
+}
+
+.current_date__self {
+  font-size: 1.2rem;
+}
