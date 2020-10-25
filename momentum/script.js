@@ -45,14 +45,40 @@ name.addEventListener('blur', (e) => {
 
   if (name.textContent == '!' || name.textContent == '')
     getName();
+
+  setName();
 });
 
 focus.addEventListener('blur', (e) => {
   if (focus.textContent == '!' || focus.textContent == '')
     getFocus();
+
+  setFocus();
 });
 
+let backs = [];
 
+function setBackgrounds() {
+
+  for (let index = 0; index < 5; index++) {
+    backs.push('./assets/images/night/' + addZero(random(1, 20)) + '.jpg');
+  }
+  for (let index = 5; index < 12; index++) {
+    backs.push('./assets/images/morning/' + addZero(random(1, 20)) + '.jpg');
+  }
+  for (let index = 12; index < 18; index++) {
+    backs.push('./assets/images/day/' + addZero(random(1, 20)) + '.jpg');
+  }
+  for (let index = 18; index < 24; index++) {
+    backs.push('./assets/images/evening/' + addZero(random(1, 20)) + '.jpg');
+  }
+
+  // backs.forEach((el,ind)=>(console.log(ind+'---'+el)));
+}
+
+function getBackground(hour) {
+  return backs[hour];
+}
 
 
 function showDate() {
@@ -67,7 +93,8 @@ function random(min, max) {
   return Math.round(min + Math.random() * (max - min));
 }
 
-// Set Background and Greeting
+
+
 function setBgGreet() {
   let today = new Date(),
     hour = today.getHours();
@@ -75,22 +102,22 @@ function setBgGreet() {
   if (hour >= 0 && hour < 5) {
     // Night
     document.body.style.backgroundImage =
-      "url('./assets/images/night/" + addZero(random(1, 20)) + ".jpg')";
+      `url(${getBackground(hour)})`;
     greeting.textContent = 'Good Night, ';
   } else if (hour >= 5 && hour < 12) {
     // Morning
     document.body.style.backgroundImage =
-      "url('./assets/images/morning/" + addZero(random(1, 20)) + ".jpg')";
+    `url(${getBackground(hour)})`;
     greeting.textContent = 'Good Morning, ';
   } else if (hour >= 12 && hour < 18) {
     // Afternoon
     document.body.style.backgroundImage =
-      "url('./assets/images/day/" + addZero(random(1, 20)) + ".jpg')";
+    `url(${getBackground(hour)})`;
     greeting.textContent = 'Good Afternoon, ';
   } else {
     // Evening
     document.body.style.backgroundImage =
-      "url('./assets/images/evening/" + addZero(random(1, 20)) + ".jpg')";
+    `url(${getBackground(hour)})`;
     greeting.textContent = 'Good Evening, ';
     document.body.style.color = 'white';
   }
@@ -141,11 +168,11 @@ function setFocus(e) {
 }
 
 name.addEventListener('keypress', setName);
-name.addEventListener('blur', setName);
 focus.addEventListener('keypress', setFocus);
-focus.addEventListener('blur', setFocus);
+
 
 // Run
+setBackgrounds();
 showTime();
 showDate();
 setBgGreet();
