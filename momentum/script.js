@@ -94,7 +94,7 @@ function random(min, max) {
 }
 
  let backs_counter = new Date().getHours();
- console.log(backs_counter);
+
 
 function slideBackgrounds() {
   backs_counter = backs_counter == 23 ? 0 : backs_counter+=1;
@@ -102,7 +102,6 @@ function slideBackgrounds() {
  
   `url(${getBackground((backs_counter) )})`;
  
-  console.log(backs_counter);
 
 }
 
