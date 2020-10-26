@@ -99,9 +99,27 @@ h2 {
 }
 
 #city {
-  background: gray;
+  background: #5a5a5a;
 }
 
-.weather__params {
+.weather__params {display: flex;
+  justify-content: space-evenly;
+  align-items: center;
   background: #969696;
+
+}
+.temp__container_small_text {
+font-size: .6rem;
+}
+
+.temp__container_middle_text {
+  background: #5a5a5a;
+  padding: 3px;
+  font-size: 0.8rem;
+  color: #91dfe0;
+ 
+}
+
+.temp__container_big_text {
+  font-size: 1.3rem;
 }
