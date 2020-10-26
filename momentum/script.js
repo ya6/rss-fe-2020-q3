@@ -206,6 +206,24 @@ name.addEventListener('keypress', setName);
 focus.addEventListener('keypress', setFocus);
 
 
+//weather 
+// fetch("http://api.openweathermap.org/data/2.5/weather?q=Minsk&appid=cc5e998123b73611c364f52344b6c422", {
+// 	"method": "GET",
+
+// })
+// .then(response => {
+//   return response.json()
+
+// })
+// .then(wheather=>{
+//   console.log(wheather);
+// })
+// .catch(err => {
+// 	console.log(err);
+// });
+
+
+
 // Run
 setBackgrounds();
 showTime();
