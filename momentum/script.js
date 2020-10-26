@@ -82,7 +82,7 @@ function getBackground(hour) {
 
 
 function showDate() {
-  const days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
+  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednes­day', 'Thursday', 'Friday', 'Saturday'];
   let clock_date = document.querySelector('.current_date__self');
   let date = new Date();
   let format_date = days[date.getDay()] + '    ' + date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
