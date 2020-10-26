@@ -207,7 +207,7 @@ focus.addEventListener('keypress', setFocus);
 
 
 //weather 
-fetch("http://api.openweathermap.org/data/2.5/weather?q=Minsk&appid=cc5e998123b73611c364f52344b6c422", {
+fetch("https://api.openweathermap.org/data/2.5/weather?q=Minsk&appid=cc5e998123b73611c364f52344b6c422", {
 	"method": "GET",
 
 })
@@ -222,7 +222,7 @@ fetch("http://api.openweathermap.org/data/2.5/weather?q=Minsk&appid=cc5e998123b7
   temp.textContent = w_temp>=0 ? "+"+w_temp : "-"+w_temp;
   let w_feels_like = (weather.main.feels_like-273.15).toFixed();
   feels_like.textContent = w_feels_like>=0 ? "+"+w_feels_like : "-"+w_feels_like;
-  wether_icon.src = `http://openweathermap.org/img/wn/${weather.weather[0].icon}.png`;
+  wether_icon.src = `https://openweathermap.org/img/wn/${weather.weather[0].icon}.png`;
   description.textContent = weather.weather[0].description; 
   
 })
