@@ -16,13 +16,20 @@
 
 <body>
   <div class="weather">
-    <div id="city">Minsk</div>
+    <div id="city"></div>
+    <div id="description" class="temp__container_middle_text"></div>
     <div class="weather__params">
-      <div id="temp">+7</div>
-      <div id="whether_icon">
-        <img src="" alt="icon weather">
+      <div class="temp__container">
+        <div class="temp__container_small_text">Temper.</div>
+        <div id="temp" class="temp__container_big_text"></div>
       </div>
-      <div id="temp_like">+6</div>
+      <div class="temp__container">
+        <img id="wether_icon" src="" alt="icon weather">
+      </div>
+      <div class="temp_container">
+        <div class="temp__container_small_text">Feels_like</div>
+        <div id="feels_like"  class="temp__container_big_text"></div>
+      </div>
     </div>
   </div>
   <div class="current_date__container">
