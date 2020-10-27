@@ -11,55 +11,74 @@
     .brd {
       border: 2px solid blue;
     }
+
+    .brd-r {
+      border: 2px solid red;
+    }
   </style>
 </head>
 
 <body>
+
   <div class="weather">
-    <div id="city" contenteditable="true"></div>
-    <div id="description" class="temp__container_middle_text"></div>
-    <div class="weather__params">
-      <div class="temp__container">
-        <div class="temp__container_small_text">Temper.</div>
-        <div id="temp" class="temp__container_big_text"></div>
+    <div class="weather__container">
+      <div id="city" contenteditable="true"></div>
+
+      <div id="description" class="weather___middle_text"></div>
+
+      <div class="weather__params">
+
+        <div class="weather__temp__container">
+          <div class="weather__small_text">Temper.</div>
+          <div id="temp" class="weather___big_text"></div>
+        </div>
+
+        <div class="temp__container">
+          <img id="wether_icon" src="" alt="icon weather">
+        </div>
+
+        <div class="temp_container">
+          <div class="weather__small_text">Feels_like</div>
+          <div id="feels_like" class="weather___big_text"></div>
+        </div>
+
       </div>
-      <div class="temp__container">
-        <img id="wether_icon" src="" alt="icon weather">
+
+      <div class="weather__params">
+        <div class="temp__container">
+          <div class="weather__small_text">humidity</div>
+          <div id="humidity" class="weather___big_text"></div>
+        </div>
+        <div class="temp__container">
+          <div class="weather__small_text">wind speed</div>
+          <div id="wind_speed" class="weather___big_text"></div>
+        </div>
       </div>
-      <div class="temp_container">
-        <div class="temp__container_small_text">Feels_like</div>
-        <div id="feels_like" class="temp__container_big_text"></div>
-      </div>
+      <div id="mess" class="weather___middle_text">qwe</div>
     </div>
-    <div class="weather__params">
-      <div class="temp__container">
-        <div class="temp__container_small_text">humidity</div>
-        <div id="humidity" class="temp__container_big_text"></div>
-      </div>
-      <div class="temp__container">
-        <div class="temp__container_small_text">wind speed</div>
-        <div id="wind_speed" class="temp__container_big_text"></div>
-      </div>
-    </div>
-    <div id="mess" class="temp__container_middle_text">qwe</div>
+
   </div>
-  <div class="current_date__container">
-    <span class="current_date__self"></span>
+
+  <div class="date">
+    <span class="date__self"></span>
   </div>
+<div class="container">
   <time class="time"></time>
   <h1>
     <span class="greeting"></span>
     <span class="name" contenteditable="true"></span>
   </h1>
   <h2>What Is Your Focus For Today?</h2>
-  <h2 class="focus" contenteditable="true"></h2>
+  <h2 class="focus "contenteditable="true"></h2>
   <div class="buttons_block">
     <a button id="slide" class="button ">Slide backgrounds</a>
     <a button id="change" class="button">Change background</a>
     <a button id="next" class="button">Next quote</a>
   </div>
-  
+
   <div id="quote"></div>
+</div>
+ 
 
   <script src="script.js"></script>
 </body>
