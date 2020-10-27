@@ -206,8 +206,44 @@ name.addEventListener('keypress', setName);
 focus.addEventListener('keypress', setFocus);
 
 
-//weather 
-fetch("https://api.openweathermap.org/data/2.5/weather?q=Minsk&appid=cc5e998123b73611c364f52344b6c422", {
+
+
+// Get city
+function getCity() {
+  console.log('getCity');
+  if (localStorage.getItem('city') === null || localStorage.getItem('city').trim() == "") {
+    console.log('if');
+    city.textContent = '[Enter City]';
+    console.log(city.textContent);
+  } else {
+    console.log('else');
+    
+    city.textContent = localStorage.getItem('city');
+  }
+}
+
+// Set city
+function setCity(e) {
+  if (e.type === 'keypress') {
+    // Make sure enter is pressed
+    if (e.which == 13 || e.keyCode == 13) {
+      localStorage.setItem('city', e.target.innerText);
+      city.blur();
+      getWWeather();
+    }
+  } else {
+    localStorage.setItem('city', e.target.innerText);
+  }
+}
+
+
+city.addEventListener('keypress', setCity);
+ 
+
+
+function getWWeather() {
+
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${localStorage.getItem('city')}&appid=cc5e998123b73611c364f52344b6c422`, {
 	"method": "GET",
 
 })
@@ -217,18 +253,48 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Minsk&appid=cc5e998123b
 })
 .then(weather=>{
 
-  city.textContent = weather.name;
-  let w_temp = weather.main.temp-273.15;
+  console.log(weather)
+
+  city.textContent = weather.name || '[Enter City]';
+  let w_temp = (weather.main.temp-273.15).toFixed();
   temp.textContent = w_temp>=0 ? "+"+w_temp : "-"+w_temp;
   let w_feels_like = (weather.main.feels_like-273.15).toFixed();
   feels_like.textContent = w_feels_like>=0 ? "+"+w_feels_like : "-"+w_feels_like;
   wether_icon.src = `https://openweathermap.org/img/wn/${weather.weather[0].icon}.png`;
-  description.textContent = weather.weather[0].description; 
+  description.textContent = weather.weather[0].description;
+  humidity.textContent = weather.main.humidity;
+  wind_speed.textContent = weather.wind.speed;
   
 })
 .catch(err => {
 	console.log(err);
 });
+
+}
+
+//weather 
+// fetch("https://api.openweathermap.org/data/2.5/weather?q=minsk&appid=cc5e998123b73611c364f52344b6c422", {
+// 	"method": "GET",
+
+// })
+// .then(response => {
+//   return response.json()
+
+// })
+// .then(weather=>{
+
+//   city.textContent = weather.name;
+//   let w_temp = weather.main.temp-273.15;
+//   temp.textContent = w_temp>=0 ? "+"+w_temp : "-"+w_temp;
+//   let w_feels_like = (weather.main.feels_like-273.15).toFixed();
+//   feels_like.textContent = w_feels_like>=0 ? "+"+w_feels_like : "-"+w_feels_like;
+//   wether_icon.src = `https://openweathermap.org/img/wn/${weather.weather[0].icon}.png`;
+//   description.textContent = weather.weather[0].description; 
+  
+// })
+// .catch(err => {
+// 	console.log(err);
+// });
 
 
 
@@ -239,3 +305,5 @@ showDate();
 setBgGreet();
 getName();
 getFocus();
+getCity();
+getWWeather();
