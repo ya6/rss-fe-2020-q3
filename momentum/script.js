@@ -1,3 +1,5 @@
+
+
 // DOM Elements
 const time = document.querySelector('.time'),
   greeting = document.querySelector('.greeting'),
@@ -73,7 +75,6 @@ function setBackgrounds() {
     backs.push('./assets/images/evening/' + addZero(random(1, 20)) + '.jpg');
   }
 
-  // backs.forEach((el,ind)=>(console.log(ind+'---'+el)));
 }
 
 function getBackground(hour) {
@@ -93,40 +94,37 @@ function random(min, max) {
   return Math.round(min + Math.random() * (max - min));
 }
 
- let backs_counter = new Date().getHours();
+let backs_counter = new Date().getHours();
 
 
 function slideBackgrounds() {
-  backs_counter = backs_counter == 23 ? 0 : backs_counter+=1;
+  backs_counter = backs_counter == 23 ? 0 : backs_counter += 1;
   document.body.style.backgroundImage =
- 
-  `url(${getBackground((backs_counter) )})`;
- 
+
+    `url(${getBackground((backs_counter) )})`;
+
 
 }
 
-slide.addEventListener('click', slideBackgrounds );
+slide.addEventListener('click', slideBackgrounds);
 
-change.addEventListener('click', changeBackground );
+change.addEventListener('click', changeBackground);
 
 function changeBackground() {
-  console.log('changeBackground');
+
   document.body.style.animation = 'none';
   setTimeout(function () {
-  document.body.style.animation = 'next 3.0s'
+    document.body.style.animation = 'next 3.0s'
   }, 50);
 
   let hour = new Date().getHours();
-  
-  backs[hour] = backs[hour].slice(0,backs[hour].length-6)+addZero(random(1, 20)) + '.jpg';
 
-  
-  
+  backs[hour] = backs[hour].slice(0, backs[hour].length - 6) + addZero(random(1, 20)) + '.jpg';
+
   document.body.style.backgroundImage =
-  `url(${getBackground(hour)})`;
+    `url(${getBackground(hour)})`;
 
 
-  
 }
 
 
@@ -142,17 +140,17 @@ function setBgGreet() {
   } else if (hour >= 5 && hour < 12) {
     // Morning
     document.body.style.backgroundImage =
-    `url(${getBackground(hour)})`;
+      `url(${getBackground(hour)})`;
     greeting.textContent = 'Good Morning, ';
   } else if (hour >= 12 && hour < 18) {
     // Afternoon
     document.body.style.backgroundImage =
-    `url(${getBackground(hour)})`;
+      `url(${getBackground(hour)})`;
     greeting.textContent = 'Good Afternoon, ';
   } else {
     // Evening
     document.body.style.backgroundImage =
-    `url(${getBackground(hour)})`;
+      `url(${getBackground(hour)})`;
     greeting.textContent = 'Good Evening, ';
     document.body.style.color = 'white';
   }
@@ -210,14 +208,13 @@ focus.addEventListener('keypress', setFocus);
 
 // Get city
 function getCity() {
-  console.log('getCity');
+
   if (localStorage.getItem('city') === null || localStorage.getItem('city').trim() == "") {
-    console.log('if');
+
     city.textContent = '[Enter City]';
-    console.log(city.textContent);
+
   } else {
-    console.log('else');
-    
+
     city.textContent = localStorage.getItem('city');
   }
 }
@@ -238,67 +235,70 @@ function setCity(e) {
 
 
 city.addEventListener('keypress', setCity);
- 
+
 
 
 function getWWeather() {
 
   fetch(`https://api.openweathermap.org/data/2.5/weather?q=${localStorage.getItem('city')}&appid=cc5e998123b73611c364f52344b6c422`, {
-	"method": "GET",
+      "method": "GET",
 
-})
-.then(response => {
-  return response.json()
+    })
+    .then(response => {
+      return response.json()
 
-})
-.then(weather=>{
+    })
+    .then(weather => {
 
-  console.log(weather.message)
 
-  city.textContent = weather.name || '[Enter City]';
-  let w_temp = (weather.main.temp-273.15).toFixed();
-  temp.textContent = w_temp>=0 ? "+"+w_temp : "-"+w_temp;
-  let w_feels_like = (weather.main.feels_like-273.15).toFixed();
-  feels_like.textContent = w_feels_like>=0 ? "+"+w_feels_like : "-"+w_feels_like;
-  wether_icon.src = `https://openweathermap.org/img/wn/${weather.weather[0].icon}.png`;
-  description.textContent = weather.weather[0].description;
-  humidity.textContent = weather.main.humidity;
-  wind_speed.textContent = weather.wind.speed;
-  
-  mess.textContent = '';
-  
-})
-.catch(err => {
-  console.log(err);
-  mess.textContent = 'city not correct';
-  
-});
+      city.textContent = weather.name || '[Enter City]';
+      let w_temp = (weather.main.temp - 273.15).toFixed();
+      temp.textContent = w_temp >= 0 ? "+" + w_temp : "-" + w_temp;
+      let w_feels_like = (weather.main.feels_like - 273.15).toFixed();
+      feels_like.textContent = w_feels_like >= 0 ? "+" + w_feels_like : "-" + w_feels_like;
+      wether_icon.src = `https://openweathermap.org/img/wn/${weather.weather[0].icon}.png`;
+      description.textContent = weather.weather[0].description;
+      humidity.textContent = weather.main.humidity;
+      wind_speed.textContent = weather.wind.speed;
+
+      mess.textContent = '';
+
+    })
+    .catch(err => {
+      console.log(err);
+      mess.textContent = 'city not correct';
+
+    });
 
 }
 
-//weather 
-// fetch("https://api.openweathermap.org/data/2.5/weather?q=minsk&appid=cc5e998123b73611c364f52344b6c422", {
-// 	"method": "GET",
+//quote 
 
-// })
-// .then(response => {
-//   return response.json()
+next.addEventListener('click', getQuote);
 
-// })
-// .then(weather=>{
+function getQuote() {
+  console.log('getQuote')
+const id = random(1, 100);
 
-//   city.textContent = weather.name;
-//   let w_temp = weather.main.temp-273.15;
-//   temp.textContent = w_temp>=0 ? "+"+w_temp : "-"+w_temp;
-//   let w_feels_like = (weather.main.feels_like-273.15).toFixed();
-//   feels_like.textContent = w_feels_like>=0 ? "+"+w_feels_like : "-"+w_feels_like;
-//   wether_icon.src = `https://openweathermap.org/img/wn/${weather.weather[0].icon}.png`;
-//   description.textContent = weather.weather[0].description; 
-  
-// })
-// .catch(err => {
-// 	console.log(err);
-// });
+fetch(`https://api.adviceslip.com/advice/${id}`, {
+    "method": "GET",
+  })
+  .then(response => {
+    
+    return response.text();
+  })
+  .then(qu => {
+   
+     const start = qu.indexOf('advice')+10;
+     const end =qu.length-2;
+     quote.textContent = qu.slice(start , end);
+
+  })
+  .catch(err => {
+    console.log(err);
+    quote.textContent = `If you can't do anything about it, there's no point in worrying about it.`;
+  });
+}
 
 
 
@@ -311,3 +311,4 @@ getName();
 getFocus();
 getCity();
 getWWeather();
+getQuote();
