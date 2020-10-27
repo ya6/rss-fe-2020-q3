@@ -1,10 +1,9 @@
-
-
 // DOM Elements
 const time = document.querySelector('.time'),
   greeting = document.querySelector('.greeting'),
   name = document.querySelector('.name'),
-  focus = document.querySelector('.focus');
+  focus = document.querySelector('.focus'),
+  clock_date = document.querySelector('.date__self');
 
 // Options
 const showAmPm = true;
@@ -81,10 +80,8 @@ function getBackground(hour) {
   return backs[hour];
 }
 
-
 function showDate() {
   const days = ['Sunday', 'Monday', 'Tuesday', 'Wednes­day', 'Thursday', 'Friday', 'Saturday'];
-  let clock_date = document.querySelector('.current_date__self');
   let date = new Date();
   let format_date = days[date.getDay()] + '    ' + date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
   clock_date.innerHTML = format_date;
@@ -277,29 +274,28 @@ function getWWeather() {
 next.addEventListener('click', getQuote);
 
 function getQuote() {
-  console.log('getQuote')
-const id = random(1, 100);
 
-fetch(`https://api.adviceslip.com/advice/${id}`, {
-    "method": "GET",
-  })
-  .then(response => {
-    
-    return response.text();
-  })
-  .then(qu => {
-   
-     const start = qu.indexOf('advice')+10;
-     const end =qu.length-2;
-     quote.textContent = qu.slice(start , end);
+  const id = random(1, 100);
 
-  })
-  .catch(err => {
-    console.log(err);
-    quote.textContent = `If you can't do anything about it, there's no point in worrying about it.`;
-  });
+  fetch(`https://api.adviceslip.com/advice/${id}`, {
+      "method": "GET",
+    })
+    .then(response => {
+
+      return response.text();
+    })
+    .then(qu => {
+
+      const start = qu.indexOf('advice') + 10;
+      const end = qu.length - 2;
+      quote.textContent = qu.slice(start, end);
+
+    })
+    .catch(err => {
+      console.log(err);
+      quote.textContent = `If you can't do anything about it, there's no point in worrying about it.`;
+    });
 }
-
 
 
 // Run
