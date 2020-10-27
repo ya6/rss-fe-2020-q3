@@ -253,7 +253,7 @@ function getWWeather() {
 })
 .then(weather=>{
 
-  console.log(weather)
+  console.log(weather.message)
 
   city.textContent = weather.name || '[Enter City]';
   let w_temp = (weather.main.temp-273.15).toFixed();
@@ -265,9 +265,13 @@ function getWWeather() {
   humidity.textContent = weather.main.humidity;
   wind_speed.textContent = weather.wind.speed;
   
+  mess.textContent = '';
+  
 })
 .catch(err => {
-	console.log(err);
+  console.log(err);
+  mess.textContent = 'city not correct';
+  
 });
 
 }
