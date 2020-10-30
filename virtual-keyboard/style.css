@@ -1,3 +1,7 @@
+.brd {
+  border: 2PX solid blue;
+}
+
 .use-keyboard-input {
   display: block;
   width: 90%;
