@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+02
+<html>
+03
+    <head>
+04
+    </head>
+05
+    <body>
+06
+ 
+07
+    <textarea id="mytextarea"></textarea>
+08
+    <button onclick="alert( getCursorPosition( document.getElementById('mytextarea') ) )">Get Position</button>
+09
+ 
+10
+    <script type="text/javascript">
+11
+    function getCursorPosition( ctrl ) {
+12
+        var CaretPos = 0;
+13
+        if ( document.selection ) {
+14          
+            ctrl.focus ();
+15
+            var Sel = document.selection.createRange();
+16
+            Sel.moveStart ('character', -ctrl.value.length);
+17
+            CaretPos = Sel.text.length;
+18
+        } else if ( ctrl.selectionStart || ctrl.selectionStart == '0' ) {
+19
+            CaretPos = ctrl.selectionStart;
+20
+        }
+21
+        return CaretPos;
+22
+    }
+23
+    </script>
+24
+    </body>
+25
+</html>
