@@ -8,11 +8,6 @@ const Keyboard = {
   textarea: document.querySelector('.use-keyboard-input'),
   switcher: 0,
 
-  cursorOffset: 0,
-
-
-
-
   properties: {
     value: "",
     capsLock: false,
@@ -85,7 +80,7 @@ const Keyboard = {
     this.elements.keysContainer = document.createElement("div");
 
     // Setup main elements
-    this.elements.main.classList.add("keyboard", "1keyboard--hidden");
+    this.elements.main.classList.add("keyboard", "keyboard--hidden");
     this.elements.keysContainer.classList.add("keyboard__keys");
 
     this.elements.keysContainer.appendChild(this._createKeys());
@@ -97,9 +92,11 @@ const Keyboard = {
 
 
     this.elements.keysContainer.addEventListener('click', this._keyPressHandler);
+    this.textarea.addEventListener('click', ()=>{ this.elements.main.classList.remove("keyboard--hidden");})
+
+   
   },
   _createKeys() {
-    // console.log('#_createKeys');
 
     const fragment = document.createDocumentFragment();
 
@@ -138,14 +135,11 @@ const Keyboard = {
 
           break;
 
-
-
         case "enter":
           keyElement.classList.add("keyboard__key--wide");
           keyElement.innerHTML = createIconHTML("keyboard_return");
 
           break;
-
 
         case "space":
           keyElement.classList.add("keyboard__key--extra-wide");
@@ -153,11 +147,13 @@ const Keyboard = {
 
           break;
 
-
         case "done":
           keyElement.classList.add("keyboard__key--wide", "keyboard__key--dark");
           keyElement.innerHTML = createIconHTML("check_circle");
-
+          // keyElement.addEventListener('click', () => {
+          // //  this.properties.value = "";
+          //   this.elements.main.classList.add("keyboard--hidden");
+          // });
 
           break;
 
@@ -191,7 +187,6 @@ const Keyboard = {
 
   _keyPressHandler(e) {
     console.log('#_keyPressHandler');
-    //console.log(e.target);
 
     Keyboard.textarea.focus();
     if (e.target.tagName == "DIV") {
@@ -200,49 +195,43 @@ const Keyboard = {
 
     const currentKey = e.target.tagName == "I" ? e.target.parentElement : e.target;
     const currentKeyContent = currentKey.textContent;
+    const cursorPosition = Keyboard.textarea.selectionStart;
+    console.log(cursorPosition);
 
     switch (currentKeyContent) {
 
       case "backspace":
-        Keyboard.textarea.value = Keyboard.textarea.value.substring(0, Keyboard.textarea.value.length - 1);
+
+        if (cursorPosition == 0 )  break;
+
+        Keyboard.textarea.value = Keyboard.textarea.value.slice(0, cursorPosition - 1)+Keyboard.textarea.value.slice(cursorPosition);
+        Keyboard.textarea.setSelectionRange(cursorPosition-1, cursorPosition-1);
+       
 
         break;
 
       case "keyboard_return":
-        Keyboard.textarea.value += '\r\n';
+        Keyboard.textarea.value = Keyboard.textarea.value.slice(0, cursorPosition)+'\r\n'+Keyboard.textarea.value.slice(cursorPosition);
+        Keyboard.textarea.setSelectionRange(cursorPosition+1, cursorPosition+1);
+       
 
         break;
 
       case "keyboard_capslock":
         currentKey.classList.toggle("keyboard__key--active");
         Keyboard.properties.capsLock = !Keyboard.properties.capsLock;
-
-
         Keyboard._updateKeys()
 
         break;
 
       case "RU":
-        //  currentKey.classList.toggle("keyboard__key--active");
-        // Keyboard.properties.ru = false;
-        // Keyboard.properties.en = true;
-        // Keyboard.switcher = Keyboard.switcher === 1 ? 0 : 1;
-
         Keyboard.switcher = Keyboard.switcher - 2;
-
         Keyboard._updateKeys()
 
         break;
 
       case "EN":
-        //  currentKey.classList.toggle("keyboard__key--active");
-        // Keyboard.properties.en = false;
-        // Keyboard.properties.ru = true;
-        // Keyboard.switcher = Keyboard.switcher === 1 ? 0 : 1;
-
         Keyboard.switcher = Keyboard.switcher + 2;
-
-
         Keyboard._updateKeys()
 
         break;
@@ -250,9 +239,8 @@ const Keyboard = {
       case "arrow_upward":
         currentKey.classList.toggle("keyboard__key--active");
         Keyboard.properties.shift = !Keyboard.properties.shift;
-        // Keyboard.switcher = Keyboard.switcher === 2 ? 0 : 2;
-        if (Keyboard.properties.shift)
 
+        if (Keyboard.properties.shift)
           Keyboard.switcher += 1;
         else Keyboard.switcher -= 1;
 
@@ -277,8 +265,15 @@ const Keyboard = {
 
         break;
 
+        case 'check_circle':
+              Keyboard.elements.main.classList.add("keyboard--hidden");
+
+          break;
+        
+
       default:
-        Keyboard.textarea.value += currentKeyContent;
+        Keyboard.textarea.value = Keyboard.textarea.value.slice(0, cursorPosition)+currentKeyContent+Keyboard.textarea.value.slice(cursorPosition);
+        Keyboard.textarea.setSelectionRange(cursorPosition+1, cursorPosition+1);
         break;
     }
 
@@ -298,7 +293,6 @@ const Keyboard = {
     for (const key of this.elements.keysContainer.children) {
 
       if (key.textContent.length > 0 && key.textContent.length < 3) {
-        // console.log(Keyboard.keyLayout[keysCount][Keyboard.switcher] !== "");
         key.textContent = (Keyboard.keyLayout[keysCount][Keyboard.switcher] !== "") ?
           this.keyLayout[keysCount++][Keyboard.switcher] : this.keyLayout[keysCount++][0];
 
