@@ -133,8 +133,8 @@ const Keyboard = {
       Keyboard.shiftPress = true;
       Keyboard._updateKeys();
     }
-
-    if (e.shiftKey && e.altKey) {
+    
+    if (e.shiftKey && e.altKey) { 
 
 
       if (lang.dataset.name == 'en') {
@@ -152,31 +152,31 @@ const Keyboard = {
     };
 
 
-    // keyboards deep integration!
-    Keyboard.keyLayout.forEach((element, index) => {
-      for (let i = 0; i < 4; i++) {
-        if (element[i]  == e.key) {
+    // keyboards deep integration! has bug 
+    // Keyboard.keyLayout.forEach((element, index) => {
+    //   for (let i = 0; i < 4; i++) {
+    //     if (element[i]  == e.key) {
           
       
-         if (Keyboard.switcher !== i) {
+    //      if (Keyboard.switcher !== i) {
          
-           if (lang.dataset.name == 'en') {
-             lang.dataset.name = 'ru';
-             lang.textContent = "RU";
-           } else {
-             lang.dataset.name = 'en';
-             lang.textContent = "EN"
-           };
+    //        if (lang.dataset.name == 'en') {
+    //          lang.dataset.name = 'ru';
+    //          lang.textContent = "RU";
+    //        } else {
+    //          lang.dataset.name = 'en';
+    //          lang.textContent = "EN"
+    //        };
      
-           Keyboard.switcher = lang.dataset.name == 'en' ? i : i;
+    //        Keyboard.switcher = lang.dataset.name == 'en' ? i : i;
      
-           Keyboard._updateKeys();
+    //        Keyboard._updateKeys();
 
-         }
+    //      }
         
-        }
-      }
-     })
+    //     }
+    //   }
+    //  })
 
     let curr;
 
