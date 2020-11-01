@@ -116,6 +116,37 @@ const Keyboard = {
   },
 
   _keydown(e) {
+
+
+
+// keyboards deep integration!
+        Keyboard.keyLayout.forEach((element, index) => {
+         for (let i = 0; i < 4; i++) {
+           if (element[i]  == e.key) {
+             
+         
+            if (Keyboard.switcher !== i) {
+            
+              if (lang.dataset.name == 'en') {
+                lang.dataset.name = 'ru';
+                lang.textContent = "RU";
+              } else {
+                lang.dataset.name = 'en';
+                lang.textContent = "EN"
+              };
+        
+              Keyboard.switcher = lang.dataset.name == 'en' ? i : i;
+        
+              Keyboard._updateKeys();
+
+            }
+           
+           }
+         }
+        })
+
+
+
     if (e.key == 'CapsLock') {
       Keyboard._pressCapslock()
     };
@@ -145,6 +176,9 @@ const Keyboard = {
     };
 
     let curr;
+
+
+
 
     Keyboard.keyLayout.forEach((element, index) => {
       for (let i = 0; i < 4; i++) {
@@ -284,7 +318,6 @@ const Keyboard = {
 
   _keyPressHandler(e) {
 
-
     Keyboard.textarea.focus();
     if (e.target.tagName == "DIV") {
       return;
@@ -294,10 +327,11 @@ const Keyboard = {
     const currentKeyContent = currentKey.textContent;
     const cursorPosition = Keyboard.textarea.selectionStart;
 
+
     switch (currentKeyContent) {
 
       case "backspace":
-       if(Keyboard.volume) _sound_1.play();
+        if (Keyboard.volume) _sound_1.play();
 
         if (cursorPosition == 0) break;
 
@@ -307,46 +341,47 @@ const Keyboard = {
         break;
 
       case "keyboard_return":
-        if(Keyboard.volume) _sound_2.play();
+        if (Keyboard.volume) _sound_2.play();
         Keyboard.textarea.value = Keyboard.textarea.value.slice(0, cursorPosition) + '\r\n' + Keyboard.textarea.value.slice(cursorPosition);
         Keyboard.textarea.setSelectionRange(cursorPosition + 1, cursorPosition + 1);
 
         break;
 
       case "keyboard_capslock":
-        if(Keyboard.volume)  _sound_3.play();
+        if (Keyboard.volume) _sound_3.play();
         Keyboard._pressCapslock(currentKey);
 
         break;
 
 
       case "RU":
-        if(Keyboard.volume) _sound_3.play();
+        if (Keyboard.volume) _sound_3.play();
         Keyboard.switcher = Keyboard.switcher - 2;
         Keyboard._updateKeys();
 
         break;
 
       case "EN":
-        if(Keyboard.volume)  _sound_3.play();
+        if (Keyboard.volume) _sound_3.play();
         Keyboard.switcher = Keyboard.switcher + 2;
+
         Keyboard._updateKeys();
 
         break;
 
       case "arrow_upward":
-        if(Keyboard.volume)   _sound_4.play();
+        if (Keyboard.volume) _sound_4.play();
         Keyboard._pressShift(currentKey);
 
         break;
 
       case 'space_bar':
-        if(Keyboard.volume) _sound_2.play();
+        if (Keyboard.volume) _sound_2.play();
         Keyboard.textarea.value += ' ';
         break;
 
       case 'arrow_left':
-        if(Keyboard.volume) _sound_1.play();
+        if (Keyboard.volume) _sound_1.play();
         let prevPosition = Keyboard.textarea.selectionStart - 1;
         Keyboard.textarea.setSelectionRange(prevPosition, prevPosition);
 
@@ -354,7 +389,7 @@ const Keyboard = {
 
 
       case 'arrow_right':
-        if(Keyboard.volume)  _sound_1.play();
+        if (Keyboard.volume) _sound_1.play();
         let nextPosition = Keyboard.textarea.selectionStart + 1;
         Keyboard.textarea.setSelectionRange(nextPosition, nextPosition);
 
@@ -365,19 +400,19 @@ const Keyboard = {
 
         break;
 
-        case "volume_mute":
-          _sound_3.play();
-          Keyboard._pressSound(currentKey);
-  
-          break;
+      case "volume_mute":
+        _sound_3.play();
+        Keyboard._pressSound(currentKey);
+
+        break;
 
 
       default:
-        if(Keyboard.volume) {
-          if(Keyboard.switcher == 0 || Keyboard.switcher == 1) _sound_1.play();
+        if (Keyboard.volume) {
+          if (Keyboard.switcher == 0 || Keyboard.switcher == 1) _sound_1.play();
           else _sound_5.play();
         }
-        
+
 
         Keyboard.textarea.value = Keyboard.textarea.value.slice(0, cursorPosition) + currentKeyContent + Keyboard.textarea.value.slice(cursorPosition);
         Keyboard.textarea.setSelectionRange(cursorPosition + 1, cursorPosition + 1);
@@ -392,7 +427,7 @@ const Keyboard = {
     Keyboard._updateKeys()
   },
 
-  
+
   _pressCapslock(currentKey) {
 
     currentKey = currentKey ? currentKey : caps //id
