@@ -1,5 +1,5 @@
 .brd {
-  border: 2PX solid blue;
+  border: 2px solid blue;
 }
 
 .use-keyboard-input {
@@ -18,7 +18,7 @@
   bottom: 0;
   width: 100%;
   padding: 5px 0;
-  background: #004134;
+  background: #261c30;
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
   user-select: none;
   transition: bottom 0.4s;
@@ -30,6 +30,7 @@
 
 .keyboard__keys {
   text-align: center;
+ 
 }
 
 .keyboard__key {
@@ -51,6 +52,7 @@
   padding: 0;
   -webkit-tap-highlight-color: transparent;
   position: relative;
+  box-shadow: 4px 4px 8px 0px rgba(255, 255, 255, 0.3) inset;
 }
 
 .keyboard__key:active {
