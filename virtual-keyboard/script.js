@@ -108,7 +108,7 @@ const Keyboard = {
 
   _keyup(e) {
 
-    if (e.key == "Shift") {
+    if (e.key == "Shift" && !Keyboard.properties.shift) {
       Keyboard.switcher -= 1;
       Keyboard.shiftPress = false;
       Keyboard._updateKeys();
@@ -116,13 +116,14 @@ const Keyboard = {
   },
 
   _keydown(e) {
-
+  
 
     if (e.key == 'CapsLock') {
       Keyboard._pressCapslock()
     };
 
-    if (e.key == "Shift" && !e.altKey) {
+    if (e.key == "Shift" && !e.altKey && !Keyboard.properties.shift) {
+     
 
       if (!Keyboard.shiftPress) Keyboard.switcher += 1;
       Keyboard.shiftPress = true;
