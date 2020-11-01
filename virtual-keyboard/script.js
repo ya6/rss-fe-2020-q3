@@ -118,11 +118,6 @@ const Keyboard = {
   _keydown(e) {
 
 
-
-
-
-
-
     if (e.key == 'CapsLock') {
       Keyboard._pressCapslock()
     };
@@ -134,49 +129,50 @@ const Keyboard = {
       Keyboard._updateKeys();
     }
     
-    if (e.shiftKey && e.altKey) { 
+    // if (e.shiftKey && e.altKey) { 
 
 
-      if (lang.dataset.name == 'en') {
-        lang.dataset.name = 'ru';
-        lang.textContent = "RU";
-      } else {
-        lang.dataset.name = 'en';
-        lang.textContent = "EN"
-      };
+    //   if (lang.dataset.name == 'en') {
+    //     lang.dataset.name = 'ru';
+    //     lang.textContent = "RU";
+    //   } else {
+    //     lang.dataset.name = 'en';
+    //     lang.textContent = "EN"
+    //   };
 
-      Keyboard.switcher = lang.dataset.name == 'en' ? Keyboard.switcher - 2 : Keyboard.switcher + 2;
+    //   Keyboard.switcher = lang.dataset.name == 'en' ? Keyboard.switcher - 2 : Keyboard.switcher + 2;
 
-      Keyboard._updateKeys();
+    //   Keyboard._updateKeys();
 
-    };
+    // };
 
 
-    // keyboards deep integration! has bug 
-    // Keyboard.keyLayout.forEach((element, index) => {
-    //   for (let i = 0; i < 4; i++) {
-    //     if (element[i]  == e.key) {
+    //keyboards deep integration! has bug 
+    Keyboard.keyLayout.forEach((element, index) => {
+      for (let i = 0; i < 4; i++) {
+        if (element[i]  == e.key) {
           
       
-    //      if (Keyboard.switcher !== i) {
+         if (Keyboard.switcher !== i) {
          
-    //        if (lang.dataset.name == 'en') {
-    //          lang.dataset.name = 'ru';
-    //          lang.textContent = "RU";
-    //        } else {
-    //          lang.dataset.name = 'en';
-    //          lang.textContent = "EN"
-    //        };
+           if (lang.dataset.name == 'en') {
+             lang.dataset.name = 'ru';
+             lang.textContent = "RU";
+           } else {
+             lang.dataset.name = 'en';
+             lang.textContent = "EN"
+           };
      
-    //        Keyboard.switcher = lang.dataset.name == 'en' ? i : i;
+           Keyboard.switcher = lang.dataset.name == 'en' ? i : i;
+           if(Keyboard.properties.shift == true) Keyboard.switcher = Keyboard.switcher+1; 
      
-    //        Keyboard._updateKeys();
+           Keyboard._updateKeys();
 
-    //      }
+         }
         
-    //     }
-    //   }
-    //  })
+        }
+      }
+     })
 
     let curr;
 
@@ -320,6 +316,7 @@ const Keyboard = {
   },
 
   _keyPressHandler(e) {
+
 
     Keyboard.textarea.focus();
     if (e.target.tagName == "DIV") {
