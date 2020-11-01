@@ -119,31 +119,7 @@ const Keyboard = {
 
 
 
-// keyboards deep integration!
-        Keyboard.keyLayout.forEach((element, index) => {
-         for (let i = 0; i < 4; i++) {
-           if (element[i]  == e.key) {
-             
-         
-            if (Keyboard.switcher !== i) {
-            
-              if (lang.dataset.name == 'en') {
-                lang.dataset.name = 'ru';
-                lang.textContent = "RU";
-              } else {
-                lang.dataset.name = 'en';
-                lang.textContent = "EN"
-              };
-        
-              Keyboard.switcher = lang.dataset.name == 'en' ? i : i;
-        
-              Keyboard._updateKeys();
 
-            }
-           
-           }
-         }
-        })
 
 
 
@@ -174,6 +150,33 @@ const Keyboard = {
       Keyboard._updateKeys();
 
     };
+
+
+    // keyboards deep integration!
+    Keyboard.keyLayout.forEach((element, index) => {
+      for (let i = 0; i < 4; i++) {
+        if (element[i]  == e.key) {
+          
+      
+         if (Keyboard.switcher !== i) {
+         
+           if (lang.dataset.name == 'en') {
+             lang.dataset.name = 'ru';
+             lang.textContent = "RU";
+           } else {
+             lang.dataset.name = 'en';
+             lang.textContent = "EN"
+           };
+     
+           Keyboard.switcher = lang.dataset.name == 'en' ? i : i;
+     
+           Keyboard._updateKeys();
+
+         }
+        
+        }
+      }
+     })
 
     let curr;
 
