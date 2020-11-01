@@ -2,18 +2,18 @@ const Keyboard = {
   elements: {
     main: null,
     keysContainer: null,
-    //  keys: []
+
   },
 
   textarea: document.querySelector('.use-keyboard-input'),
   switcher: 0,
   shiftPress: false,
+  volume: false,
 
   properties: {
     value: "",
     capsLock: false,
     shift: false,
-  
 
   },
 
@@ -73,7 +73,8 @@ const Keyboard = {
     [" ", " ", " ", " "],
     ["EN", "EN", "RU", "RU"],
     ["ArrowLeft", "ArrowLeft", "ArrowLeft", "ArrowLeft", ],
-    ["ArrowRight", "ArrowRight", "ArrowRight", "ArrowRight"]
+    ["ArrowRight", "ArrowRight", "ArrowRight", "ArrowRight"],
+    ["volume_mute", "volume_mute", "volume_mute", "volume_mute"]
   ],
 
   init() {
@@ -107,27 +108,27 @@ const Keyboard = {
 
   _keyup(e) {
 
-  if (e.key == "Shift") { 
-    Keyboard.switcher -=1;
-    Keyboard.shiftPress = false; 
-    Keyboard._updateKeys();
-  }
+    if (e.key == "Shift") {
+      Keyboard.switcher -= 1;
+      Keyboard.shiftPress = false;
+      Keyboard._updateKeys();
+    }
   },
 
   _keydown(e) {
     if (e.key == 'CapsLock') {
       Keyboard._pressCapslock()
     };
-    
-    if (e.key == "Shift" &&  !e.altKey) {
-     
-      if(!Keyboard.shiftPress)Keyboard.switcher +=1;
+
+    if (e.key == "Shift" && !e.altKey) {
+
+      if (!Keyboard.shiftPress) Keyboard.switcher += 1;
       Keyboard.shiftPress = true;
       Keyboard._updateKeys();
     }
 
     if (e.shiftKey && e.altKey) {
-    
+
 
       if (lang.dataset.name == 'en') {
         lang.dataset.name = 'ru';
@@ -148,7 +149,7 @@ const Keyboard = {
     Keyboard.keyLayout.forEach((element, index) => {
       for (let i = 0; i < 4; i++) {
         if (element[i] == e.key) {
-       
+
           curr = element[i];
 
           for (const key of Keyboard.elements.keysContainer.children) {
@@ -259,6 +260,12 @@ const Keyboard = {
 
           break;
 
+        case "volume_mute":
+          keyElement.classList.add("keyboard__key--wide", "keyboard__key--activatable");
+          keyElement.innerHTML = createIconHTML("volume_mute");
+          break;
+
+
         default:
           keyElement.textContent = key[this.switcher];
 
@@ -277,6 +284,7 @@ const Keyboard = {
 
   _keyPressHandler(e) {
 
+
     Keyboard.textarea.focus();
     if (e.target.tagName == "DIV") {
       return;
@@ -289,6 +297,7 @@ const Keyboard = {
     switch (currentKeyContent) {
 
       case "backspace":
+       if(Keyboard.volume) _sound_1.play();
 
         if (cursorPosition == 0) break;
 
@@ -298,38 +307,46 @@ const Keyboard = {
         break;
 
       case "keyboard_return":
+        if(Keyboard.volume) _sound_2.play();
         Keyboard.textarea.value = Keyboard.textarea.value.slice(0, cursorPosition) + '\r\n' + Keyboard.textarea.value.slice(cursorPosition);
         Keyboard.textarea.setSelectionRange(cursorPosition + 1, cursorPosition + 1);
 
         break;
 
       case "keyboard_capslock":
+        if(Keyboard.volume)  _sound_3.play();
         Keyboard._pressCapslock(currentKey);
 
         break;
 
+
       case "RU":
+        if(Keyboard.volume) _sound_3.play();
         Keyboard.switcher = Keyboard.switcher - 2;
         Keyboard._updateKeys();
 
         break;
 
       case "EN":
+        if(Keyboard.volume)  _sound_3.play();
         Keyboard.switcher = Keyboard.switcher + 2;
         Keyboard._updateKeys();
 
         break;
 
       case "arrow_upward":
+        if(Keyboard.volume)   _sound_4.play();
         Keyboard._pressShift(currentKey);
 
         break;
 
       case 'space_bar':
+        if(Keyboard.volume) _sound_2.play();
         Keyboard.textarea.value += ' ';
         break;
 
       case 'arrow_left':
+        if(Keyboard.volume) _sound_1.play();
         let prevPosition = Keyboard.textarea.selectionStart - 1;
         Keyboard.textarea.setSelectionRange(prevPosition, prevPosition);
 
@@ -337,6 +354,7 @@ const Keyboard = {
 
 
       case 'arrow_right':
+        if(Keyboard.volume)  _sound_1.play();
         let nextPosition = Keyboard.textarea.selectionStart + 1;
         Keyboard.textarea.setSelectionRange(nextPosition, nextPosition);
 
@@ -347,8 +365,20 @@ const Keyboard = {
 
         break;
 
+        case "volume_mute":
+          _sound_3.play();
+          Keyboard._pressSound(currentKey);
+  
+          break;
+
 
       default:
+        if(Keyboard.volume) {
+          if(Keyboard.switcher == 0 || Keyboard.switcher == 1) _sound_1.play();
+          else _sound_5.play();
+        }
+        
+
         Keyboard.textarea.value = Keyboard.textarea.value.slice(0, cursorPosition) + currentKeyContent + Keyboard.textarea.value.slice(cursorPosition);
         Keyboard.textarea.setSelectionRange(cursorPosition + 1, cursorPosition + 1);
         break;
@@ -356,8 +386,15 @@ const Keyboard = {
 
   },
 
-  _pressCapslock(currentKey) {
+  _pressSound(currentKey) {
+    currentKey.classList.toggle("keyboard__key--active");
+    Keyboard.volume = !Keyboard.volume;
+    Keyboard._updateKeys()
+  },
+
   
+  _pressCapslock(currentKey) {
+
     currentKey = currentKey ? currentKey : caps //id
     currentKey.classList.toggle("keyboard__key--active");
     Keyboard.properties.capsLock = !Keyboard.properties.capsLock;
