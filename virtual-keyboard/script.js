@@ -158,7 +158,7 @@ const Keyboard = {
 
               key.style.animation = 'none';
               setTimeout(function () {
-                key.style.animation = 'changeColor 2.0s';
+                key.style.animation = 'changeColor 1.0s';
               }, 20);
             }
           }
