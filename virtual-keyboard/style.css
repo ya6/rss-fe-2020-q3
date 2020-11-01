@@ -34,7 +34,7 @@
 
 .keyboard__key {
   height: 45px;
-  width: 6%;
+  width: 4.8%;
   max-width: 90px;
   margin: 3px;
   border-radius: 4px;
@@ -83,4 +83,18 @@
 
 .keyboard__key--dark {
   background: rgba(0, 0, 0, 0.25);
+}
+
+/* .keyboard__key--presskey {
+  animation: changeColor 3s
+} */
+
+@keyframes  changeColor {
+  from {background: rgba(255, 255, 255, 0.1)}
+  to {background: rgba(255, 255, 255, 0.2)}
+}
+
+@keyframes  changeColor {
+  from {background: rgba(255, 255, 255, 0.1)}
+  to {background: rgba(255, 255, 255, 0.2)}
 }
