@@ -9,6 +9,7 @@ const Keyboard = {
   switcher: 0,
   shiftPress: false,
   volume: false,
+  speech: false,
 
   properties: {
     value: "",
@@ -74,7 +75,8 @@ const Keyboard = {
     ["EN", "EN", "RU", "RU"],
     ["ArrowLeft", "ArrowLeft", "ArrowLeft", "ArrowLeft", ],
     ["ArrowRight", "ArrowRight", "ArrowRight", "ArrowRight"],
-    ["volume_mute", "volume_mute", "volume_mute", "volume_mute"]
+    ["volume_mute", "volume_mute", "volume_mute", "volume_mute"],
+    ["mic", "mic", "mic", "mic"]
   ],
 
   init() {
@@ -116,20 +118,20 @@ const Keyboard = {
   },
 
   _keydown(e) {
-  
+
 
     if (e.key == 'CapsLock') {
       Keyboard._pressCapslock()
     };
 
     if (e.key == "Shift" && !e.altKey && !Keyboard.properties.shift) {
-     
+
 
       if (!Keyboard.shiftPress) Keyboard.switcher += 1;
       Keyboard.shiftPress = true;
       Keyboard._updateKeys();
     }
-    
+
     // if (e.shiftKey && e.altKey) { 
 
 
@@ -151,29 +153,29 @@ const Keyboard = {
     //keyboards deep integration! has bug 
     Keyboard.keyLayout.forEach((element, index) => {
       for (let i = 0; i < 4; i++) {
-        if (element[i]  == e.key) {
-          
-      
-         if (Keyboard.switcher !== i) {
-         
-           if (lang.dataset.name == 'en') {
-             lang.dataset.name = 'ru';
-             lang.textContent = "RU";
-           } else {
-             lang.dataset.name = 'en';
-             lang.textContent = "EN"
-           };
-     
-           Keyboard.switcher = lang.dataset.name == 'en' ? i : i;
-           if(Keyboard.properties.shift == true) Keyboard.switcher = Keyboard.switcher+1; 
-     
-           Keyboard._updateKeys();
+        if (element[i] == e.key) {
 
-         }
-        
+
+          if (Keyboard.switcher !== i) {
+
+            if (lang.dataset.name == 'en') {
+              lang.dataset.name = 'ru';
+              lang.textContent = "RU";
+            } else {
+              lang.dataset.name = 'en';
+              lang.textContent = "EN"
+            };
+
+            Keyboard.switcher = lang.dataset.name == 'en' ? i : i;
+            if (Keyboard.properties.shift == true) Keyboard.switcher = Keyboard.switcher + 1;
+
+            Keyboard._updateKeys();
+
+          }
+
         }
       }
-     })
+    })
 
     let curr;
 
@@ -299,6 +301,14 @@ const Keyboard = {
           keyElement.innerHTML = createIconHTML("volume_mute");
           break;
 
+        case "mic":
+          keyElement.classList.add("keyboard__key--wide", "keyboard__key--activatable");
+          keyElement.innerHTML = createIconHTML("mic");
+          keyElement.setAttribute('id', 'mic');
+
+
+          break;
+
 
         default:
           keyElement.textContent = key[this.switcher];
@@ -407,6 +417,14 @@ const Keyboard = {
 
         break;
 
+      case "mic":
+        if (Keyboard.volume) _sound_3.play();
+        Keyboard._pressSpeech();
+
+        break;
+
+
+
 
       default:
         if (Keyboard.volume) {
@@ -419,6 +437,83 @@ const Keyboard = {
         Keyboard.textarea.setSelectionRange(cursorPosition + 1, cursorPosition + 1);
         break;
     }
+
+  },
+
+  _pressSpeech() {
+
+    mic.classList.toggle("keyboard__key--active");
+    Keyboard.speech = !Keyboard.speech;
+
+
+    window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+    recognition.interimResults = true;
+
+    if (Keyboard.speech) {
+
+      recognition.start();
+
+      recognition.onstart = function () {
+
+      }
+      recognition.onend = function () {
+        if (Keyboard.speech) recognition.start();
+        else recognition.stop()
+      }
+
+      recognition.onresult = function (e) {
+        var transcript = e.results[0][0].transcript;
+        Keyboard.textarea.value += transcript;
+
+      }
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+    //   recognition.onresult = function (event) {
+    //     var transcript = event.results[0][0].transcript;
+    //     //var confidence = event.results[0][0].confidence;
+    //     console.log(transcript);
+
+    //    
+
+    // }
+
+
+
+
+
+
+
+    //    recognition.start();
+
+
+    //   recognition.onspeechend = function () {
+
+    //     console.log('stop');
+    //     recognition.stop();
+
+    //     recognition.onresult = function (event) {
+    //       var transcript = event.results[0][0].transcript;
+    //       //var confidence = event.results[0][0].confidence;
+    //       console.log(transcript);
+
+    //       Keyboard.textarea.value += transcript; 
+
+    //     };
+    //   }
+    // }
+
 
   },
 
@@ -472,7 +567,13 @@ const Keyboard = {
         keysCount++;
       }
     }
+
+
+
+
   }
+
+
 
 }
 
