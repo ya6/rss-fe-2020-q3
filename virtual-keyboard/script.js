@@ -441,7 +441,7 @@ const Keyboard = {
   },
 
   _pressSpeech() {
-    
+
 
     mic.classList.toggle("keyboard__key--active");
     Keyboard.speech = !Keyboard.speech;
@@ -449,18 +449,36 @@ const Keyboard = {
 
     window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     const recognition = new SpeechRecognition();
+
+   
     recognition.interimResults = true;
+      if (lang.textContent == "EN") {
+       
+        recognition.lang = 'en-US'
+       // recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
 
-    if (Keyboard.speech)  recognition.start();
+      } else {
+       
+        recognition.lang = 'ru-RU'
+       // recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
+    };
 
-      recognition.onend = function () {
-        if (Keyboard.speech) recognition.start();
-        else recognition.stop();
-      }
+    console.log(recognition.lang);
 
-      recognition.onresult = function (e) {
-        var transcript = e.results[0][0].transcript;
-        if(Keyboard.speech) Keyboard.textarea.value += transcript;
+    if (Keyboard.speech) recognition.start();
+
+    recognition.onend = function () {
+      if (Keyboard.speech) recognition.start();
+      else recognition.stop();
+    }
+
+    recognition.onresult = function (e) {
+      var transcript = e.results[0][0].transcript;
+
+      console.log('l '+recognition.lang);
+      if (Keyboard.speech) Keyboard.textarea.value += transcript;
 
     }
 
