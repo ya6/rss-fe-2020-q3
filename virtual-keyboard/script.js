@@ -441,6 +441,7 @@ const Keyboard = {
   },
 
   _pressSpeech() {
+    
 
     mic.classList.toggle("keyboard__key--active");
     Keyboard.speech = !Keyboard.speech;
@@ -450,70 +451,18 @@ const Keyboard = {
     const recognition = new SpeechRecognition();
     recognition.interimResults = true;
 
-    if (Keyboard.speech) {
+    if (Keyboard.speech)  recognition.start();
 
-      recognition.start();
-
-      recognition.onstart = function () {
-
-      }
       recognition.onend = function () {
         if (Keyboard.speech) recognition.start();
-        else recognition.stop()
+        else recognition.stop();
       }
 
       recognition.onresult = function (e) {
         var transcript = e.results[0][0].transcript;
-        Keyboard.textarea.value += transcript;
-
-      }
-
-
-
-
-
-
+        if(Keyboard.speech) Keyboard.textarea.value += transcript;
 
     }
-
-
-
-
-
-    //   recognition.onresult = function (event) {
-    //     var transcript = event.results[0][0].transcript;
-    //     //var confidence = event.results[0][0].confidence;
-    //     console.log(transcript);
-
-    //    
-
-    // }
-
-
-
-
-
-
-
-    //    recognition.start();
-
-
-    //   recognition.onspeechend = function () {
-
-    //     console.log('stop');
-    //     recognition.stop();
-
-    //     recognition.onresult = function (event) {
-    //       var transcript = event.results[0][0].transcript;
-    //       //var confidence = event.results[0][0].confidence;
-    //       console.log(transcript);
-
-    //       Keyboard.textarea.value += transcript; 
-
-    //     };
-    //   }
-    // }
-
 
   },
 
