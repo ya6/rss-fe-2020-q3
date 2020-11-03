@@ -1,3 +1,8 @@
+'use strict';
+
+window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+
 const Keyboard = {
   elements: {
     main: null,
@@ -446,12 +451,13 @@ const Keyboard = {
     mic.classList.toggle("keyboard__key--active");
     Keyboard.speech = !Keyboard.speech;
 
-
-    window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    const recognition = new SpeechRecognition();
-
    
-    recognition.interimResults = true;
+
+
+    let recognition = new SpeechRecognition();
+    console.log('sp -start '+recognition.lang);
+   
+   // recognition.interimResults = true;
       if (lang.textContent == "EN") {
        
         recognition.lang = 'en-US'
@@ -465,7 +471,7 @@ const Keyboard = {
         recognition.maxAlternatives = 1;
     };
 
-    console.log(recognition.lang);
+    console.log('sp -end '+recognition.lang);
 
     if (Keyboard.speech) recognition.start();
 
