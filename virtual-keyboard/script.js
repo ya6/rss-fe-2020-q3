@@ -1,3 +1,7 @@
+window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+const recognition = new SpeechRecognition();
+
+
 const Keyboard = {
   elements: {
     main: null,
@@ -447,21 +451,19 @@ const Keyboard = {
     Keyboard.speech = !Keyboard.speech;
 
 
-    window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    const recognition = new SpeechRecognition();
-
+   
    
     recognition.interimResults = true;
       if (lang.textContent == "EN") {
        
         recognition.lang = 'en-US'
-       // recognition.interimResults = false;
+        recognition.interimResults = false;
         recognition.maxAlternatives = 1;
 
       } else {
        
         recognition.lang = 'ru-RU'
-       // recognition.interimResults = false;
+        recognition.interimResults = false;
         recognition.maxAlternatives = 1;
     };
 
@@ -477,7 +479,6 @@ const Keyboard = {
     recognition.onresult = function (e) {
       var transcript = e.results[0][0].transcript;
 
-      console.log('l '+recognition.lang);
       if (Keyboard.speech) Keyboard.textarea.value += transcript;
 
     }
