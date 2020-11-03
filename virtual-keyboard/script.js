@@ -483,7 +483,7 @@ const Keyboard = {
     recognition.onresult = function (e) {
       var transcript = e.results[0][0].transcript;
 
-      if (Keyboard.speech) Keyboard.textarea.value += transcript;
+      if (Keyboard.speech) Keyboard.textarea.value += transcript+" ";
 
     }
 
