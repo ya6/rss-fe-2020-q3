@@ -1,7 +1,3 @@
-window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-const recognition = new SpeechRecognition();
-
-
 const Keyboard = {
   elements: {
     main: null,
@@ -451,7 +447,9 @@ const Keyboard = {
     Keyboard.speech = !Keyboard.speech;
 
 
-   
+    window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+
    
     recognition.interimResults = true;
       if (lang.textContent == "EN") {
@@ -526,6 +524,10 @@ const Keyboard = {
       if (key.textContent.length > 0 && key.textContent.length < 3) {
         key.textContent = (Keyboard.keyLayout[keysCount][Keyboard.switcher] !== "") ?
           this.keyLayout[keysCount++][Keyboard.switcher] : this.keyLayout[keysCount++][0];
+
+          if (this.properties.capsLock && this.properties.shift) {
+            key.textContent = key.textContent.toLowerCase();
+          } else
 
         if (this.properties.capsLock) {
           key.textContent = key.textContent.toUpperCase();
