@@ -1,0 +1,293 @@
+/* font-family: "Orbitron"; */
+@font-face {
+  font-family: "Orbitron";
+  src: url("./assets/fonts/Orbitron/Orbitron-VariableFont_wght.ttf");
+  font-style: normal;
+  font-weight: normal;
+}
+
+* {
+  font-family: "Orbitron";
+  letter-spacing: 0.1em;
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  background: #efefef url(./assets/img/back_12_1.jpg) no-repeat fixed top left;
+  background-size: cover;
+}
+
+.game_field {
+  margin: 0 auto;
+  position: relative;
+  max-width: 32rem;
+  margin: 20px auto;
+  height: 80vh;
+  border: 2px solid transparent;
+}
+
+.header {
+  margin-top: 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.header__sticker {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+}
+
+.header__gamedata {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.rss_sticker {
+  position: relative;
+  width: 13rem;
+  height: 13rem;
+  left: 45%;
+  -webkit-transition: -webkit-transform 1.0s;
+  transition: -webkit-transform 1.0s;
+  transition: transform 1.0s;
+  transition: transform 1.0s, -webkit-transform 1.0s;
+}
+
+.game_data {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.rss_sticker--move {
+  -webkit-transform: translateX(-110px);
+          transform: translateX(-110px);
+}
+
+.menu__top,
+.menu__bottom {
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 1rem 0.1rem;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.field {
+  position: relative;
+  margin: 0 auto;
+  border: 2px solid #948caa;
+  border-radius: 10px;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  background: #ebebeb;
+  -webkit-box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.5);
+          box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.5);
+}
+
+.block {
+  position: absolute;
+  border: 2px solid #ebebeb;
+  border-radius: 10px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.5);
+          box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.5);
+}
+
+.button {
+  cursor: pointer;
+  position: relative;
+  padding: 0 0.5rem;
+  border-radius: 0.5rem;
+  line-height: 2.5rem;
+  font-size: 1.0rem;
+  font-weight: 600;
+  border: none;
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.2);
+          box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.2);
+  background: gray;
+}
+
+.button:hover {
+  background: linear-gradient(130deg, #6978da 0%, #180f66 100%);
+}
+
+.button--green {
+  background: #3a7c19;
+}
+
+.button--leaf {
+  background: #47971f;
+}
+
+.button--blue {
+  background: #0d7a87;
+}
+
+.button--water {
+  background: #0f909e;
+}
+
+.button--nightsky {
+  background: #113e6f;
+}
+
+.button--red {
+  background: #ba0d41;
+}
+
+.button--grey {
+  background: grey;
+}
+
+.button span {
+  color: transparent;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#ccc), to(#FEFAFD));
+  background-image: linear-gradient(0deg, #ccc 0%, #FEFAFD 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+#time_game {
+  font-family: "Orbitron";
+  font-size: 2.6rem;
+  color: white;
+  text-align: right;
+}
+
+#steps_game {
+  font-family: "Orbitron";
+  font-weight: 600;
+  padding: 0 5px;
+  color: white;
+  font-size: 1rem;
+  text-align: right;
+}
+
+.popup {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 10px;
+  background: #bff3fc;
+  z-index: 1000;
+}
+
+@-webkit-keyframes slow_popup {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slow_popup {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.popup div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 1.5rem;
+  -webkit-animation: slow_popup 1s;
+          animation: slow_popup 1s;
+}
+
+.popup__score {
+  font-size: 1rem;
+}
+
+.hidden {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .popup__score {
+    font-size: 0.7rem;
+  }
+  .header {
+    margin-top: 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .button {
+    margin: 0.2rem;
+    padding: 0 1.5rem 0 1.5rem;
+  }
+  .menu__top,
+  .menu__bottom {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .menu__top_inner,
+  menu__bottom_inner {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .rss_sticker {
+    position: relative;
+    width: 7rem;
+    height: 7rem;
+    left: 40%;
+    -webkit-transition: -webkit-transform 1.0s;
+    transition: -webkit-transform 1.0s;
+    transition: transform 1.0s;
+    transition: transform 1.0s, -webkit-transform 1.0s;
+  }
+  .header {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    margin: 20px;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .rss_sticker--move {
+    -webkit-transform: translateX(-50px);
+            transform: translateX(-50px);
+  }
+  #time_game {
+    font-size: 1.8rem;
+  }
+  .popup__score {
+    font-size: 0.7rem;
+  }
+}
+/*# sourceMappingURL=style.css.map */
