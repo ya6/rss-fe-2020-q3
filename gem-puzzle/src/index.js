@@ -425,7 +425,7 @@ function moveBlock(e) {
         (block_current.y == block_empty.y && block_current.x == block_empty.x + 1) || (block_current.y == block_empty.y && block_current.x == block_empty.x - 1)) {
 
         //  steps++;
-        showSteps();
+       if(is_start) showSteps();
 
         // change blocks
         [block_current.x, block_empty.x] = [block_empty.x, block_current.x];
