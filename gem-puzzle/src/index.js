@@ -3,7 +3,7 @@ let field_width;
 if (document.body.clientWidth < 360) {
     field_width = 200;
 } else if (document.body.clientWidth < 560) {
-    field_width = 380;
+    field_width = 360;
 } else field_width = 500;
 
 
@@ -808,7 +808,7 @@ function createScoreGameHTML() {
     let rez;
     rez = `
      <div>
-     <div style="font-size:2rem; font-weight: bold">Top score</div>`;
+     <div style="font-size:2rem; font-weight: bold">Score</div>`;
 
     let _score = localStorage.getItem('game_score') || '';
 
@@ -909,7 +909,7 @@ function setBasicHTML() {
         <div class="menu__top_inner">
             <button id="save_game" type="button" class="button button--nightsky"> <span>Save</span></button>
             <button id="load_game" type="button" class="button button--nightsky"> <span>Load</span></button>
-            <button id="score_game" type="button" class="button button--nightsky"><span>Top Score</span></button>
+            <button id="score_game" type="button" class="button button--nightsky"><span>Score</span></button>
         </div>
         <div class="menu__top_inner">
             <button id="sound_game" type="button" class="button "><span>Sound</span></button>
