@@ -31,7 +31,7 @@ body {
 }
 
 .header {
-  margin-top: 3rem;
+  margin-top: 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -51,8 +51,8 @@ body {
 
 .rss_sticker {
   position: relative;
-  width: 13rem;
-  height: 13rem;
+  width: 10rem;
+  height: 10rem;
   left: 45%;
   -webkit-transition: -webkit-transform 1.0s;
   transition: -webkit-transform 1.0s;
