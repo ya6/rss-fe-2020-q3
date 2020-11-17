@@ -289,5 +289,10 @@ body {
   .popup__score {
     font-size: 0.7rem;
   }
+  .popup div {
+    padding: 0.5rem;
+    -webkit-animation: slow_popup 1s;
+            animation: slow_popup 1s;
+  }
 }
 /*# sourceMappingURL=style.css.map */
