@@ -227,7 +227,7 @@ body {
 
 @media only screen and (max-width: 600px) {
   .popup__score {
-    font-size: 0.7rem;
+    font-size: 0.6rem;
   }
   .header {
     margin-top: 1rem;

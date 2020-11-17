@@ -9,7 +9,7 @@ if (document.body.clientWidth < 360) {
 
 // define vars
 let field_size = 4;
-const shuffle_factor = 20;
+const shuffle_factor = 10;
 const block_place = field_width / field_size;
 const block_margin = 5;
 let tag_field;
@@ -425,7 +425,7 @@ function moveBlock(e) {
         (block_current.y == block_empty.y && block_current.x == block_empty.x + 1) || (block_current.y == block_empty.y && block_current.x == block_empty.x - 1)) {
 
         //  steps++;
-       if(is_start) showSteps();
+        if (is_start) showSteps();
 
         // change blocks
         [block_current.x, block_empty.x] = [block_empty.x, block_current.x];
@@ -697,14 +697,14 @@ function resetGame() {
     backSticker();
 
     if (solve) clearInterval(solve);
-   
+
     resetGameInfo();
 
     buttonEnabled(start_game, size_game, solve_game, classic_game, image_game, save_game, load_game, score_game);
     backSticker();
 
     is_start = false
-  
+
     resetBlocks();
     setTransition();
 
@@ -771,14 +771,21 @@ function winGame() {
     }
 
     clearInterval(timer);
+    console.log('pos 1');
 
-    popup.classList.remove('hidden');
 
-    let win_game_HTML = createWinGameHTML();
-    popup.innerHTML = win_game_HTML;
+    setTimeout(() => {
+        console.log('pos 2');
+        popup.classList.remove('hidden');
 
-    save_score_from_popup.addEventListener('click', saveScoreFromPopup);
-    cancel_from_popup.addEventListener('click', cancelFromPopup);
+        let win_game_HTML = createWinGameHTML();
+        popup.innerHTML = win_game_HTML;
+
+        save_score_from_popup.addEventListener('click', saveScoreFromPopup);
+        cancel_from_popup.addEventListener('click', cancelFromPopup);
+    }, 1000);
+
+
 }
 
 
