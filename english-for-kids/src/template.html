@@ -1,14 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/favicon.ico">
+    <link rel="stylesheet" href="./main.css">
     <title><%= htmlWebpackPlugin.options.title %></title>
-   
+    <style>
+        .brd {
+            border: 2px solid blue
+        }
+
+        .brd-g {
+            border: 2px solid green
+        }
+
+
+        .container-fluid {
+            max-width: 1300px;
+
+        }
+
+        .container__inner {
+            display: grid;
+            /* align-items: start | end | center | stretch; */
+
+            grid-template-columns: repeat(auto-fill, minmax(15.75rem, 18.75rem));
+            grid-template-rows: 1fr 1fr;
+            grid-column-gap: 1rem;
+            grid-row-gap: 1rem;
+            justify-content: center;  
+        }
+
+        .card {
+            width: 18.75rem;
+            height: 18.75rem;
+            background: linear-gradient(180deg, #0099ae, #00bf82 40%, #fff 0, #fff);
+        }
+
+        .card img {
+            width: 10rem;
+            height: 10rem;
+            border-radius: 50%;
+            border: 10px solid #fff;
+            object-fit: cover;
+            margin: 1.2rem auto;
+        }
+
+        .card a {
+            font-size: 1.8rem;
+        }
+    </style>
+
 </head>
+
 <body>
-    <h1>template!!</h1>
-    <!-- <img src="./assets/imgs/back_12_1.jpg" alt="img"> -->
-  
+    <header class="header">
+        <p>menu & button</p>
+    </header>
+    <section>
+        <div class="container-fluid brd">
+            <div class="container__inner mx-auto brd-g">
+
+                <div class="brd item item-1">
+                    <div class="card">1
+                        <img src="./assets/img/bird.jpg" alt="bird">
+                        <a href="" class="mx-auto">Section A</a>
+                    </div>
+
+                </div>
+                <div class="brd item item-2">2</div>
+                <div class="brd  item item-3">3</div>
+                <div class="brd item item-4">4</div>
+                <div class="brd item item-5">5</div>
+                <div class="brd  item item-6">6</div>
+                <div class="brd item item-7">7</div>
+                <div class="brd item item-8">8</div>
+
+            </div>
+
+
+        </div>
+
+    </section>
 </body>
+
 </html>

@@ -1,5 +1,11 @@
- //@import "~bootstrap";
+//@import "~bootstrap/scss/bootstrap";
+//for live
+@import'../node_modules/bootstrap/scss/bootstrap';
 
-body {
-    background: #f5c0fa;
+ body {
+    background: #f5f3f5;
+   
+}
+h1 {
+    color: rgb(116, 92, 92)
 }

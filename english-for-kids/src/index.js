@@ -1,5 +1,6 @@
 //js
 import _log from '../helpers/log';
+import './assets/favicon.ico';
 
 
 //scss

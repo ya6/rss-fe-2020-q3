@@ -10,10 +10,10 @@ module.exports = {
   module: {
     rules: [
       
-        {test: /\.html$/i, use: ['html-loader']},
+        {test: /\.html$/i, use: ['underscore-template-loader']},
 
         {
-            test: /\.(png|jpe?g|gif|svg)$/i,
+            test: /\.(png|jpe?g|gif|svg|ico)$/i,
             loader: 'file-loader',
             options: {
                 publicPath: 'assets/imgs',
@@ -26,8 +26,10 @@ module.exports = {
 },
 
 plugins:[new HtmlWebpackPlugin({
-    title: 'My App',
+    title: 'My App!',
     template: './src/template.html'
+   
+  
   })] 
 
 };
