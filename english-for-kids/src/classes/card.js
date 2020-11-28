@@ -1,8 +1,5 @@
 export default class Card {
-    constructor(data) {
-        
-
-    }
+   
     getCards(container, cards) {
         console.log(container);
 

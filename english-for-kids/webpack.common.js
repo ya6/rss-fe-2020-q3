@@ -26,7 +26,7 @@ module.exports = {
 },
 
 plugins:[new HtmlWebpackPlugin({
-    title: 'My App!',
+    title: 'English For Kids',
     template: './src/views/template.html'
    
   
