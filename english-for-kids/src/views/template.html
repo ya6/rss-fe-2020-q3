@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./assets/favicon.ico">
-    <link rel="stylesheet" href="./main.css">
+    <link rel="shortcut icon" href="/src/assets/favicon.ico">
+ 
     <title><%= htmlWebpackPlugin.options.title %></title>
     <style>
         .brd {
@@ -37,6 +37,12 @@
             width: 18.75rem;
             height: 18.75rem;
             background: linear-gradient(180deg, #0099ae, #00bf82 40%, #fff 0, #fff);
+            /* border-radius: 5px; */
+            box-shadow: 0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 20px rgba(0,0,0,.4);
         }
 
         .card img {
@@ -56,27 +62,16 @@
 </head>
 
 <body>
+    <h1>templ</h1>
     <header class="header">
         <p>menu & button</p>
     </header>
     <section>
-        <div class="container-fluid brd">
-            <div class="container__inner mx-auto brd-g">
+        <div class="container-fluid ">
+            <div class="container__inner mx-auto">
 
-                <div class="brd item item-1">
-                    <div class="card">1
-                        <img src="./assets/img/bird.jpg" alt="bird">
-                        <a href="" class="mx-auto">Section A</a>
-                    </div>
-
-                </div>
-                <div class="brd item item-2">2</div>
-                <div class="brd  item item-3">3</div>
-                <div class="brd item item-4">4</div>
-                <div class="brd item item-5">5</div>
-                <div class="brd  item item-6">6</div>
-                <div class="brd item item-7">7</div>
-                <div class="brd item item-8">8</div>
+            
+               
 
             </div>
 
@@ -84,6 +79,7 @@
         </div>
 
     </section>
+    <!-- <script  type="module" src="./index.js"></script> -->
 </body>
 
 </html>

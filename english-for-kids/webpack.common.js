@@ -27,7 +27,7 @@ module.exports = {
 
 plugins:[new HtmlWebpackPlugin({
     title: 'My App!',
-    template: './src/template.html'
+    template: './src/views/template.html'
    
   
   })] 
