@@ -1,20 +1,29 @@
   import _log from './../helpers/_log';
 
-  import category_cards from './data/category_cards';
-  import Card from './classes/card';
-  import Toggler from './classes/toggler';
+  import Controller from'./classes/controller';
+  import Router from'./classes/router';
+
 
   // import './assets/favicon.ico';
 
   import './main.scss';
 
-  //start
+  //init
 
-  let container = document.querySelector('.container__inner');
-  const card = new Card;
-  card.getCards(container, category_cards);
+  const tracked_field = document.querySelector('.container-fluid');
 
-  let cb = document.querySelector('#cb');
-  const toggler = new Toggler;
 
-  cb.addEventListener('change',{handleEvent: toggler.changeHandler, category_cards} );
+  
+//start
+
+//routing
+const router = new Router;
+tracked_field.addEventListener('click', router.route);
+
+
+
+  
+  //mine page
+  const controller = new Controller();
+  //args: page, button 
+  controller.index('main', false);

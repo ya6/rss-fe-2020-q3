@@ -1,18 +1,18 @@
-const cards = [ 
-  ['Action (set A)', 'Action (set B)', 'Animal (set A)', 'Animal (set B)', 'Clothes', 'Emotions'],
-  [
+const cards = [
+  ['Action (set A)', 'Action (set B)', 'Animal (set A)', 'Animal (set B)', 'Clothes', 'Emotions', 'food', 'family'],
+  [{
+      word: 'dance',
+      translation: 'танцевать',
+      image: 'img/dance.jpg',
+      audioSrc: 'audio/dance.mp3'
+    },
     {
       word: 'cry',
       translation: 'плакать',
       image: 'img/cry.jpg',
       audioSrc: 'audio/cry.mp3'
     },
-    {
-      word: 'dance',
-      translation: 'танцевать',
-      image: 'img/dance.jpg',
-      audioSrc: 'audio/dance.mp3'
-    },
+
     {
       word: 'dive',
       translation: 'нырять',
@@ -50,19 +50,19 @@ const cards = [
       audioSrc: 'audio/jump.mp3'
     }
   ],
-  [
+  [{
+      word: 'play',
+      translation: 'играть',
+      image: 'img/play.jpg',
+      audioSrc: 'audio/play.mp3'
+    },
     {
       word: 'open',
       translation: 'открывать',
       image: 'img/open.jpg',
       audioSrc: 'audio/open.mp3'
     },
-    {
-      word: 'play',
-      translation: 'играть',
-      image: 'img/play.jpg',
-      audioSrc: 'audio/play.mp3'
-    },
+
     {
       word: 'point',
       translation: 'указывать',
@@ -100,8 +100,7 @@ const cards = [
       audioSrc: 'audio/swim.mp3'
     }
   ],
-  [
-    {
+  [{
       word: 'cat',
       translation: 'кот',
       image: 'img/cat.jpg',
@@ -150,8 +149,7 @@ const cards = [
       audioSrc: 'audio/sheep.mp3'
     }
   ],
-  [
-    {
+  [{
       word: 'bird',
       translation: 'птица',
       image: 'img/bird.jpg',
@@ -200,7 +198,12 @@ const cards = [
       audioSrc: 'audio/dolphin.mp3'
     }
   ],
-  [
+  [{
+      word: 'blouse',
+      translation: 'блузка',
+      image: 'img/blouse.jpg',
+      audioSrc: 'audio/blouse.mp3'
+    },
     {
       word: 'skirt',
       translation: 'юбка',
@@ -213,12 +216,7 @@ const cards = [
       image: 'img/pants.jpg',
       audioSrc: 'audio/pants.mp3'
     },
-    {
-      word: 'blouse',
-      translation: 'блузка',
-      image: 'img/blouse.jpg',
-      audioSrc: 'audio/blouse.mp3'
-    },
+
     {
       word: 'dress',
       translation: 'платье',
@@ -250,8 +248,107 @@ const cards = [
       audioSrc: 'audio/shoe.mp3'
     }
   ],
-  [
+  [{
+      word: 'smile',
+      translation: 'улыбка',
+      image: 'img/smile.jpg',
+      audioSrc: 'audio/smile.mp3'
+    },
     {
+      word: 'sad',
+      translation: 'грустный',
+      image: 'img/sad.jpg',
+      audioSrc: 'audio/sad.mp3'
+    },
+    {
+      word: 'angry',
+      translation: 'сердитый',
+      image: 'img/angry.jpg',
+      audioSrc: 'audio/angry.mp3'
+    },
+    {
+      word: 'happy',
+      translation: 'счастливый',
+      image: 'img/happy.jpg',
+      audioSrc: 'audio/happy.mp3'
+    },
+    {
+      word: 'tired',
+      translation: 'уставший',
+      image: 'img/tired.jpg',
+      audioSrc: 'audio/tired.mp3'
+    },
+    {
+      word: 'surprised',
+      translation: 'удивлённый',
+      image: 'img/surprised.jpg',
+      audioSrc: 'audio/surprised.mp3'
+    },
+    {
+      word: 'scared',
+      translation: 'испуганный',
+      image: 'img/scared.jpg',
+      audioSrc: 'audio/scared.mp3'
+    },
+
+    {
+      word: 'laugh',
+      translation: 'смех',
+      image: 'img/laugh.jpg',
+      audioSrc: 'audio/laugh.mp3'
+    }
+  ],
+
+  [{
+      word: 'sad',
+      translation: 'грустный',
+      image: 'img/sad.jpg',
+      audioSrc: 'audio/sad.mp3'
+    },
+    {
+      word: 'angry',
+      translation: 'сердитый',
+      image: 'img/angry.jpg',
+      audioSrc: 'audio/angry.mp3'
+    },
+    {
+      word: 'happy',
+      translation: 'счастливый',
+      image: 'img/happy.jpg',
+      audioSrc: 'audio/happy.mp3'
+    },
+    {
+      word: 'tired',
+      translation: 'уставший',
+      image: 'img/tired.jpg',
+      audioSrc: 'audio/tired.mp3'
+    },
+    {
+      word: 'surprised',
+      translation: 'удивлённый',
+      image: 'img/surprised.jpg',
+      audioSrc: 'audio/surprised.mp3'
+    },
+    {
+      word: 'scared',
+      translation: 'испуганный',
+      image: 'img/scared.jpg',
+      audioSrc: 'audio/scared.mp3'
+    },
+    {
+      word: 'smile',
+      translation: 'улыбка',
+      image: 'img/smile.jpg',
+      audioSrc: 'audio/smile.mp3'
+    },
+    {
+      word: 'laugh',
+      translation: 'смех',
+      image: 'img/laugh.jpg',
+      audioSrc: 'audio/laugh.mp3'
+    }
+  ],
+  [{
       word: 'sad',
       translation: 'грустный',
       image: 'img/sad.jpg',
