@@ -3,7 +3,7 @@ constructor (cards) {
     this.cards = cards;
 }
 
-    makeMain(cards = this.cards) {
+     makeMain(cards = this.cards) {
 
         let data = [];
             let ind = 1;

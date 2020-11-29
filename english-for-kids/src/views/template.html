@@ -58,6 +58,7 @@
 
         .card:hover {
             box-shadow: 0 10px 20px rgba(0, 0, 0, .4);
+            filter: hue-rotate(90deg);
         }
 
         .card img {
@@ -69,8 +70,9 @@
             margin: 1.2rem auto;
         }
 
-        .card a {
+        .card  {
             font-size: 1.8rem;
+            text-align: center;
         }
 
         #menu__toggle {
@@ -135,6 +137,7 @@
 
             left: 25%;
             transform: translateY(-50%) rotate(45deg);
+            background: #f5f3f5;
         }
 
 
@@ -142,13 +145,14 @@
 
             right: 25%;
             transform: translateY(-50%) rotate(-45deg);
+            background: #f5f3f5;
         }
 
         .menu__box {
             position: relative;
             width: 340px;
             height: 100vh;
-            background: yellow;
+            background: linear-gradient( #0099ae, #00bf82);
             border: 1px solid red;
             top: 0;
             left: 0;

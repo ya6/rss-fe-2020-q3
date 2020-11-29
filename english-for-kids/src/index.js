@@ -17,13 +17,11 @@
 //start
 
 //routing
-const router = new Router;
-tracked_field.addEventListener('click', router.route);
 
-
+tracked_field.addEventListener('click', Router.route);
 
   
-  //mine page
-  const controller = new Controller();
+  //main page
+
   //args: page, button 
-  controller.index('main', false);
+Controller.index('main', false);

@@ -3,10 +3,10 @@ import RenderCard from './render_card';
 import cards from '../data/cards';
 
 
-export default class Router {
+export default class Controller {
 
-    index(page = 'main', toggle_button = false) {
-
+    static index(page = 'main', toggle_button = false) {
+console.log();
 
         switch (page) {
             case 'main':

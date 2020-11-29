@@ -1,12 +1,11 @@
 export default class Toggler {
 
     constructor() {
-        console.log('toggler constructor');
+      
     }
 
     changeHandler(e) {
-       // console.log(this.category_cards);
-        // console.log(e.target.checked);
+   
         let isPlay = e.target.checked;
         let cards = document.querySelectorAll('.card');
         if (isPlay) {
