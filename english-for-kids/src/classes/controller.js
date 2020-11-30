@@ -6,29 +6,25 @@ import Menu from './menu'
 
 export default class Controller {
 
-    static index(page = 'main', toggle_button = false) {
+    static index(appData) {
 
 
-        switch (page) {
-            case 'main':
+       
 
                 //model 
-                const pageData = MakeData.makePage();
+                appData = MakeData.makePage(appData);
 
 
                 // view
                 const cards_container = document.querySelector('.container__inner');
                 const menu_container = document.querySelector('.menu__box');
 
-                Card.renderCards(cards_container, pageData, toggle_button);
-                Menu.render(menu_container, pageData, toggle_button);
+                Card.renderCards(cards_container, appData);
+                Menu.render(menu_container, appData);
 
 
-                break;
+            
 
 
-            default:
-                break;
-        }
     }
 }

@@ -1,13 +1,15 @@
 export default class Card {
 
-     static renderCards(container, pageData, mode) {
+     static renderCards( container, appData) {
        //  console.log('renderCards ',pageData);
 
        container.innerHTML = '';
+
+       if (appData['page'] === 'Main Page') {
         let orange_class = '';
-        for (let card of pageData['cards']) {
+        for (let card of appData['cards']) {
             let div = document.createElement('div');
-            if (mode) {
+            if (createImageBitmap.checked) {
              
                 orange_class = 'card--orange';
             };
@@ -20,5 +22,7 @@ export default class Card {
         `;
             container.append(div);
         }
+       }
+       
     }
 }

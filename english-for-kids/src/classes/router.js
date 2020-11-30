@@ -1,32 +1,35 @@
 import Controller from './controller';
 import Menu from './menu';
 export default class Router {
-    static route(e, m) {
+    static route(appData) {
+        // console.log(e);
+        // console.log(this.appData);
       
-    if(typeof e == 'object' && e.target.parentElement.tagName=='DIV'|| typeof e == 'object' && e.target.tagName=='IMG' )
+    // if(typeof e == 'object' && e.target.parentElement.tagName=='DIV'|| typeof e == 'object' && e.target.tagName=='IMG' )
  
-     {       
-        Menu.close();       
-     }
+    //  {       
+    //     Menu.close();       
+    //  }
     
     
 
-        let page = 'main';
-        let mode;
+       // let page = appData['page'];
+        // let mode;
 
-        if (typeof m === 'undefined') {
+        // if (typeof m === 'undefined') {
 
-            mode = cb.checked;
+        //     mode = cb.checked;
           
-        }
+        // }
 
-        if (typeof e == 'string') {
+        // if (typeof e == 'string') {
 
-            page = e;
-            mode = cb.checked;
+        //     page = e;
+        //     mode = cb.checked;
 
-        }
-        return Controller.index(page, mode);
+        // }
+        console.log(appData);
+        return Controller.index(appData);
 
     }
 
