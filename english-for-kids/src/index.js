@@ -27,7 +27,7 @@
   // });
 
   tracked_field.addEventListener('click', {
-    handleEvent: Dispatcher.dispatcher
+    handleEvent: Dispatcher.dispatcher, appData
   });
 
   //main page  

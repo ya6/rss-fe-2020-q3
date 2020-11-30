@@ -9,7 +9,7 @@ export default class Card {
         let orange_class = '';
         for (let card of appData['cards']) {
             let div = document.createElement('div');
-            if (createImageBitmap.checked) {
+            if (cb.checked) {
              
                 orange_class = 'card--orange';
             };
