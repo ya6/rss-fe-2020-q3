@@ -1,10 +1,23 @@
 //@import "~bootstrap/scss/bootstrap";
 //for live
 @import'../node_modules/bootstrap/scss/bootstrap';
+@import './assets/css/normalize.css';
+
+
+
+  @media (min-width: 1350px) {
+
+	html {
+		overflow-y:hidden ;
+  }
+
+  }
 
  body {
-    background: #f5f3f5;
-    position: relative;
+	
+	background: #f5f3f5;
+	padding-bottom: 3rem;
+  
 }
 
 

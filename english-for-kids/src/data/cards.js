@@ -1,5 +1,5 @@
 const cards = [
-  ['Action (set A)', 'Action (set B)', 'Animal (set A)', 'Animal (set B)', 'Clothes', 'Emotions', 'food', 'family'],
+  ['Action (set A)', 'Action (set B)', 'Animal (set A)', 'Animal (set B)', 'Clothes', 'Emotions', 'Food', 'Family'],
   [{
       word: 'dance',
       translation: 'танцевать',
@@ -300,9 +300,9 @@ const cards = [
   ],
 
   [{
-      word: 'sad',
-      translation: 'грустный',
-      image: 'img/sad.jpg',
+      word: 'strawberry',
+      translation: 'клубника',
+      image: 'img/strawberry.jpg',
       audioSrc: 'audio/sad.mp3'
     },
     {
@@ -349,9 +349,9 @@ const cards = [
     }
   ],
   [{
-      word: 'sad',
-      translation: 'грустный',
-      image: 'img/sad.jpg',
+      word: 'family',
+      translation: 'семья',
+      image: 'img/family_all.jpg',
       audioSrc: 'audio/sad.mp3'
     },
     {

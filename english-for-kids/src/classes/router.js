@@ -17,7 +17,7 @@ export default class Router {
         if (typeof m === 'undefined') {
 
             mode = cb.checked;
-           // console.log('mode', mode);
+          
         }
 
         if (typeof e == 'string') {
