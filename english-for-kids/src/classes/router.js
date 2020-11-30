@@ -28,7 +28,7 @@ export default class Router {
         //     mode = cb.checked;
 
         // }
-        console.log(appData);
+       // console.log(appData);
         return Controller.index(appData);
 
     }

@@ -2,12 +2,12 @@
 export default class Menu {
 
      static render(container, pageData) {
-      console.log('Menu', cb.checked);
+     // console.log('Menu', cb.checked);
       let active ='';
       
       if (cb.checked) {
-         console.log('Menu if');
-         console.log(container);
+       //  console.log('Menu if');
+        // console.log(container);
                
          container.classList.add('background--orange');
      } else {  container.classList.remove('background--orange');};
