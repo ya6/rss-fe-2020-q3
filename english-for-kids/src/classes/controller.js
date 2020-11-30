@@ -21,7 +21,7 @@ export default class Controller {
                 const menu_container = document.querySelector('.menu__box');
 
                 Card.renderCards(cards_container, pageData, toggle_button);
-                Menu.render(menu_container, pageData);
+                Menu.render(menu_container, pageData, toggle_button);
 
 
                 break;

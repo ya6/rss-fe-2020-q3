@@ -56,6 +56,11 @@
             background: linear-gradient(180deg, #fd6a63, #feb46b 40%, #fff 0, #fff);
         }
 
+
+        .background--orange {
+            background: linear-gradient(180deg, #fd6a63, #feb46b) !important;
+        }
+
         .card:hover {
             box-shadow: 0 10px 20px rgba(0, 0, 0, .4);
             filter: hue-rotate(90deg);
@@ -93,8 +98,8 @@
             display: block;
             width: 60px;
             height: 7px;
-            background: linear-gradient(#0099ae, #00bf82);
-            /* background: black; */
+            background: linear-gradient(#969696, #cccccc);
+         
             position: absolute;
             cursor: pointer;
             transition: 0.3s;
@@ -138,6 +143,7 @@
             left: 25%;
             transform: translateY(-50%) rotate(45deg);
             background: #f5f3f5;
+            /* pointer-events:none; */
         }
 
 
@@ -146,6 +152,7 @@
             right: 25%;
             transform: translateY(-50%) rotate(-45deg);
             background: #f5f3f5;
+            /* pointer-events:none; */
         }
 
         .menu__box {
@@ -157,6 +164,13 @@
             top: 0;
             left: 0;
             transition: 0.5s;
+            padding: 9rem 1rem 5rem 5rem;
+            
+        }
+        .menu__box li {
+            font-size: 1.6rem;
+            list-style: none;
+            margin-bottom: 2rem;
         }
 
         #menu__toggle:checked ~ .menu__box {

@@ -9,7 +9,7 @@ export default class Card {
             let div = document.createElement('div');
             if (mode) {
              
-                orange_class = 'card--orange'
+                orange_class = 'card--orange';
             };
 
             div.innerHTML = `
