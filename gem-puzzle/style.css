@@ -22,7 +22,6 @@ body {
 }
 
 .game_field {
-  margin: 0 auto;
   position: relative;
   max-width: 32rem;
   margin: 20px auto;
@@ -73,7 +72,6 @@ body {
 
 .menu__top,
 .menu__bottom {
-  margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -90,8 +88,8 @@ body {
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
   background: #ebebeb;
-  -webkit-box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.5);
-          box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.5);
+          box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.5);
 }
 
 .block {
@@ -251,7 +249,7 @@ body {
             flex-direction: column;
   }
   .menu__top_inner,
-  menu__bottom_inner {
+  .menu__bottom_inner {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;

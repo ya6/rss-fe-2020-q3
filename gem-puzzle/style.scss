@@ -34,7 +34,7 @@ body {
 
 
 .game_field {
-  margin: 0 auto;
+ 
   position: relative;
 
   max-width: 32rem;
@@ -46,7 +46,7 @@ body {
 
 
 .header {
-  //border: 1px solid red;
+ 
   margin-top: 1rem;
   display: flex;
 
@@ -55,14 +55,14 @@ body {
 
 
 .header__sticker {
-  //border: 4px solid blue;
+ 
   flex: 2;
 
 }
 
 .header__gamedata {
   flex: 1;
-  //border: 4px solid blue;
+ 
 
 }
 
@@ -92,7 +92,6 @@ body {
 
 .menu__top,
 .menu__bottom {
-  margin: 0 auto;
   display: flex;
   margin: 1rem 0.1rem;
   justify-content: space-around;
@@ -110,7 +109,7 @@ body {
   border-radius: 10px;
   box-sizing: content-box;
   background: $color__light_grey;
-  box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.5);
 
 
 }
@@ -275,7 +274,7 @@ body {
 
 
   .menu__top_inner,
-  menu__bottom_inner {
+  .menu__bottom_inner {
     display: flex;
     justify-content: center;
   }

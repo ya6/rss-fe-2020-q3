@@ -1,24 +1,22 @@
 //define field width
 let field_width;
 if (document.body.clientWidth < 360) {
-    field_width = 200;
+    field_width = 200
 } else if (document.body.clientWidth < 560) {
-    field_width = 360;
-} else field_width = 500;
+    field_width = 360
+} else {field_width = 500};
 
 
 // define vars
 let field_size = 4;
 const shuffle_factor = 10;
-const block_place = field_width / field_size;
 const block_margin = 5;
 let tag_field;
 let popup;
 let image;
 let image_ratio = 0;
-let font_size = 90;
+const font_size = 90;
 let history = [];
-let final_position = 0;
 let block_empty = {};
 let is_start = false;
 let background_img = 1;
@@ -26,7 +24,7 @@ let background_img_url = 'assets/img/default_4.jpg';
 let solve = false;
 let steps = 0;
 let timer = false;
-let time = {
+const time = {
     sec: 0,
     min: 0
 };
@@ -102,7 +100,7 @@ function saveGame() {
 
     save_from_popup.addEventListener('click', saveFromPopup);
     cancel_from_popup.addEventListener('click', cancelFromPopup);
-    buttonDisabled(start_game, reset_game, size_game, solve_game, classic_game, image_game, save_game, load_game, score_game, sound_game);
+    buttonsDisabled(start_game, reset_game, size_game, solve_game, classic_game, image_game, save_game, load_game, score_game, sound_game);
 
 }
 
@@ -116,7 +114,7 @@ function loadGame() {
     load_from_popup.addEventListener('click', loadFromPopup);
     cancel_from_popup.addEventListener('click', cancelFromPopup);
 
-    buttonDisabled(start_game, reset_game, size_game, solve_game, classic_game, image_game, save_game, load_game, score_game, sound_game);
+    buttonsDisabled(start_game, reset_game, size_game, solve_game, classic_game, image_game, save_game, load_game, score_game, sound_game);
 
 }
 
@@ -129,7 +127,7 @@ function loadScore() {
 
     cancel_from_popup.addEventListener('click', cancelFromPopup);
 
-    buttonDisabled(start_game, reset_game, size_game, solve_game, classic_game, image_game, save_game, load_game, score_game, sound_game);
+    buttonsDisabled(start_game, reset_game, size_game, solve_game, classic_game, image_game, save_game, load_game, score_game, sound_game);
 
 }
 
@@ -263,7 +261,7 @@ function setFieldSizeOnButton(params) {
 }
 
 
-function buttonDisabled(...args) {
+function buttonsDisabled(...args) {
 
     for (let id of args) {
         id.disabled = true;
@@ -484,7 +482,7 @@ function solveGame() {
 
         showSteps();
 
-        buttonDisabled(start_game, size_game, solve_game, classic_game, image_game, save_game, load_game, score_game);
+        buttonsDisabled(start_game, size_game, solve_game, classic_game, image_game, save_game, load_game, score_game);
 
         if (index <= field_size * field_size) {
 
