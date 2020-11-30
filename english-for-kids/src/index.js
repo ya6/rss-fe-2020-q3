@@ -1,7 +1,7 @@
   import _log from './../helpers/_log';
 
-  import Controller from'./classes/controller';
-  import Router from'./classes/router';
+  import Router from './classes/router';
+  //import Menu from './classes/menu';
 
 
   // import './assets/favicon.ico';
@@ -13,15 +13,13 @@
   const tracked_field = document.querySelector('.container-fluid');
 
 
-  
-//start
+  //start
 
-//routing
+  //routing
 
-tracked_field.addEventListener('click', Router.route);
+  tracked_field.addEventListener('click', Router.route);
 
-  
-  //main page
+  //main page  
+  Router.route('main');
 
-  //args: page, button 
-Controller.index('main', false);
+ 

@@ -1,19 +1,22 @@
-
 import Controller from './controller';
 export default class Router {
-   static route(e) {
-      
-        console.log('Router route', e.target);
-        if ( e.target===cb) {
-            console.log('input');
-            Controller.index('main',  e.target.checked);
+    static route(e, m) {
 
+        let page = 'main';
+        let mode;
+        
+        if (typeof m === 'undefined') {
+            mode = cb.checked;
+            console.log('mode', mode);
+        }
+
+        if (typeof e == 'string') {
+
+            page = e;
+            mode = cb.checked;
 
         }
-        console.log(cb.checked);
-        
-
-
+        return Controller.index(page, mode);
 
     }
 

@@ -1,17 +1,19 @@
+import cards from './../data/cards'
 export default  class MakeData {
-constructor (cards) {
-    this.cards = cards;
-}
 
-     makeMain(cards = this.cards) {
 
-        let data = [];
+      static makePage(page) {
+       
+
+        let data = {cards:[],
+        menu:[]};
             let ind = 1;
-            for (let card of cards[0]) {
-              data.push({
+            for (let card of  cards[0]) {
+              data['cards'].push({
                 name: card,
-                src:  cards[ind][0].image
+                src: cards[ind][0].image
               });
+              data['menu'].push(card)
               ind+=1;
             }
          

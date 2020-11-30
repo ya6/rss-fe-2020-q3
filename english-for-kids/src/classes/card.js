@@ -1,10 +1,11 @@
-export default class RenderCard {
+export default class Card {
 
-    renderCards(container, cards, mode) {
+     static renderCards(container, pageData, mode) {
+       //  console.log('renderCards ',pageData);
 
        container.innerHTML = '';
         let orange_class = '';
-        for (let card of cards) {
+        for (let card of pageData['cards']) {
             let div = document.createElement('div');
             if (mode) {
              
@@ -12,14 +13,10 @@ export default class RenderCard {
             };
 
             div.innerHTML = `
-
             <a href="#" class="card border-0 rounded ${orange_class}" data-name="${card.name}">
             <img src="/src/assets/${card.src}" alt="${card.name}">
             ${card.name}
             </a>
-
-
-          
         `;
 
             container.append(div);

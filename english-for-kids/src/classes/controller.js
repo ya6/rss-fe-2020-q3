@@ -1,26 +1,28 @@
 import MakeData from './make_data';
-import RenderCard from './render_card';
-import cards from '../data/cards';
+import Card from './card';
+import Menu from './menu'
+//import cards from '../data/cards';
 
 
 export default class Controller {
 
     static index(page = 'main', toggle_button = false) {
-console.log();
+
 
         switch (page) {
             case 'main':
 
                 //model 
-                const makeData = new MakeData(cards);
-                const selectCards = makeData.makeMain();
+                const pageData = MakeData.makePage();
 
 
                 // view
-                const container = document.querySelector('.container__inner');
+                const cards_container = document.querySelector('.container__inner');
+                const menu_container = document.querySelector('.menu__box');
 
-                const render = new RenderCard();
-                render.renderCards(container, selectCards, toggle_button);
+                Card.renderCards(cards_container, pageData, toggle_button);
+                Menu.render(menu_container, pageData);
+
 
                 break;
 

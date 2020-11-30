@@ -1,6 +1,6 @@
 export default class Card {
 
-    getCards(container, cards, target, mode) {
+  static  getCards(container, cards, target, mode) {
 
         for (let card of cards) {
             let div = document.createElement('div');
