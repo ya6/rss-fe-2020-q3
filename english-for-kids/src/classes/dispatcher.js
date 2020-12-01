@@ -3,7 +3,7 @@ import Router from './router';
 export default class Dispatcher {
     static dispatcher(e) {
         console.log('dispatcher', e);
-        // console.log('dispatcher',this.appData);
+       // console.log('dispatcher',e.target.tagName);
         const appData = this.appData;
 
 
@@ -12,7 +12,9 @@ export default class Dispatcher {
             Menu.close();
         }
 
-        let page = e.target.dataset.name || e.target.alt || appData['page'];
+        let page = e.target.dataset.name || e.target.alt || e.target.tagName == 'A' && e.target.innerText || appData['page'];
+        if( e.target.tagName == 'A') Menu.close();
+        
         appData['page'] = page;
 
         Router.route(appData);

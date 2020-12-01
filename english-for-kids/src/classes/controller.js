@@ -21,6 +21,7 @@ export default class Controller {
 
                 Card.renderCards(cards_container, appData);
                 Menu.render(menu_container, appData);
+              
 
 
             
