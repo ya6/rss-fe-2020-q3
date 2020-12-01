@@ -31,10 +31,10 @@ export default class Card {
                 let div = document.createElement('div');
 
                 div.innerHTML = `
-                <div class="front card " style="background-image: url(./src/assets/${card.image  });">
-                <div class="" style="height:100% ; margin-top: 12.4rem; padding-top: 1.5rem">${card.word}</div>
+                <div class="front card " style="background-image: url(./src/assets/${card.image });" data-sound = "${card.audioSrc}">
+                <div class="" style="height:100%; margin-top: 12.4rem; padding-top: 1.5rem">${card.word}</div>
                 
-                <div class="rotate"></div>
+                <div><div class="rotate"></div></div>
                 </div>
         `;
                 container.append(div);
@@ -43,7 +43,20 @@ export default class Card {
             //play
         }
     }
+
+    static play(scr) {
+
+        const audio = new Audio();
+        audio.src = `./src/assets/${scr}`;
+        audio.currentTime = 0;
+        audio.play();
+
+    }
+
+
 }
+
+
 
 // {
 //     word: card.word,
