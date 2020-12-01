@@ -8,8 +8,7 @@ export default class Controller {
 
     static index(appData) {
 
-
-       
+ 
 
                 //model 
                 appData = MakeData.makePage(appData);
@@ -22,9 +21,7 @@ export default class Controller {
                 Card.renderCards(cards_container, appData);
                 Menu.render(menu_container, appData);
               
-
-
-            
+    
 
 
     }

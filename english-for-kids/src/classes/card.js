@@ -41,6 +41,19 @@ export default class Card {
             }
         } else {
             //play
+
+             // train
+             for (let card of appData['cards']) {
+                let div = document.createElement('div');
+
+                div.innerHTML = `
+                <div class="play card " style="background-image: url(./src/assets/${card.image });"  data-name = "${card.word}"  data-sound = "${card.audioSrc}">
+                
+        
+                </div>
+        `;
+                container.append(div);
+            }
         }
     }
 

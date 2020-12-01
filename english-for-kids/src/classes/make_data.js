@@ -8,6 +8,7 @@ export default  class MakeData {
         appData['menu'] = ['Main Page', ...cards[0]];// todo method
         appData['cards'] = [];
 
+        //main page
         if(appData['page'] === 'Main Page') {
   
           let ind = 1;
