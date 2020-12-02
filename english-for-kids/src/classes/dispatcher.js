@@ -1,10 +1,11 @@
 import Card from './card';
+import GameMode from './game_mode';
 import Menu from './menu';
 import Router from './router';
 
 export default class Dispatcher {
     static clickDispatcher(e) {
-        // console.log('dispatcher', e);
+         console.log('dispatcher', e.target);
 
         const appData = this.appData;
         let page;
@@ -42,19 +43,24 @@ export default class Dispatcher {
 
         // handle rotate card
         if (e.target.classList.contains('rotate')) {
-            //  console.log('rotate', e.target.parentElement.parentElement);
 
             e.target.parentElement.classList.add('card--rotate-180');
             e.target.parentElement.nextElementSibling.classList.add('card--rotate-360');
-        
+
 
             //event for leave
             e.target.parentElement.parentElement.addEventListener('mouseleave', (e) => {
-              //  console.log(e);
+
                 e.target.children[0].classList.remove('card--rotate-180');
                 e.target.children[1].classList.remove('card--rotate-360');
             })
 
+        }
+
+        // handle button play
+        if (e.target.classList.contains('game__button')) {
+            console.log('dispatcher button play');
+            GameMode.play();
         }
     }
 }

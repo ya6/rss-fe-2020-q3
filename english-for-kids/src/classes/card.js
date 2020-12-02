@@ -3,6 +3,8 @@ export default class Card {
     static renderCards(container, appData) {
         //  console.log('renderCards ',pageData);
 
+        const game = document.querySelector('.game');
+
         container.innerHTML = '';
 
         if (appData['page'] === 'Main Page') {
@@ -24,9 +26,10 @@ export default class Card {
             }
 
         } else if (!cb.checked) {
-
-
             // train
+
+            game.classList.add('hidden');
+
             for (let card of appData['cards']) {
                 let div = document.createElement('div');
 
@@ -48,10 +51,10 @@ export default class Card {
                 container.append(div);
             }
         } else {
-            //play
+            //play  
+            game.classList.remove('hidden');
 
-             // train
-             for (let card of appData['cards']) {
+            for (let card of appData['cards']) {
                 let div = document.createElement('div');
 
                 div.innerHTML = `
