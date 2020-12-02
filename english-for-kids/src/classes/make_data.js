@@ -22,7 +22,7 @@ export default  class MakeData {
 
         }  else {
           let nun_of_category = cards[0].indexOf(appData['page'])+1;
-          console.log('makePage', nun_of_category);
+         // console.log('makePage', nun_of_category);
 
         
           for (let card of  cards[nun_of_category]) {

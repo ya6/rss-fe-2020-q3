@@ -2,8 +2,6 @@
   import Dispatcher from './classes/dispatcher';
   import Router from './classes/router';
 
-  //import Menu from './classes/menu';
-
 
   // import './assets/favicon.ico';
 
@@ -16,23 +14,16 @@
   const tracked_field = document.querySelector('.container-fluid');
 
 
-
   //start
 
-  //routing
-
-  // tracked_field.addEventListener('click', {
-  //   handleEvent: Router.route,
-  //   appData: appData
-  // });
+  //dispatch 
 
   tracked_field.addEventListener('click', {
-    handleEvent: Dispatcher.clickDispatcher, appData
+    handleEvent: Dispatcher.clickDispatcher,
+    appData
   });
 
-  tracked_field.addEventListener('mouseover', {
-    handleEvent: Dispatcher.mouseoutDispatcher, appData
-  });
+
 
   //main page  
   Router.route(appData);

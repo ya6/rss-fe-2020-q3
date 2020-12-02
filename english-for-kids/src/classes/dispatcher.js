@@ -4,7 +4,7 @@ import Router from './router';
 
 export default class Dispatcher {
     static clickDispatcher(e) {
-        console.log('dispatcher', e);
+        // console.log('dispatcher', e);
 
         const appData = this.appData;
         let page;
@@ -27,65 +27,34 @@ export default class Dispatcher {
 
 
         // handle sounds for train
-        if (e.target.dataset.sound || e.target.parentElement.dataset.sound) {
+        if (e.target.classList.contains('front')) {
+
             Card.play(e.target.dataset.sound || e.target.parentElement.dataset.sound)
         }
 
 
         // handle toggler
         if (e.target == cb) {
-            console.log('toggler');
+            // console.log('toggler');
             Router.route(appData);
         }
 
+
         // handle rotate card
         if (e.target.classList.contains('rotate')) {
-            console.log(e.target.parentElement.children);
-            console.log(e.target.parentElement.children[0]);
-            e.target.parentElement.children[0].classList.add('card--rotate-180');
-           e.target.parentElement.children[1].classList.add('card--rotate-360');
+            //  console.log('rotate', e.target.parentElement.parentElement);
 
-        }
-    }
+            e.target.parentElement.classList.add('card--rotate-180');
+            e.target.parentElement.nextElementSibling.classList.add('card--rotate-360');
+        
 
-    static mouseoutDispatcher(e) {
-        console.log('mouseoutDispatcher ', e.target);
-
-        let cards = document.querySelectorAll('.card');
-        // console.log('mouseoutDispatcher  hover ', e.target.querySelector(":hover").classList);
-
-
-        // console.log('mouseoutDispatcher ', e.previousElement);
-
-        // if (e.target.classList.contains('card__train')) {
-        //  //   console.log('mouseoutDispatcher ', e.target);  
-        //     e.target.children[0].classList.remove('card--rotate-180');
-        //     e.target.children[1].classList.remove('card--rotate-360');
-
-        //     // e.target.previousElementSibling.remove('card--rotate-360');
-        // }
-
-        // document.querySelectorAll(".card").forEach(function (el) {
-        //         if (!el.querySelector(":hover") && el.classList.contains("card--rotate-360")) {
-        //             el.classList.remove("card--rotate-360")
-        //         }
-        //     })
-
-        if (!e.target.classList.contains('card') || !e.target.classList.contains('back')) {
-            cards.forEach((el) => {
-                console.log(el);
-                el.children[0].classList.remove('card--rotate-180');
-                el.children[1].classList.remove('card--rotate-360');
+            //event for leave
+            e.target.parentElement.parentElement.addEventListener('mouseleave', (e) => {
+              //  console.log(e);
+                e.target.children[0].classList.remove('card--rotate-180');
+                e.target.children[1].classList.remove('card--rotate-360');
             })
 
         }
-
-
-
-
-
-
-
     }
-
 }
