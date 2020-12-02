@@ -1,5 +1,5 @@
 import Card from './card';
-import GameMode from './game_mode';
+import PlayMode from './play_mode';
 import Menu from './menu';
 import Router from './router';
 
@@ -60,7 +60,7 @@ export default class Dispatcher {
         // handle button play
         if (e.target.classList.contains('game__button')) {
             console.log('dispatcher button play');
-            GameMode.play();
+            PlayMode.play(appData);
         }
     }
 }

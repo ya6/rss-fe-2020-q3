@@ -6,6 +6,7 @@ export default  class MakeData {
        
         // menu
         appData['menu'] = ['Main Page', ...cards[0]];// todo method
+        
         appData['cards'] = [];
 
         //main page
@@ -20,11 +21,8 @@ export default  class MakeData {
             ind+=1;
           }
 
-        }  else {
-          let nun_of_category = cards[0].indexOf(appData['page'])+1;
-         // console.log('makePage', nun_of_category);
-
-        
+        }  else {//cards page
+          let nun_of_category = cards[0].indexOf(appData['page'])+1;  
           for (let card of  cards[nun_of_category]) {
             appData['cards'].push({
               word: card.word,
@@ -32,13 +30,10 @@ export default  class MakeData {
               image: card.image,
               audioSrc: card.audioSrc
             });
-           ;
           }
-
         }  
          
             return appData;
-
     }
 }
 
