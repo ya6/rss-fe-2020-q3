@@ -27,7 +27,11 @@
   // });
 
   tracked_field.addEventListener('click', {
-    handleEvent: Dispatcher.dispatcher, appData
+    handleEvent: Dispatcher.clickDispatcher, appData
+  });
+
+  tracked_field.addEventListener('mouseover', {
+    handleEvent: Dispatcher.mouseoutDispatcher, appData
   });
 
   //main page  

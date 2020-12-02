@@ -15,7 +15,7 @@ export default class Card {
                 };
 
                 div.innerHTML = `
-            <a href="#" class="card border-0 rounded ${orange_class}" data-name="${card.name}">
+            <a href="#" class="card card__main border-0 rounded ${orange_class}" data-name="${card.name}">
             <img src="/src/assets/${card.src}" alt="${card.name}">
             ${card.name}
             </a>
@@ -31,10 +31,17 @@ export default class Card {
                 let div = document.createElement('div');
 
                 div.innerHTML = `
-                <div class="front card " style="background-image: url(./src/assets/${card.image });" data-sound = "${card.audioSrc}">
-                <div class="" style="height:100%; margin-top: 12.4rem; padding-top: 1.5rem">${card.word}</div>
+                <div class="card card__train">
+                <div class="front" data-sound = "${card.audioSrc}" style="background-image: url(./src/assets/${card.image });">
+                <div class="card__footer">${card.word}</div>  
+                </div> 
+
+                <div class="back"  style="background-image: url(./src/assets/${card.image });">
+                <div class="card__footer">${card.translation}</div>  
+                </div> 
+                             
+                <div class="rotate"></div>
                 
-                <div><div class="rotate"></div></div>
                 </div>
         `;
                 container.append(div);
