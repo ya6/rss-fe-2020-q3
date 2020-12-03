@@ -26,8 +26,8 @@ export default class Card {
             }
 
         } else if (!cb.checked) {
+            
             // train
-
             game.classList.add('hidden');
 
             for (let card of appData['cards']) {
@@ -39,18 +39,15 @@ export default class Card {
                ${card.word}
                <div class="rotate"></div>
                 </div> 
-
                 <div class="back"  style="background-image: url(./src/assets/${card.image });">
               ${card.translation}  
-                </div> 
-                             
-               
-                
+                </div>                             
                 </div>
         `;
                 container.append(div);
             }
         } else {
+
             //play  
             game.classList.remove('hidden');
 
@@ -58,9 +55,7 @@ export default class Card {
                 let div = document.createElement('div');
 
                 div.innerHTML = `
-                <div class="card__play card " style="background-image: url(./src/assets/${card.image });"  data-name = "${card.word}"  data-sound = "${card.audioSrc}">
-                
-        
+                <div class="card card__play" style="background-image: url(./src/assets/${card.image });" data-name = "${card.word}" data-sound = "${card.audioSrc}">
                 </div>
         `;
                 container.append(div);
@@ -79,12 +74,3 @@ export default class Card {
 
 
 }
-
-
-
-// {
-//     word: card.word,
-//     translation: card.translation,
-//     image: card.image,
-//     audioSrc: card.audioSrc
-//   }

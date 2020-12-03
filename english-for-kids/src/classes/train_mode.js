@@ -17,9 +17,4 @@ export default class TrainMode {
         })
     }
 
-    
-
-
-
-
 }

@@ -12,11 +12,6 @@ export default class Dispatcher {
 
         const appData = this.appData;
         let page;
-        
-
-        //get instance 
-      //  const playMode = new PlayMode(appData);
-       
 
 
         // close menu
@@ -30,12 +25,11 @@ export default class Dispatcher {
             page = e.target.dataset.name || e.target.alt || e.target.tagName == 'A' && e.target.innerText || appData['page'];
 
             appData['page'] = page;
-
             Router.route(appData);
         }
 
-           // handle  mode toggler
-           if (e.target == cb) {
+        // handle  mode toggler
+        if (e.target == cb) {
 
             Router.route(appData);
         }
@@ -47,27 +41,23 @@ export default class Dispatcher {
             Card.play(e.target.dataset.sound || e.target.parentElement.dataset.sound)
         }
 
-        // handle rotate card
+        // handle rotate card  for train
         if (e.target.classList.contains('rotate')) {
-             const  trainCart = e.target;
-             TrainMode.rotateCard(trainCart);
+            const trainCart = e.target;
+            TrainMode.rotateCard(trainCart);
 
         }
 
-        // handle button play
+        // handle button  for play
         if (e.target.classList.contains('game__button')) {
-         //   console.log('dispatcher button play');
-            //   const playMode = new PlayMode(appData);
-        
-        PlayMode.appData = appData;
+           
+            PlayMode.appData = appData;
             PlayMode.play();
 
-        } 
+        }
 
-     //   handle push card play
+        //  handle check card for play
         if (e.target.classList.contains('card__play')) {
-    
-         //   console.log('dispatcher  push card play')
 
             PlayMode.checkCard(e.target);
         }
