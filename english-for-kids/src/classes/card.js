@@ -58,7 +58,7 @@ export default class Card {
                 let div = document.createElement('div');
 
                 div.innerHTML = `
-                <div class="play card " style="background-image: url(./src/assets/${card.image });"  data-name = "${card.word}"  data-sound = "${card.audioSrc}">
+                <div class="card__play card " style="background-image: url(./src/assets/${card.image });"  data-name = "${card.word}"  data-sound = "${card.audioSrc}">
                 
         
                 </div>

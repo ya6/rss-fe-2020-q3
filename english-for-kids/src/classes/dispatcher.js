@@ -5,9 +5,18 @@ import Router from './router';
 
 export default class Dispatcher {
     static clickDispatcher(e) {
-         console.log('dispatcher', e.target);
+
+
+        console.log('dispatcher', e.target);
 
         const appData = this.appData;
+        let isPayMode = false;
+
+        //get instance
+        const playMode = new PlayMode(appData);
+
+
+
         let page;
 
 
@@ -60,7 +69,17 @@ export default class Dispatcher {
         // handle button play
         if (e.target.classList.contains('game__button')) {
             console.log('dispatcher button play');
-            PlayMode.play(appData);
+            //   const playMode = new PlayMode(appData);
+            isPayMode =  true;
+            playMode.play();
+        } 
+
+        // handle push card play
+        if (e.target.classList.contains('card__play')) {
+            console.log('isPayMode',isPayMode);
+            console.log('dispatcher  push card play')
+
+             playMode.checkCard();
         }
     }
 }
