@@ -2,6 +2,7 @@ import Card from './card';
 import PlayMode from './play_mode';
 import Menu from './menu';
 import Router from './router';
+import TrainMode from './train_mode';
 
 export default class Dispatcher {
     static clickDispatcher(e) {
@@ -10,14 +11,12 @@ export default class Dispatcher {
         console.log('dispatcher', e.target);
 
         const appData = this.appData;
-        let isPayMode = false;
-
-        //get instance
-        const playMode = new PlayMode(appData);
-
-
-
         let page;
+        
+
+        //get instance 
+      //  const playMode = new PlayMode(appData);
+       
 
 
         // close menu
@@ -35,6 +34,12 @@ export default class Dispatcher {
             Router.route(appData);
         }
 
+           // handle  mode toggler
+           if (e.target == cb) {
+
+            Router.route(appData);
+        }
+
 
         // handle sounds for train
         if (e.target.classList.contains('front')) {
@@ -42,44 +47,29 @@ export default class Dispatcher {
             Card.play(e.target.dataset.sound || e.target.parentElement.dataset.sound)
         }
 
-
-        // handle toggler
-        if (e.target == cb) {
-            // console.log('toggler');
-            Router.route(appData);
-        }
-
-
         // handle rotate card
         if (e.target.classList.contains('rotate')) {
-
-            e.target.parentElement.classList.add('card--rotate-180');
-            e.target.parentElement.nextElementSibling.classList.add('card--rotate-360');
-
-
-            //event for leave
-            e.target.parentElement.parentElement.addEventListener('mouseleave', (e) => {
-
-                e.target.children[0].classList.remove('card--rotate-180');
-                e.target.children[1].classList.remove('card--rotate-360');
-            })
+             const  trainCart = e.target;
+             TrainMode.rotateCard(trainCart);
 
         }
 
         // handle button play
         if (e.target.classList.contains('game__button')) {
-            console.log('dispatcher button play');
+         //   console.log('dispatcher button play');
             //   const playMode = new PlayMode(appData);
-            isPayMode =  true;
-            playMode.play();
+        
+        PlayMode.appData = appData;
+            PlayMode.play();
+
         } 
 
-        // handle push card play
+     //   handle push card play
         if (e.target.classList.contains('card__play')) {
-            console.log('isPayMode',isPayMode);
-            console.log('dispatcher  push card play')
+    
+         //   console.log('dispatcher  push card play')
 
-             playMode.checkCard();
+            PlayMode.checkCard(e.target);
         }
     }
 }

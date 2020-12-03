@@ -1,44 +1,65 @@
-import Card from "./card";
+ import './../../helpers/_setArrayCustomMethods'
+ import Card from "./card";
 
-export default class PlayMode {
-    constructor(appData) {
-this.appData = appData;
+ export default class PlayMode {
 
-Array.prototype.last = function() {
-    return this[this.length - 1];
-   }
-    }
-
-
-     play() {
-        console.log('PlayMode @play');
-        this.setShuffleCards();
-        this.playLast();
-        
-    }
-    //todo
-    //gen rand sound
-     setShuffleCards() {
-       //  console.log(this.appData['cards']);
-           this.appData['playCards'] =  this.appData['cards'].sort(() => Math.random() - 0.4);
-    }
+     static set appData(appData) {
+         this._appData = appData;
+     }
+     static get appData() {
+         return this._appData;
+     }
 
 
-    //play last
-    playLast() {
-        
-     const cards =  this.appData['playCards'];
-       console.log(cards.last().audioSrc);
-       Card.play(cards.last().audioSrc);
-    }
+     static play() {
+      //   console.log('PlayMode @play');
+         // console.log(PlayMode.appData);
 
-   //handle sound & cards -> draw stars
+         this.setShuffleCards();
+         this.playLast();
 
-   checkCard(){
-    console.log('PlayMode @checkCard');
-   }
-   //handle repeat sound
-        //button
-   //gen win game
+     }
+     //todo
 
-}
+     //set listener on cards
+
+
+     //gen rand sound
+     static setShuffleCards() {
+         //  console.log(this.appData['cards']);
+         this.appData['playCards'] = this.appData['cards'].sort(() => Math.random() - 0.5);
+     }
+
+
+     //  //play last
+     static playLast() {
+
+         const cards = this.appData['playCards'];
+       //  console.log(cards.last().audioSrc);
+         Card.play(cards.last().audioSrc);
+     }
+
+      //handle sound & cards -> draw stars
+
+      static checkCard(clickedCard) {
+          console.log('PlayMode @checkCard', clickedCard.dataset.name);
+      //   const cardName = this.appData['playCards'].last().name;
+      const cardName = this.appData['playCards'].last().word;
+
+        console.log(cardName);
+
+          if (clickedCard.dataset.name == cardName) {
+              console.log('ok');
+              
+          } else {
+            console.log('not');
+          }
+      }
+    
+      //handle repeat sound
+      //button
+      //gen win game
+
+     
+
+ }
