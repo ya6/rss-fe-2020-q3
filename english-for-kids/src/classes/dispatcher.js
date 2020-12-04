@@ -50,14 +50,15 @@ export default class Dispatcher {
 
         // handle button  for play
         if (e.target.classList.contains('game__button')) {
-           
+
+           appData['play'] = true;
             PlayMode.appData = appData;
             PlayMode.play();
 
         }
 
         //  handle check card for play
-        if (e.target.classList.contains('card__play')) {
+        if (e.target.classList.contains('card__play') && appData['play'] && !e.target.classList.contains('card__correct'))  {
 
             PlayMode.checkCard(e.target);
         }

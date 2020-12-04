@@ -6,19 +6,52 @@
 
 
 
-  @media (min-width: 1350px) {
+// @media (min-width: 1350px) {
 
-	html {
-		overflow-y:hidden ;
-  }
+// 	html {
+// 		overflow-y: hidden;
+// 	}
 
-  }
+// }
 
- body {
-	
+body {
+
 	background: #f5f3f5;
 	padding-bottom: 3rem;
-  
+
+}
+
+.stars {
+	display: flex;
+	justify-content: end;
+	flex-wrap: wrap;
+	align-items: center;
+	min-height: 3rem;
+	
+	margin-bottom: 0.7rem;
+	padding: 0 2.4rem;
+}
+
+
+
+.star--gold {
+	width: 3rem;
+	height: 3rem;
+	background-image: url('/src/assets/img/icon/star_gold.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	margin: 0 0.3rem;
+}
+
+.star-grey {
+	width: 3rem;
+	height: 3rem;
+	background-image: url('/src/assets/img/icon/star_grey.png');
+background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	margin: 0 0.3rem;
 }
 
 
@@ -26,48 +59,50 @@
 //toggler vendor
 .tgl {
 	display: none;
-  
+
 	// add default box-sizing for this scope
 	&,
-  &:after,
-  &:before,
+	&:after,
+	&:before,
 	& *,
-  & *:after,
-  & *:before,
-	& + .tgl-btn {
+	& *:after,
+	& *:before,
+	&+.tgl-btn {
 		box-sizing: border-box;
+
 		&::selection {
 			background: none;
 		}
 	}
-  
-	+ .tgl-btn {
+
+	+.tgl-btn {
 		outline: 0;
 		display: block;
 		width: 7rem;
 		height: 2.5rem;
 		position: relative;
 		cursor: pointer;
-    user-select: none;
+		user-select: none;
+
 		&:after,
-    &:before {
+		&:before {
 			position: relative;
 			display: block;
 			content: "";
 			width: 50%;
 			height: 100%;
 		}
-    
+
 		&:after {
 			left: 0;
 		}
-    
+
 		&:before {
 			display: none;
 		}
 	}
-  
-	&:checked + .tgl-btn:after {
+
+	&:checked+.tgl-btn:after {
 		left: 50%;
 	}
 }
@@ -75,15 +110,16 @@
 
 
 .tgl-skewed {
-	+ .tgl-btn {
+	+.tgl-btn {
 		overflow: hidden;
 		// transform: skew(-10deg);
 		backface-visibility: hidden;
 		transition: all .2s ease;
 		// font-family: sans-serif;
-        background: linear-gradient( #0099ae, #00bf82);
+		background: linear-gradient(#0099ae, #00bf82);
+
 		&:after,
-    &:before {
+		&:before {
 			// transform: skew(10deg);
 			display: inline-block;
 			transition: all .2s ease;
@@ -93,40 +129,42 @@
 			line-height: 2.5rem;
 			font-weight: bold;
 			color: #fff;
-			text-shadow: 0 1px 0 rgba(0,0,0,.4);
+			text-shadow: 0 1px 0 rgba(0, 0, 0, .4);
 		}
-    
+
 		&:after {
 			left: 100%;
 			content: attr(data-tg-on);
 		}
-    
+
 		&:before {
 			left: 0;
 			content: attr(data-tg-off);
 		}
-    
+
 		&:active {
 			background: #888;
+
 			&:before {
 				left: -10%;
 			}
 		}
 	}
-  
-	&:checked + .tgl-btn {
-        background: linear-gradient( #fd6a63, #feb46b);
-    &:before {
-      left: -100%;
-    }
 
-    &:after {
-      left: 0;
-    }
+	&:checked+.tgl-btn {
+		background: linear-gradient(#fd6a63, #feb46b);
 
-    &:active:after {
-      left: 10%;
-    }
+		&:before {
+			left: -100%;
+		}
+
+		&:after {
+			left: 0;
+		}
+
+		&:active:after {
+			left: 10%;
+		}
 	}
 }
 
@@ -187,14 +225,29 @@
 
 }
 
-
-.background--orange {
-	background: linear-gradient(180deg, #fd6a63, #feb46b) !important;
+.card__correct {
+	filter: opacity(0.5);
 }
+
+
+.card__play {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+
+}
+.card__play:hover, .card__train:hover  {
+	box-shadow: 0 10px 20px rgba(0, 0, 0, .4);
+	transition: 0.3s;
+
+}
+
+
 
 .card__main:hover {
 	box-shadow: 0 10px 20px rgba(0, 0, 0, .4);
 	filter: hue-rotate(90deg);
+	transition: 0.3s;
 }
 
 .card img {
@@ -204,6 +257,10 @@
 	border: 10px solid #fff;
 	object-fit: cover;
 	margin: 1.2rem auto;
+}
+
+.background--orange {
+	background: linear-gradient(180deg, #fd6a63, #feb46b) !important;
 }
 
 
@@ -377,11 +434,4 @@
 
 .active {
 	color: yellow;
-}
-
-.card__play {
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
-
 }

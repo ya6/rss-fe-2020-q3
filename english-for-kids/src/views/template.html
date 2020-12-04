@@ -8,18 +8,14 @@
 
     <title><%= htmlWebpackPlugin.options.title %></title>
     <style>
-        .stars {
-            height: 3rem;
-            margin-bottom: 0.7rem;
-            padding: 0 2.4rem;
-        }
+      
 
         .game {
             margin: 2rem 0 0;
 
         }
 
-        .game button {
+        .game__button {
             background: linear-gradient(180deg, #fd6a63, #f7820e);
             width: 50%;
             margin: 0 auto !important;
@@ -28,11 +24,34 @@
             font-size: 1.3rem;
 
         }
+
+        .repeat__button {
+            background: linear-gradient(180deg, #fd6a63, #f7820e);
+            width: 10%;
+            margin: 0 auto !important;
+            display: block !important;
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+            font-size: 1.3rem;
+            animation: getSmaller 0.5s;
+
+        }
+
+        @keyframes getSmaller {
+            from {
+                width: 50%;
+            }
+
+            to {
+                width: 10%;
+            }
+        }
+
+
+
+
         .hidden {
             visibility: hidden;
         }
-
-      
     </style>
 
 </head>
@@ -53,7 +72,7 @@
                 </label>
 
                 <ul class="menu__box">
-                       <!-- content by JS  -->
+                    <!-- content by JS  -->
                 </ul>
 
             </nav>
