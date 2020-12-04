@@ -2,7 +2,16 @@ export default class TrainMode {
 
     static setTrainMode() {
         cb.checked = false;
-    }
+           
+     }
+
+     static clearGameAttributes() {
+        const game = document.querySelector('.game');
+        const stars = document.querySelector('.stars');
+        game.innerHTML = ``;
+        stars.innerHTML = ``;  
+     }
+    
 
     static rotateCard(target) {
         const card =  target.parentElement.parentElement;

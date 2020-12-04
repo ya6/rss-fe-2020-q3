@@ -28,7 +28,7 @@ export default class Card {
         } else if (!cb.checked) {
             
             // train
-            game.classList.add('hidden');
+            game.innerHTML=``;
 
             for (let card of appData['cards']) {
                 let div = document.createElement('div');
@@ -49,7 +49,8 @@ export default class Card {
         } else {
 
             //play  
-            game.classList.remove('hidden');
+            game.innerHTML=`<button type="button" class="game__button btn text-light mx-auto">Start Play</button>`;
+        
 
             for (let card of appData['cards']) {
                 let div = document.createElement('div');

@@ -1,6 +1,8 @@
  import './../../helpers/_setArrayCustomMethods';
  //import _delay from './../../helpers/_delay';
  import Card from "./card";
+ import Router from './router';
+ import TrainMode from './train_mode';
 
  export default class PlayMode {
 
@@ -39,6 +41,12 @@
 
      }
      //todo
+
+    //  static setStartButton() {
+    //      const btnGameCont = document.querySelector('game');
+    //      btnGameCont.innerHTML=`<button type="button" class="game__button btn text-light mx-auto">Start Play</button>`;
+        
+    //  }
 
      //gen rand sound
      static setShuffleCards() {
@@ -99,6 +107,15 @@
      }
      static winGame() {
          alert('win');
+         //reset 
+         TrainMode.setTrainMode();
+         TrainMode.clearGameAttributes();
+         this.appData['page'] = "Main Page";
+         this.appData['play'] = false;
+         // clear button & stars 
+
+
+         Router.route(this.appData);
      }
 
      //    play again

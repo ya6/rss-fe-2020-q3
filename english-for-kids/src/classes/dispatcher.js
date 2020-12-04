@@ -24,7 +24,9 @@ export default class Dispatcher {
         if (e.target.tagName == 'A' || e.target.tagName == 'IMG') {
             page = e.target.dataset.name || e.target.alt || e.target.tagName == 'A' && e.target.innerText || appData['page'];
 
+            TrainMode.clearGameAttributes();
             appData['page'] = page;
+            appData['play'] = false;
             Router.route(appData);
         }
         if (e.target == cb && appData['play']) {
@@ -54,17 +56,17 @@ export default class Dispatcher {
 
         // handle button for play
         if (e.target.classList.contains('game__button')) {
-          //  console.log('game__button!');
-           
+            //  console.log('game__button!');
+
             appData['play'] = true;
             PlayMode.appData = appData;
             PlayMode.setGame();
 
         }
 
-      // handle button for play
+        // handle button for play
         if (e.target.classList.contains('repeat__button')) {
-         //   console.log('repeat__button!');
+            //   console.log('repeat__button!');
 
             PlayMode.playGame();
         }
