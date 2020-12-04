@@ -8,7 +8,7 @@ export default class Dispatcher {
     static clickDispatcher(e) {
 
 
-        console.log('dispatcher', e.target);
+        //    console.log('dispatcher', e.target);
 
         const appData = this.appData;
         let page;
@@ -27,9 +27,12 @@ export default class Dispatcher {
             appData['page'] = page;
             Router.route(appData);
         }
+        if (e.target == cb && appData['play']) {
 
+            e.preventDefault();
+        }
         // handle  mode toggler
-        if (e.target == cb) {
+        if (e.target == cb && !appData['play']) {
 
             Router.route(appData);
         }
@@ -43,24 +46,36 @@ export default class Dispatcher {
 
         // handle rotate card  for train
         if (e.target.classList.contains('rotate')) {
+
             const trainCart = e.target;
             TrainMode.rotateCard(trainCart);
 
         }
 
-        // handle button  for play
+        // handle button for play
         if (e.target.classList.contains('game__button')) {
-
-           appData['play'] = true;
+          //  console.log('game__button!');
+           
+            appData['play'] = true;
             PlayMode.appData = appData;
-            PlayMode.play();
+            PlayMode.setGame();
 
+        }
+
+      // handle button for play
+        if (e.target.classList.contains('repeat__button')) {
+         //   console.log('repeat__button!');
+
+            PlayMode.playGame();
         }
 
         //  handle check card for play
-        if (e.target.classList.contains('card__play') && appData['play'] && !e.target.classList.contains('card__correct'))  {
+        if (e.target.classList.contains('card__play') && appData['play'] && !e.target.classList.contains('card__correct')) {
 
             PlayMode.checkCard(e.target);
         }
+
+
+
     }
 }
