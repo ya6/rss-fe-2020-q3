@@ -5,7 +5,7 @@ export default class MakeData {
   static makePage(appData) {
 
     // menu
-    appData['menu'] = ['Main Page', ...cards[0]]; // todo method
+    appData['menu'] = ['Main Page', ...cards[0], 'delimiter', 'Statistics']; // todo method
 
     appData['cards'] = [];
 

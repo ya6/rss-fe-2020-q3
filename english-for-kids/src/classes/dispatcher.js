@@ -29,6 +29,8 @@ export default class Dispatcher {
             appData['play'] = false;
             Router.route(appData);
         }
+       // if (e.target == cb && appData['play'] || e.target == cb && appData['is_statistics']) {
+
         if (e.target == cb && appData['play']) {
 
             e.preventDefault();

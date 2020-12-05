@@ -25,7 +25,7 @@ export default class Card {
                 container.append(div);
             }
 
-        } else if (!cb.checked) {
+        }  else if (!cb.checked) {
 
             // train
             game.innerHTML = ``;

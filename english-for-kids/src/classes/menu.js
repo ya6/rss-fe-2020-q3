@@ -16,7 +16,9 @@ export default class Menu {
             if (menu_item === pageData['page']) {
                 active = 'active'
             }
-            li.innerHTML = `<a class="menu__item ${active}" href="#">${menu_item}</a>`;
+            if (menu_item === 'delimiter') {
+                li.innerHTML = `<hr class="bg-light">`;
+            } else{ li.innerHTML = `<a class="menu__item ${active}" href="#">${menu_item}</a>`;}
             active = '';
             container.appendChild(li);
 
