@@ -113,7 +113,7 @@
          const div = document.createElement('div');
          div.className = 'popup';
          div.innerHTML = `<div class="mx-auto">
-         <img src="./src/assets/img/${src}" class="popup__img">
+         <img src="./assets/img/${src}" class="popup__img">
          </div>
          <div class=""><button  class="btn btn-warning" type="button">${mess}</button></div>`;
 

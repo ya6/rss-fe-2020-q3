@@ -2,7 +2,7 @@ import Dispatcher from './classes/dispatcher';
 import TrainMode from './classes/train_mode';
 import Router from './classes/router';
 
-// import './assets/favicon.ico';
+import './assets/favicon.ico';
 
 import './main.scss';
 

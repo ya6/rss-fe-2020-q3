@@ -16,8 +16,8 @@ module.exports = {
             test: /\.(png|jpe?g|gif|svg|ico)$/i,
             loader: 'file-loader',
             options: {
-                publicPath: 'assets/imgs',
-                outputPath: 'assets/imgs',
+                publicPath: 'assets/img',
+                outputPath: 'assets/img',
                 name: '[name].[ext]'
             },
           },

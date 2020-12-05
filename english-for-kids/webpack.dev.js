@@ -11,6 +11,15 @@ module.exports = merge(common, {
     filename: 'bundle.js'
   },
 
+  devtool: 'inline-source-map',
+  
+  devServer: {
+
+    contentBase: './dist',
+
+  },
+
+
   module: {
     rules: [
       {test: /\.scss$/, use: ['style-loader','css-loader', 'sass-loader']}

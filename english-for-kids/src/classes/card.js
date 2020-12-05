@@ -18,7 +18,7 @@ export default class Card {
 
                 div.innerHTML = `
             <a href="#" class="card card__main border-0 rounded ${orange_class}" data-name="${card.name}">
-            <img src="/src/assets/${card.src}" alt="${card.name}">
+            <img src="./assets/${card.src}" alt="${card.name}">
             ${card.name}
             </a>
         `;
@@ -35,11 +35,11 @@ export default class Card {
 
                 div.innerHTML = `
                 <div class="card card__train">
-                <div class="front" data-sound = "${card.audioSrc}" style="background-image: url(./src/assets/${card.image });">
+                <div class="front" data-sound = "${card.audioSrc}" style="background-image: url(./assets/${card.image });">
                ${card.word}
                <div class="rotate"></div>
                 </div> 
-                <div class="back"  style="background-image: url(./src/assets/${card.image });">
+                <div class="back"  style="background-image: url(./assets/${card.image });">
               ${card.translation}  
                 </div>                             
                 </div>
@@ -55,7 +55,7 @@ export default class Card {
             for (let card of appData['cards']) {
                 let div = document.createElement('div');
                 div.innerHTML = `
-                <div class="card card__play" style="background-image: url(./src/assets/${card.image });" data-name = "${card.word}" data-sound = "${card.audioSrc}">
+                <div class="card card__play" style="background-image: url(./assets/${card.image });" data-name = "${card.word}" data-sound = "${card.audioSrc}">
                 </div>
         `;
                 container.append(div);
@@ -66,7 +66,7 @@ export default class Card {
     static play(scr) {
 
         const audio = new Audio();
-        audio.src = `./src/assets/${scr}`;
+        audio.src = `./assets/${scr}`;
         audio.currentTime = 0;
         audio.play();
     }
