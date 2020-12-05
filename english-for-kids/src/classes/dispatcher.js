@@ -8,7 +8,7 @@ export default class Dispatcher {
     static clickDispatcher(e) {
 
 
-        //    console.log('dispatcher', e.target);
+            console.log('dispatcher', e.target);
 
         const appData = this.appData;
         let page;
@@ -56,7 +56,6 @@ export default class Dispatcher {
 
         // handle button for play
         if (e.target.classList.contains('game__button')) {
-            //  console.log('game__button!');
 
             appData['play'] = true;
             PlayMode.appData = appData;
@@ -66,8 +65,7 @@ export default class Dispatcher {
 
         // handle button for play
         if (e.target.classList.contains('repeat__button')) {
-            //   console.log('repeat__button!');
-
+         
             PlayMode.playGame();
         }
 
@@ -76,8 +74,6 @@ export default class Dispatcher {
 
             PlayMode.checkCard(e.target);
         }
-
-
 
     }
 }

@@ -1,7 +1,7 @@
 export default class Card {
 
     static renderCards(container, appData) {
-        //  console.log('renderCards ',pageData);
+        //  console.log('Card @renderCards');
 
         const game = document.querySelector('.game');
 
@@ -26,9 +26,9 @@ export default class Card {
             }
 
         } else if (!cb.checked) {
-            
+
             // train
-            game.innerHTML=``;
+            game.innerHTML = ``;
 
             for (let card of appData['cards']) {
                 let div = document.createElement('div');
@@ -49,12 +49,11 @@ export default class Card {
         } else {
 
             //play  
-            game.innerHTML=`<button type="button" class="game__button btn text-light mx-auto">Start Play</button>`;
-        
+            game.innerHTML = `<button type="button" class="game__button btn text-light mx-auto">Start Play</button>`;
+
 
             for (let card of appData['cards']) {
                 let div = document.createElement('div');
-
                 div.innerHTML = `
                 <div class="card card__play" style="background-image: url(./src/assets/${card.image });" data-name = "${card.word}" data-sound = "${card.audioSrc}">
                 </div>
@@ -70,8 +69,5 @@ export default class Card {
         audio.src = `./src/assets/${scr}`;
         audio.currentTime = 0;
         audio.play();
-
     }
-
-
 }

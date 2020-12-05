@@ -16,50 +16,42 @@
 
      static setGame() {
          console.log('PlayMode @setGame');
+         this.appData['errors'] = 0;
 
          this.setShuffleCards();
          this.changeForRepeatButton();
          this.playGame();
-
-
+         //this.makePopup('win.png', 'Cool!');
+         //this.makePopup('mis.png', 'Has to work');
      }
 
      static playGame() {
          console.log('PlayMode @playGame');
 
+         //win
          if (this.appData['playCards'].length == 0) {
-             // this.winGame();
+
              setTimeout(function () {
                  PlayMode.winGame()
              }, 1000);
-
          }
-         //  this.playLast();
+
          setTimeout(function () {
              PlayMode.playLast()
          }, 500);
-
      }
-     //todo
 
-    //  static setStartButton() {
-    //      const btnGameCont = document.querySelector('game');
-    //      btnGameCont.innerHTML=`<button type="button" class="game__button btn text-light mx-auto">Start Play</button>`;
-        
-    //  }
 
      //gen rand sound
      static setShuffleCards() {
-
          this.appData['playCards'] = this.appData['cards'].sort(() => Math.random() - 0.5);
      }
 
+
      static playLast() {
          console.log('PlayMode @playLast');
-         if (this.appData['playCards'].length == 0) {
-             return
+         if (this.appData['playCards'].length == 0) return;
 
-         }
          const cards = this.appData['playCards'];
 
          Card.play(cards.last().audioSrc);
@@ -83,9 +75,9 @@
              clickedCard.classList.add('card__correct');
              this.playGame();
 
-
              //error
          } else {
+             this.appData['errors'] += 1;
              const div = document.createElement('div');
              div.className = 'star-grey';
              starContainer.appendChild(div);
@@ -93,9 +85,7 @@
          }
      }
 
-     //handle repeat sound
-     //    button
-
+     //handle change for repeat button
      static changeForRepeatButton() {
          console.log('PlayMode @changeForRepeatButton');
          let btn = document.querySelector('.game__button');
@@ -105,21 +95,42 @@
          //ins
          btn_parent.innerHTML = `<button type="button" class="repeat__button btn text-light mx-auto">Repeat</button>`;
      }
+
      static winGame() {
-         alert('win');
-         //reset 
-         TrainMode.setTrainMode();
-         TrainMode.clearGameAttributes();
-         this.appData['page'] = "Main Page";
-         this.appData['play'] = false;
-         // clear button & stars 
 
+         if (this.appData['errors'] == 0) {
+             Card.play('audio/success.mp3');
 
-         Router.route(this.appData);
+             this.makePopup('win.png', 'Cool!')
+         } else {
+             Card.play('audio/failure.mp3');
+
+             this.makePopup('mis.png', 'Has to work!');
+         }
      }
 
-     //    play again
-     //set stars
-     //gen win game
+     static makePopup(src, mess) {
+         const div = document.createElement('div');
+         div.className = 'popup';
+         div.innerHTML = `<div class="mx-auto">
+         <img src="./src/assets/img/${src}" class="popup__img">
+         </div>
+         <div class=""><button  class="btn btn-warning" type="button">${mess}</button></div>`;
 
+         document.body.appendChild(div);
+         const btb_warning = document.querySelector('.btn-warning');
+
+         btb_warning.addEventListener('click', PlayMode.goToMainPage);
+
+     }
+
+     static goToMainPage() {
+
+         TrainMode.setTrainMode();
+         TrainMode.clearGameAttributes();
+         PlayMode.appData['page'] = "Main Page";
+         PlayMode.appData['play'] = false;
+
+         Router.route(PlayMode.appData);
+     }
  }

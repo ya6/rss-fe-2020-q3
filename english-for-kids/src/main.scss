@@ -24,17 +24,21 @@ body {
 .stars {
 	display: flex;
 	justify-content: end;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
+	overflow-x: auto ;
 	align-items: center;
-	min-height: 3rem;
+	height: 3rem;
 	
 	margin-bottom: 0.7rem;
 	padding: 0 2.4rem;
+
 }
 
 
 
 .star--gold {
+	flex: 0 0 auto;
+	//display: inline-block;
 	width: 3rem;
 	height: 3rem;
 	background-image: url('/src/assets/img/icon/star_gold.png');
@@ -45,6 +49,8 @@ body {
 }
 
 .star-grey {
+	flex: 0 0 auto;
+//	display: inline-block;
 	width: 3rem;
 	height: 3rem;
 	background-image: url('/src/assets/img/icon/star_grey.png');
