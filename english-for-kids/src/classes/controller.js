@@ -8,10 +8,6 @@ export default class Controller {
     static index(appData) {
      //   console.log('Controller @index');
 
-
-     //save statistic to localStorage
-     Statistics.saveStatistics(appData);
-
         //model 
         appData = MakeData.makePage(appData);
 
@@ -32,7 +28,7 @@ export default class Controller {
         const cards_container = document.querySelector('.container__inner');
         const menu_container = document.querySelector('.menu__box');
 
-        Statistics.renderStatistics(cards_container);
+        Statistics.renderStatistics(cards_container, appData);
         Menu.render(menu_container, appData);
 
 

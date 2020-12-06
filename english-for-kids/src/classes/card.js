@@ -6,6 +6,10 @@ export default class Card {
         const game = document.querySelector('.game');
 
         container.innerHTML = '';
+        if (typeof table !== 'undefined') {
+            table.parentElement.removeChild(table);
+          }
+
 
         if (appData['page'] === 'Main Page') {
             let orange_class = '';

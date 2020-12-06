@@ -74,7 +74,6 @@ import Statistics from './statistics';
              Card.play('audio/correct.mp3');
              this.appData['playCards'].pop();
              clickedCard.classList.add('card__correct');
-
             //statistic
             Statistics.addPointToStatistic(this.appData, clickedCard.dataset.name, 'hit');
 
@@ -88,7 +87,7 @@ import Statistics from './statistics';
              starContainer.appendChild(div);
              Card.play('audio/error.mp3');
                //statistic
-            Statistics.addPointToStatistic(this.appData, clickedCard.dataset.name, 'mis');
+            Statistics.addPointToStatistic(this.appData, this.appData['playCards'].last().word, 'mis');
 
          }
      }
