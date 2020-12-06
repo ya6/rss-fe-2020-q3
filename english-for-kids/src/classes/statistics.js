@@ -23,14 +23,13 @@ export default class Statistics {
     const part_1 = `<div class="d-flex justify-content-end m-2">
     <button id ="difficult" class="btn btn-warning m-2" type="button">Repeat difficult words</button>
     <button  id= "reset" class="btn btn-danger m-2" type="button">Reset</button>
-    </div>
-
+    </div> 
     <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
-            <thead>
-              <tr>
-              <th class="th-sm" data-sort="name" data-order="desc">Category
+          <thead>
+          <tr>    
+              <th class="th-sm"> Category
                 </th>
-                <th class="th-sm">Word
+                <th class="th-sm"> Word
                 </th>
                 <th class="th-sm">Transl
                 </th>
@@ -77,7 +76,7 @@ export default class Statistics {
   <tfoot>
   <tr>
   <th class="th-sm" data-sort="name" data-order="desc">Category
-                </th
+                </th>
   <th class="th-sm" data-sort="name" data-order="desc">Word
   </th>
   <th class="th-sm">Translation

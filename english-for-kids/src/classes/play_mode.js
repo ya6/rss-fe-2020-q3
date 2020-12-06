@@ -2,7 +2,7 @@
  //import _delay from './../../helpers/_delay';
  import Card from "./card";
  import Router from './router';
-import Statistics from './statistics';
+ import Statistics from './statistics';
  import TrainMode from './train_mode';
 
  export default class PlayMode {
@@ -16,18 +16,17 @@ import Statistics from './statistics';
 
 
      static setGame() {
-       //  console.log('PlayMode @setGame');
+         //  console.log('PlayMode @setGame');
          this.appData['errors'] = 0;
 
          this.setShuffleCards();
          this.changeForRepeatButton();
          this.playGame();
-         //this.makePopup('win.png', 'Cool!');
-         //this.makePopup('mis.png', 'Has to work');
      }
 
+
      static playGame() {
-        // console.log('PlayMode @playGame');
+         // console.log('PlayMode @playGame');
 
          //win
          if (this.appData['playCards'].length == 0) {
@@ -50,7 +49,7 @@ import Statistics from './statistics';
 
 
      static playLast() {
-        // console.log('PlayMode @playLast');
+         // console.log('PlayMode @playLast');
          if (this.appData['playCards'].length == 0) return;
 
          const cards = this.appData['playCards'];
@@ -60,7 +59,7 @@ import Statistics from './statistics';
 
      //handle sound & cards -> draw stars
      static checkCard(clickedCard) {
-        // console.log('PlayMode @checkCard');
+         // console.log('PlayMode @checkCard');
 
          const cardName = this.appData['playCards'].last().word;
          const starContainer = document.querySelector('.stars');
@@ -74,8 +73,8 @@ import Statistics from './statistics';
              Card.play('audio/correct.mp3');
              this.appData['playCards'].pop();
              clickedCard.classList.add('card__correct');
-            //statistic
-            Statistics.addPointToStatistic(this.appData, clickedCard.dataset.name, 'hit');
+             //statistics
+             Statistics.addPointToStatistic(this.appData, clickedCard.dataset.name, 'hit');
 
              this.playGame();
 
@@ -86,15 +85,15 @@ import Statistics from './statistics';
              div.className = 'star-grey';
              starContainer.appendChild(div);
              Card.play('audio/error.mp3');
-               //statistic
-            Statistics.addPointToStatistic(this.appData, this.appData['playCards'].last().word, 'mis');
+             //statistic
+             Statistics.addPointToStatistic(this.appData, this.appData['playCards'].last().word, 'mis');
 
          }
      }
 
      //handle change for repeat button
      static changeForRepeatButton() {
-        // console.log('PlayMode @changeForRepeatButton');
+         // console.log('PlayMode @changeForRepeatButton');
          let btn = document.querySelector('.game__button');
          const btn_parent = btn.parentNode;
          //del
@@ -116,6 +115,7 @@ import Statistics from './statistics';
          }
      }
 
+
      static makePopup(src, mess) {
          const div = document.createElement('div');
          div.className = 'popup';
@@ -127,14 +127,14 @@ import Statistics from './statistics';
          document.body.appendChild(div);
          const btb_warning = document.querySelector('.btn-warning');
 
-         btb_warning.addEventListener('click', PlayMode.goToMainPage);
+         btb_warning.addEventListener('click', PlayMode.goToMainPage);//maybe from dispatcher
 
      }
 
      static goToMainPage() {
 
          TrainMode.setTrainMode();
-         TrainMode.clearGameAttributes();
+         TrainMode.clearPlayAttributes();
          PlayMode.appData['page'] = "Main Page";
          PlayMode.appData['play'] = false;
 

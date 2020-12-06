@@ -7,7 +7,7 @@ import Statistics from './statistics';
 
 export default class Dispatcher {
     static clickDispatcher(e) {
-       // console.log('dispatcher', e.target);
+        // console.log('dispatcher', e.target);
 
         const appData = this.appData;
         let page;
@@ -23,16 +23,10 @@ export default class Dispatcher {
         if (e.target.tagName == 'A' || e.target.tagName == 'IMG') {
             page = e.target.dataset.name || e.target.alt || e.target.tagName == 'A' && e.target.innerText || appData['page'];
 
-            TrainMode.clearGameAttributes();
+            TrainMode.clearPlayAttributes();
             appData['page'] = page;
             appData['play'] = false;
             Router.route(appData);
-        }
-
-
-        if (e.target == cb && appData['play']) {
-
-            e.preventDefault();
         }
 
 
@@ -42,12 +36,17 @@ export default class Dispatcher {
             Router.route(appData);
         }
 
+        //block toggler for play
+        if (e.target == cb && appData['play']) {
+
+            e.preventDefault();
+        }
+
 
         // handle sounds for train
         if (e.target.classList.contains('front')) {
 
             Card.play(e.target.dataset.sound || e.target.parentElement.dataset.sound);
-
 
             // statistic+1 to train
             const word = e.target.dataset.name || e.target.parentElement.dataset.name;
@@ -92,7 +91,5 @@ export default class Dispatcher {
                 Router.route(appData);
             }
         }
-
-
     }
 }

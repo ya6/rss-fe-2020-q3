@@ -1,12 +1,13 @@
 import MakeData from './make_data';
+import Statistics from './statistics';
 import Card from './card';
 import Menu from './menu'
-import Statistics from './statistics';
+
 
 export default class Controller {
 
     static index(appData) {
-     //   console.log('Controller @index');
+        //   console.log('Controller @index');
 
         //model 
         appData = MakeData.makePage(appData);
@@ -19,10 +20,9 @@ export default class Controller {
         Menu.render(menu_container, appData);
     }
 
+
     static statistics(appData) {
-     //   console.log('Controller @statistics');
-        //model 
-       
+        //   console.log('Controller @statistics');
 
         // view
         const cards_container = document.querySelector('.container__inner');
@@ -30,10 +30,5 @@ export default class Controller {
 
         Statistics.renderStatistics(cards_container, appData);
         Menu.render(menu_container, appData);
-
-
     }
-
-
-
 }

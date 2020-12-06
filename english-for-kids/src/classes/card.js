@@ -8,7 +8,7 @@ export default class Card {
         container.innerHTML = '';
         if (typeof table !== 'undefined') {
             table.parentElement.removeChild(table);
-          }
+        }
 
 
         if (appData['page'] === 'Main Page') {
@@ -24,12 +24,12 @@ export default class Card {
             <a href="#" class="card card__main border-0 rounded ${orange_class}" data-name="${card.name}">
             <img src="./assets/${card.src}" alt="${card.name}">
             ${card.name}
-            </a>
-        `;
+            </a>`;
+
                 container.append(div);
             }
 
-        }  else if (!cb.checked) {
+        } else if (!cb.checked) {
 
             // train
             game.innerHTML = ``;
@@ -46,8 +46,8 @@ export default class Card {
                 <div class="back"  style="background-image: url(./assets/${card.image });">
               ${card.translation}  
                 </div>                             
-                </div>
-        `;
+                </div>`;
+
                 container.append(div);
             }
         } else {
@@ -55,13 +55,12 @@ export default class Card {
             //play  
             game.innerHTML = `<button type="button" class="game__button btn text-light mx-auto">Start Play</button>`;
 
-
             for (let card of appData['cards']) {
                 let div = document.createElement('div');
                 div.innerHTML = `
                 <div class="card card__play" style="background-image: url(./assets/${card.image });" data-name = "${card.word}" data-sound = "${card.audioSrc}">
-                </div>
-        `;
+                </div>`;
+
                 container.append(div);
             }
         }

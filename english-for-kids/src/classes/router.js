@@ -6,11 +6,10 @@ export default class Router {
 
         if (appData['page'] == 'Statistics') {
 
-
             return Controller.statistics(appData);
+
         } else
 
             return Controller.index(appData);
     }
-
 }
