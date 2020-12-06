@@ -11,9 +11,8 @@ import Statistics from './classes/statistics';
 //init
 const appData = {
   page: 'Main Page',
-  statCards: Statistics.makeStatisticData()
+  statCards: Statistics.loadStatistics()
 };
-
 
 //add statistics
 

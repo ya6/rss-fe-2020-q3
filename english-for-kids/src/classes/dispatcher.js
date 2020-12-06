@@ -7,9 +7,7 @@ import Statistics from './statistics';
 
 export default class Dispatcher {
     static clickDispatcher(e) {
-
-
-        //  console.log('dispatcher', e.target);
+       // console.log('dispatcher', e.target);
 
         const appData = this.appData;
         let page;
@@ -30,12 +28,14 @@ export default class Dispatcher {
             appData['play'] = false;
             Router.route(appData);
         }
-        // if (e.target == cb && appData['play'] || e.target == cb && appData['is_statistics']) {
+
 
         if (e.target == cb && appData['play']) {
 
             e.preventDefault();
         }
+
+
         // handle  mode toggler
         if (e.target == cb && !appData['play']) {
 
@@ -50,17 +50,8 @@ export default class Dispatcher {
 
 
             // statistic+1 to train
-
             const word = e.target.dataset.name || e.target.parentElement.dataset.name;
-         //   const category = appData.statCards[0].indexOf(appData.page)+1;
-          //  console.log( appData.statCards[category] );
             Statistics.addPointToStatistic(appData, word, 'train');
-          //  console.log( appData.statCards[category] );
-
-
-            //console.log('tain for stat ', appData.page, e.target.dataset.name || e.target.parentElement.dataset.name);
-
-
         }
 
         // handle rotate card  for train
@@ -89,10 +80,19 @@ export default class Dispatcher {
         //  handle check card for play
         if (e.target.classList.contains('card__play') && appData['play'] && !e.target.classList.contains('card__correct')) {
 
-            
-
             PlayMode.checkCard(e.target);
         }
+
+        // handle reset statistic button
+        if (typeof reset !== 'undefined') {
+            if (e.target == reset) {
+
+                appData.statCards = Statistics.makeStatisticsData();
+                Statistics.saveStatistics(appData);
+                Router.route(appData);
+            }
+        }
+
 
     }
 }

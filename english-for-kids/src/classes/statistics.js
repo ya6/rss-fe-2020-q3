@@ -5,7 +5,7 @@ export default class Statistics {
   static renderStatistics(container, addData) {
 
 
-    const statCards = this.loadStatistics() || addData.statCards;
+    const statCards = this.loadStatistics();
     // console.log('Statistics @renderStatistics', statCards);
 
     container.innerHTML = '';
@@ -18,10 +18,19 @@ export default class Statistics {
 
 
 
-    const part_1 = `<table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+
+
+    const part_1 = `<div class="d-flex justify-content-end m-2">
+    <button id ="difficult" class="btn btn-warning m-2" type="button">Repeat difficult words</button>
+    <button  id= "reset" class="btn btn-danger m-2" type="button">Reset</button>
+    </div>
+
+    <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
             <thead>
               <tr>
-                <th class="th-sm" data-sort="name" data-order="desc">Word
+              <th class="th-sm" data-sort="name" data-order="desc">Category
+                </th>
+                <th class="th-sm">Word
                 </th>
                 <th class="th-sm">Transl
                 </th>
@@ -42,13 +51,16 @@ export default class Statistics {
     //inner content
 
     for (let index = 0; index < statCards[0].length; index++) {
-      let part_2_1 = `<tr><td bgcolor="#d9fcf7" colspan="6">${statCards[0][index]}</td></tr>`
-      content.push(part_2_1);
+      //  let part_2_1 = `<tr><td bgcolor="#d9fcf7" colspan="6">${statCards[0][index]}</td></tr>`
+      // content.push(part_2_1);
 
       for (let card of statCards[index + 1]) {
+
         let hitPercent = card.hit == 0 ? 0 : Math.round(card.hit / (card.hit + card.mis) * 100);
         let part_2_2 = `
-        <tr><td>${card.word}</td>
+        <tr>
+        <td>${statCards[0][index]}</td>
+        <td>${card.word}</td>
         <td>${card.translation}</td>
         <td>${card.hit}</td>
         <td>${card.mis}</td>
@@ -61,10 +73,11 @@ export default class Statistics {
 
     }
 
-
     const part_3 = ` </tbody>
   <tfoot>
   <tr>
+  <th class="th-sm" data-sort="name" data-order="desc">Category
+                </th
   <th class="th-sm" data-sort="name" data-order="desc">Word
   </th>
   <th class="th-sm">Translation
@@ -89,14 +102,9 @@ export default class Statistics {
   }
 
 
-  static makeStatisticData() {
-   
-    const _statCards = this.loadStatistics();
-   
-    if ( _statCards !== null) {
-      return _statCards;
-    }
-    // console.log('Statistic @makeStatisticData');
+  static makeStatisticsData() {
+    //  console.log('Statistic @makeStatisticsData -> statCards ', statCards);
+
     for (let index = 0; index < statCards[0].length; index++) {
 
       for (let card of statCards[index + 1]) {
@@ -107,14 +115,14 @@ export default class Statistics {
 
       }
     }
-    // this.saveStatistics(statCards);
+
     return statCards;
   }
 
-  static addPointToStatistic(appData, word, type) {
-    // console.log('Statistic @PlusPointToStatistic');
 
-    // console.log(appData.statCards[0].indexOf(appData.page));
+  static addPointToStatistic(appData, word, type) {
+    // console.log('Statistic @PlusPointToStatistic', appData, word, type);
+
     const category = appData.statCards[0].indexOf(appData.page) + 1;
     for (const card of appData.statCards[category]) {
       if (card.word === word) {
@@ -132,9 +140,17 @@ export default class Statistics {
   }
 
   static loadStatistics() {
-    // localStorage.getItem('statistics');
-    return JSON.parse(localStorage.getItem('statistics'));
 
+    const statCards = JSON.parse(localStorage.getItem('statistics'));
+    //  console.log('Statistics @loadStatistics statCards', statCards);
+
+    if (statCards !== null) {
+
+      return (statCards);
+
+    } else {
+
+      return this.makeStatisticsData();
+    }
   }
-
 }
