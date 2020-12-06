@@ -6,7 +6,11 @@ import Statistics from './statistics';
 export default class Controller {
 
     static index(appData) {
-        console.log('Controller @index');
+     //   console.log('Controller @index');
+
+
+     //save statistic to localStorage
+     Statistics.saveStatistics(appData);
 
         //model 
         appData = MakeData.makePage(appData);
@@ -20,7 +24,7 @@ export default class Controller {
     }
 
     static statistics(appData) {
-        console.log('Controller @statistics');
+     //   console.log('Controller @statistics');
         //model 
        
 

@@ -1,5 +1,5 @@
 const cards = [
-  ['Action (set A)', 'Action (set B)', 'Animal (set A)', 'Animal (set B)', 'Clothes', 'Emotions', 'Food', 'Family'],
+  ['Action (set A)', 'Action (set B)', 'Animal (set A)', 'Animal (set B)', 'Clothes', 'Emotions', 'Food', 'Colors'],
   [{
       word: 'dance',
       translation: 'танцевать',
@@ -303,98 +303,98 @@ const cards = [
       word: 'strawberry',
       translation: 'клубника',
       image: 'img/strawberry.jpg',
-      audioSrc: 'audio/sad.mp3'
+      audioSrc: 'audio/strawberry.mp3'
     },
     {
-      word: 'angry',
-      translation: 'сердитый',
-      image: 'img/angry.jpg',
-      audioSrc: 'audio/angry.mp3'
+      word: 'apple',
+      translation: 'яблоко',
+      image: 'img/apple.jpg',
+      audioSrc: 'audio/apple.mp3'
     },
     {
-      word: 'happy',
-      translation: 'счастливый',
-      image: 'img/happy.jpg',
-      audioSrc: 'audio/happy.mp3'
+      word: 'milk',
+      translation: 'молоко',
+      image: 'img/milk.jpg',
+      audioSrc: 'audio/milk.mp3'
     },
     {
-      word: 'tired',
-      translation: 'уставший',
-      image: 'img/tired.jpg',
-      audioSrc: 'audio/tired.mp3'
+      word: 'banana',
+      translation: 'банан',
+      image: 'img/banana.jpg',
+      audioSrc: 'audio/banana.mp3'
     },
     {
-      word: 'surprised',
-      translation: 'удивлённый',
-      image: 'img/surprised.jpg',
-      audioSrc: 'audio/surprised.mp3'
+      word: 'bread',
+      translation: 'хлеб',
+      image: 'img/bread.jpg',
+      audioSrc: 'audio/bread.mp3'
     },
     {
-      word: 'scared',
-      translation: 'испуганный',
-      image: 'img/scared.jpg',
-      audioSrc: 'audio/scared.mp3'
+      word: 'cheese',
+      translation: 'сыр',
+      image: 'img/cheese.jpg',
+      audioSrc: 'audio/cheese.mp3'
     },
     {
-      word: 'smile',
-      translation: 'улыбка',
-      image: 'img/smile.jpg',
-      audioSrc: 'audio/smile.mp3'
+      word: 'water',
+      translation: 'вода',
+      image: 'img/water.jpg',
+      audioSrc: 'audio/water.mp3'
     },
     {
-      word: 'laugh',
-      translation: 'смех',
-      image: 'img/laugh.jpg',
-      audioSrc: 'audio/laugh.mp3'
+      word: 'tomato',
+      translation: 'помидор',
+      image: 'img/tomato.jpg',
+      audioSrc: 'audio/tomato.mp3'
     }
   ],
   [{
-      word: 'family',
-      translation: 'семья',
-      image: 'img/family_all.jpg',
-      audioSrc: 'audio/sad.mp3'
+      word: 'yellow',
+      translation: 'желтый',
+      image: 'img/yellow.jpg',
+      audioSrc: 'audio/yellow.mp3'
     },
     {
-      word: 'angry',
-      translation: 'сердитый',
-      image: 'img/angry.jpg',
-      audioSrc: 'audio/angry.mp3'
+      word: 'orange',
+      translation: 'оранжевый',
+      image: 'img/orange.jpg',
+      audioSrc: 'audio/orange.mp3'
     },
     {
-      word: 'happy',
-      translation: 'счастливый',
-      image: 'img/happy.jpg',
-      audioSrc: 'audio/happy.mp3'
+      word: 'red',
+      translation: 'красный',
+      image: 'img/red.jpg',
+      audioSrc: 'audio/red.mp3'
     },
     {
-      word: 'tired',
-      translation: 'уставший',
-      image: 'img/tired.jpg',
-      audioSrc: 'audio/tired.mp3'
+      word: 'green',
+      translation: 'зеленый',
+      image: 'img/green.jpg',
+      audioSrc: 'audio/green.mp3'
     },
     {
-      word: 'surprised',
-      translation: 'удивлённый',
-      image: 'img/surprised.jpg',
-      audioSrc: 'audio/surprised.mp3'
+      word: 'pink',
+      translation: 'розовый',
+      image: 'img/pink.jpg',
+      audioSrc: 'audio/pink.mp3'
     },
     {
-      word: 'scared',
-      translation: 'испуганный',
-      image: 'img/scared.jpg',
-      audioSrc: 'audio/scared.mp3'
+      word: 'blue',
+      translation: 'синий',
+      image: 'img/blue.jpg',
+      audioSrc: 'audio/blue.mp3'
     },
     {
-      word: 'smile',
-      translation: 'улыбка',
-      image: 'img/smile.jpg',
-      audioSrc: 'audio/smile.mp3'
+      word: 'black',
+      translation: 'черный',
+      image: 'img/black.jpg',
+      audioSrc: 'audio/black.mp3'
     },
     {
-      word: 'laugh',
-      translation: 'смех',
-      image: 'img/laugh.jpg',
-      audioSrc: 'audio/laugh.mp3'
+      word: 'white',
+      translation: 'белый',
+      image: 'img/white.jpg',
+      audioSrc: 'audio/white.mp3'
     }
   ]
 ]

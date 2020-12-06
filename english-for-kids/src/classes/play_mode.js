@@ -2,6 +2,7 @@
  //import _delay from './../../helpers/_delay';
  import Card from "./card";
  import Router from './router';
+import Statistics from './statistics';
  import TrainMode from './train_mode';
 
  export default class PlayMode {
@@ -15,7 +16,7 @@
 
 
      static setGame() {
-         console.log('PlayMode @setGame');
+       //  console.log('PlayMode @setGame');
          this.appData['errors'] = 0;
 
          this.setShuffleCards();
@@ -26,7 +27,7 @@
      }
 
      static playGame() {
-         console.log('PlayMode @playGame');
+        // console.log('PlayMode @playGame');
 
          //win
          if (this.appData['playCards'].length == 0) {
@@ -49,7 +50,7 @@
 
 
      static playLast() {
-         console.log('PlayMode @playLast');
+        // console.log('PlayMode @playLast');
          if (this.appData['playCards'].length == 0) return;
 
          const cards = this.appData['playCards'];
@@ -59,7 +60,7 @@
 
      //handle sound & cards -> draw stars
      static checkCard(clickedCard) {
-         console.log('PlayMode @checkCard');
+        // console.log('PlayMode @checkCard');
 
          const cardName = this.appData['playCards'].last().word;
          const starContainer = document.querySelector('.stars');
@@ -73,6 +74,10 @@
              Card.play('audio/correct.mp3');
              this.appData['playCards'].pop();
              clickedCard.classList.add('card__correct');
+
+            //statistic
+            Statistics.addPointToStatistic(this.appData, clickedCard.dataset.name, 'hit');
+
              this.playGame();
 
              //error
@@ -81,13 +86,16 @@
              const div = document.createElement('div');
              div.className = 'star-grey';
              starContainer.appendChild(div);
-             Card.play('audio/error.mp3')
+             Card.play('audio/error.mp3');
+               //statistic
+            Statistics.addPointToStatistic(this.appData, clickedCard.dataset.name, 'mis');
+
          }
      }
 
      //handle change for repeat button
      static changeForRepeatButton() {
-         console.log('PlayMode @changeForRepeatButton');
+        // console.log('PlayMode @changeForRepeatButton');
          let btn = document.querySelector('.game__button');
          const btn_parent = btn.parentNode;
          //del

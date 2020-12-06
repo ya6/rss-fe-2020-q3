@@ -5,12 +5,18 @@ import Router from './classes/router';
 import './assets/favicon.ico';
 
 import './main.scss';
+import Statistics from './classes/statistics';
 
 
 //init
 const appData = {
-  page: 'Main Page'
+  page: 'Main Page',
+  statCards: Statistics.makeStatisticData()
 };
+
+
+//add statistics
+
 const tracked_field = document.querySelector('.container-fluid');
 
 

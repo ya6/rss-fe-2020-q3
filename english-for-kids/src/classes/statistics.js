@@ -1,19 +1,20 @@
-
-import cards from './../data/cards';
+import statCards from './../data/cards';
 
 
 export default class Statistics {
-    static renderStatistics(container){
-         
-          //  appData['is_statistics'] = true;
-
-          container.innerHTML = '';
-
-            let content = [];
-            let div = document.createElement('div');
+  static renderStatistics(container) {
 
 
-            const part1 = `<table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+    const statCards = this.loadStatistics();
+    console.log('Statistics @renderStatistics', statCards);
+
+    container.innerHTML = '';
+
+    let content = [];
+    let div = document.createElement('div');
+
+
+    const part_1 = `<table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
             <thead>
               <tr>
                 <th class="th-sm" data-sort="name" data-order="desc">Word
@@ -32,41 +33,92 @@ export default class Statistics {
             </thead>
             <tbody>`;
 
-            const part2 = `<tr>
-            <td>Tiger Nixon</td>
-            <td>System Architect</td>
-            <td>Edinburgh</td>
-            <td>61</td>
-            <td>2011/04/25</td>
-            <td>$320,800</td>
-          </tr>`;
+    content.push(part_1);
+
+    //inner content
+
+    for (let index = 0; index < statCards[0].length; index++) {
+      let part_2_1 = `<tr><td>${statCards[0][index]}</td></tr>`
+      content.push(part_2_1);
+
+      for (let card of statCards[index + 1]) {
+
+        let part_2_2 = `
+        <tr><td>${card.word}</td>
+        <td>${card.translation}</td>
+        <td>${card.hit}</td>
+        <td>${card.mis}</td>
+        <td>${Math.round(card.hit/(card.hit+card.mis)*100 ?? 0)}</td>
+        <td>${card.mis}</td>
+        </tr>
+         `
+        content.push(part_2_2);
+      }
+
+    }
 
 
-          //inner content
-           
-
-            const part3 = ` </tbody>
+    const part_3 = ` </tbody>
   <tfoot>
-    <tr>
-      <th>Name
-      </th>
-      <th>Position
-      </th>
-      <th>Office
-      </th>
-      <th>Age
-      </th>
-      <th>Start date
-      </th>
-      <th>Salary
-      </th>
-    </tr>
+  <tr>
+  <th class="th-sm" data-sort="name" data-order="desc">Word
+  </th>
+  <th class="th-sm">Translation
+  </th>
+  <th class="th-sm">Hit
+  </th>
+  <th class="th-sm">Miss
+  </th>
+  <th class="th-sm">% of Hits
+  </th>
+  <th class="th-sm">Train
+  </th>
+</tr>
   </tfoot>
 </table>`
 
-             content.push(part1, part2, part3);
-            div.innerHTML = `${content.join('')}`;
+    content.push(part_3)
+    div.innerHTML = `${content.join('')}`;
 
-            container.append(div);
+    container.append(div);
+  }
+  static makeStatisticData() {
+    console.log('Statistic @makeStatisticData');
+    for (let index = 0; index < statCards[0].length; index++) {
+
+      for (let card of statCards[index + 1]) {
+
+        card.hit = 0;
+        card.mis = 0;
+        card.train = 0;
+
+      }
     }
-} 
+    // this.saveStatistics(statCards);
+    return statCards;
+  }
+
+  static addPointToStatistic(appData, word, type) {
+    console.log('Statistic @PlusPointToStatistic');
+
+    console.log(appData.statCards[0].indexOf(appData.page));
+    const category = appData.statCards[0].indexOf(appData.page) + 1;
+    for (const card of appData.statCards[category]) {
+      if (card.word === word) {
+        card[type] += 1;
+      }
+    }
+  }
+
+  static saveStatistics(appData) {
+    localStorage.setItem('statistics', JSON.stringify(appData.statCards));
+
+  }
+
+  static loadStatistics() {
+    // localStorage.getItem('statistics');
+    return JSON.parse(localStorage.getItem('statistics'));
+
+  }
+
+}

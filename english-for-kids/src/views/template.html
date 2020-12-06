@@ -4,88 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/src/assets/favicon.ico">
+    <link rel="shortcut icon" href="./assets/img/favicon.ico">
 
     <title><%= htmlWebpackPlugin.options.title %></title>
     <style>
-        .game {
-            margin: 2rem 0 0;
-
-        }
-
-        .game__button {
-            background: linear-gradient(180deg, #fd6a63, #f7820e);
-            width: 50%;
-            margin: 0 auto !important;
-            display: block !important;
-            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
-            font-size: 1.3rem;
-
-        }
-
-        .repeat__button {
-            background: linear-gradient(180deg, #fd6a63, #f7820e);
-            width: 10%;
-            margin: 0 auto !important;
-            display: block !important;
-            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
-            font-size: 1.3rem;
-            animation: getSmaller 0.5s;
-
-        }
-
-        @keyframes getSmaller {
-            from {
-                width: 50%;
-            }
-
-            to {
-                width: 10%;
-            }
-        }
-
-
-
-
-        /* .hidden {
-            visibility: hidden;
-        } */
-
-
-        .popup {
-
-            display: flex;
-            flex-direction: column;
-            padding:2rem;
-
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            width: 30rem;
-            height: 30rem;
-            transform: translate(-50%, -50%);
-            z-index: 999;
-            transition: opacity 0.25s linear, visibility 0.25s linear;
-            background-color: rgba(255, 255,255, 0.7);
-
-            border-radius: 9px;
-            justify-content: space-around;
-            /* align-items: center; */
-        }
-
-        .popup__img {
-       height: 20rem;       
-        }
-        .popup div {
-            margin: 0.5rem;
-        }
-
-        .popup button {
-            display: block !important;
-            width: 100%;
-            margin: 0 auto;
-            font-size: 2rem;
-        }
+    
     </style>
 
 </head>

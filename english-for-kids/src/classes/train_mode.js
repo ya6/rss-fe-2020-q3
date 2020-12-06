@@ -22,7 +22,7 @@ export default class TrainMode {
 
     static rotateCard(target) {
         const card = target.parentElement.parentElement;
-        console.log('TrainMode @rotateCard', card.parentElement.parentElement);
+      //  console.log('TrainMode @rotateCard', card.parentElement.parentElement);
 
         card.children[0].classList.add('card--rotate-180');
         card.children[1].classList.add('card--rotate-360');

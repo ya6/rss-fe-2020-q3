@@ -35,7 +35,7 @@ export default class Card {
 
                 div.innerHTML = `
                 <div class="card card__train">
-                <div class="front" data-sound = "${card.audioSrc}" style="background-image: url(./assets/${card.image });">
+                <div class="front" data-sound = "${card.audioSrc}" data-name="${card.word}" style="background-image: url(./assets/${card.image });">
                ${card.word}
                <div class="rotate"></div>
                 </div> 

@@ -6,8 +6,6 @@
 
 
 
-
-
 body {
 
 	background: #f5f3f5;
@@ -232,19 +230,18 @@ background-size: cover;
 }
 
 
-
 .tgl-skewed {
 	+.tgl-btn {
 		overflow: hidden;
-		// transform: skew(-10deg);
+		
 		backface-visibility: hidden;
 		transition: all .2s ease;
-		// font-family: sans-serif;
+	
 		background: linear-gradient(#0099ae, #00bf82);
 
 		&:after,
 		&:before {
-			// transform: skew(10deg);
+		
 			display: inline-block;
 			transition: all .2s ease;
 			width: 100%;
@@ -312,14 +309,14 @@ background-size: cover;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	justify-content: space-between;
-	/* grid-column-gap: 85%; */
+	
 	align-items: center;
 
 }
 
 .container__inner {
 	display: grid;
-	/* align-items: start | end | center | stretch; */
+	
 
 	grid-template-columns: repeat(auto-fill, minmax(15.75rem, 18.75rem));
 	grid-template-rows: 1fr 1fr;
@@ -447,3 +444,73 @@ background-size: cover;
 }
 
 
+.game {
+	margin: 2rem 0 0;
+
+}
+
+.game__button {
+	background: linear-gradient(180deg, #fd6a63, #f7820e);
+	width: 50%;
+	margin: 0 auto !important;
+	display: block !important;
+	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+	font-size: 1.3rem;
+
+}
+
+.repeat__button {
+	background: linear-gradient(180deg, #fd6a63, #f7820e);
+	width: 100px;
+	margin: 0 auto !important;
+	display: block !important;
+	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+	font-size: 1.3rem;
+	animation: getSmaller 0.5s;
+
+}
+
+@keyframes getSmaller {
+	from {
+		width: 50%;
+	}
+
+	to {
+		width: 100px;
+	}
+}
+
+.popup {
+
+	display: flex;
+	flex-direction: column;
+	padding:2rem;
+
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 30rem;
+	height: 30rem;
+	transform: translate(-50%, -50%);
+	z-index: 999;
+	transition: opacity 0.25s linear, visibility 0.25s linear;
+	background-color: rgba(255, 255,255, 0.7);
+
+	border-radius: 9px;
+	justify-content: space-around;
+	
+}
+
+.popup__img {
+height: 20rem;       
+}
+.popup div {
+	margin: 0.5rem;
+}
+
+.popup button {
+	display: block !important;
+	width: 100%;
+	margin: 0 auto;
+	font-size: 2rem;
+}
