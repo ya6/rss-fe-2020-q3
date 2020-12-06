@@ -2,20 +2,20 @@ import statCards from './../data/cards';
 
 
 export default class Statistics {
-  static renderStatistics(container,addData) {
+  static renderStatistics(container, addData) {
 
 
-    const statCards = this.loadStatistics()  || addData.statCards;
-   // console.log('Statistics @renderStatistics', statCards);
+    const statCards = this.loadStatistics() || addData.statCards;
+    // console.log('Statistics @renderStatistics', statCards);
 
     container.innerHTML = '';
-if (typeof table !== 'undefined') {
-  table.parentElement.removeChild(table);
-}
+    if (typeof table !== 'undefined') {
+      table.parentElement.removeChild(table);
+    }
     let content = [];
     let div = document.createElement('div');
     div.setAttribute('id', 'table');
-  
+
 
 
     const part_1 = `<table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
@@ -46,7 +46,7 @@ if (typeof table !== 'undefined') {
       content.push(part_2_1);
 
       for (let card of statCards[index + 1]) {
-let hitPercent = card.hit == 0 ? 0 : Math.round(card.hit/(card.hit+card.mis)*100);
+        let hitPercent = card.hit == 0 ? 0 : Math.round(card.hit / (card.hit + card.mis) * 100);
         let part_2_2 = `
         <tr><td>${card.word}</td>
         <td>${card.translation}</td>
@@ -87,8 +87,16 @@ let hitPercent = card.hit == 0 ? 0 : Math.round(card.hit/(card.hit+card.mis)*100
 
     container.parentElement.append(div);
   }
+
+
   static makeStatisticData() {
-   // console.log('Statistic @makeStatisticData');
+   
+    const _statCards = this.loadStatistics();
+   
+    if ( _statCards !== null) {
+      return _statCards;
+    }
+    // console.log('Statistic @makeStatisticData');
     for (let index = 0; index < statCards[0].length; index++) {
 
       for (let card of statCards[index + 1]) {
@@ -104,9 +112,9 @@ let hitPercent = card.hit == 0 ? 0 : Math.round(card.hit/(card.hit+card.mis)*100
   }
 
   static addPointToStatistic(appData, word, type) {
-   // console.log('Statistic @PlusPointToStatistic');
+    // console.log('Statistic @PlusPointToStatistic');
 
-   // console.log(appData.statCards[0].indexOf(appData.page));
+    // console.log(appData.statCards[0].indexOf(appData.page));
     const category = appData.statCards[0].indexOf(appData.page) + 1;
     for (const card of appData.statCards[category]) {
       if (card.word === word) {
@@ -117,7 +125,7 @@ let hitPercent = card.hit == 0 ? 0 : Math.round(card.hit/(card.hit+card.mis)*100
   }
 
   static saveStatistics(appData) {
-   // console.log('Statistics @saveStatistics', appData.statCards);
+    // console.log('Statistics @saveStatistics', appData.statCards);
 
     localStorage.setItem('statistics', JSON.stringify(appData.statCards));
 
