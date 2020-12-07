@@ -27,7 +27,13 @@ export default class Statistics {
     <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
           <thead>
           <tr>    
-              <th class="th-sm"> Category
+              <th class="th-sm "><div class="brd d-flex justify-content-between align-items-center p-1">
+              <div class="brd"> Category </div >
+              <div  class="" style="width: 30px; height:30px">
+              <input  type="checkbox" id="stateInput">
+              <label  for="stateInput" class="arrows"></label>
+              </div>
+              </div>
                 </th>
                 <th class="th-sm"> Word
                 </th>
@@ -48,17 +54,14 @@ export default class Statistics {
     content.push(part_1);
 
     //inner content
-
     for (let index = 0; index < statCards[0].length; index++) {
-      //  let part_2_1 = `<tr><td bgcolor="#d9fcf7" colspan="6">${statCards[0][index]}</td></tr>`
-      // content.push(part_2_1);
-
+    
       for (let card of statCards[index + 1]) {
 
         let hitPercent = card.hit == 0 ? 0 : Math.round(card.hit / (card.hit + card.mis) * 100);
         let part_2_2 = `
         <tr>
-        <td>${statCards[0][index]}</td>
+        <td>${card.category}</td>
         <td>${card.word}</td>
         <td>${card.translation}</td>
         <td>${card.hit}</td>
@@ -111,6 +114,7 @@ export default class Statistics {
         card.hit = 0;
         card.mis = 0;
         card.train = 0;
+        card.category = statCards[0][index];
 
       }
     }

@@ -8,7 +8,8 @@ import './main.scss';
 
 //init
 const appData = {
-  page: 'Main Page',
+ // page: 'Main Page',
+ page: 'Statistics',
   statCards: Statistics.loadStatistics()
 };
 

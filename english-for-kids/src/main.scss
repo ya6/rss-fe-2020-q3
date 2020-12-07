@@ -514,3 +514,48 @@ height: 20rem;
 	margin: 0 auto;
 	font-size: 2rem;
 }
+
+// arrows vendor
+.arrows {
+	position: relative;
+	cursor: pointer;
+  }
+  #stateInput {
+	display: none;
+  }
+  #stateInput + .arrows:after {
+	content: ' ';
+	position: absolute;
+	left: 10px;
+	bottom: -30px;
+	border: 10px solid transparent;
+	border-top: 10px solid black;
+	border-width: 12px 7px;
+  }
+  #stateInput:checked + .arrows:after {
+	content: ' ';
+	position: absolute;
+	left: 10px;
+	bottom: -30px;
+	border: 10px solid transparent;
+	border-top: 10px solid gray;
+	border-width: 12px 7px;
+  }
+  #stateInput + .arrows:before {
+	content: ' ';
+	position: absolute;
+	left: 10px;
+	bottom: -2px;
+	border: 10px solid transparent;
+	border-bottom: 10px solid gray;
+	border-width: 12px 7px;
+  }
+  #stateInput:checked + .arrows:before {
+	content: ' ';
+	position: absolute;
+	left: 10px;
+	bottom: -2px;
+	border: 10px solid transparent;
+	border-bottom: 10px solid black;
+	border-width: 12px 7px;
+  }
