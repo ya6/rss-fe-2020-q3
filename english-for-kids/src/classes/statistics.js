@@ -20,15 +20,15 @@ export default class Statistics {
 
 
 
-    const part_1 = `<div class="d-flex justify-content-end m-2">
+    const part_1 = `<div class="d-flex justify-content-end mb-2">
     <button id ="difficult" class="btn btn-warning m-2" type="button">Repeat difficult words</button>
     <button  id= "reset" class="btn btn-danger m-2" type="button">Reset</button>
     </div> 
     <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
           <thead>
           <tr>    
-              <th class="th-sm "><div class="brd d-flex justify-content-between align-items-center p-1">
-              <div class="brd"> Category </div >
+              <th class="th-sm "><div class="d-flex justify-content-between align-items-center p-1">
+              <div class=""> Category </div >
               <div  class="" style="width: 30px; height:30px">
               <input  type="checkbox" id="stateInput">
               <label  for="stateInput" class="arrows"></label>
@@ -54,9 +54,26 @@ export default class Statistics {
     content.push(part_1);
 
     //inner content
-    for (let index = 0; index < statCards[0].length; index++) {
+    // for (let index = 0; index < statCards[0].length; index++) {
     
-      for (let card of statCards[index + 1]) {
+    //   for (let card of statCards[index + 1]) {
+
+    //     let hitPercent = card.hit == 0 ? 0 : Math.round(card.hit / (card.hit + card.mis) * 100);
+    //     let part_2_2 = `
+    //     <tr>
+    //     <td>${card.category}</td>
+    //     <td>${card.word}</td>
+    //     <td>${card.translation}</td>
+    //     <td>${card.hit}</td>
+    //     <td>${card.mis}</td>
+    //     <td>${hitPercent}</td>
+    //     <td>${card.train}</td>
+    //     </tr>
+    //      `
+
+    
+    
+      for (let card of statCards) {
 
         let hitPercent = card.hit == 0 ? 0 : Math.round(card.hit / (card.hit + card.mis) * 100);
         let part_2_2 = `
@@ -70,10 +87,10 @@ export default class Statistics {
         <td>${card.train}</td>
         </tr>
          `
+
         content.push(part_2_2);
       }
-
-    }
+    
 
     const part_3 = ` </tbody>
   <tfoot>
@@ -106,7 +123,7 @@ export default class Statistics {
 
   static makeStatisticsData() {
     //  console.log('Statistic @makeStatisticsData -> statCards ', statCards);
-
+const _statCards = [];
     for (let index = 0; index < statCards[0].length; index++) {
 
       for (let card of statCards[index + 1]) {
@@ -115,24 +132,23 @@ export default class Statistics {
         card.mis = 0;
         card.train = 0;
         card.category = statCards[0][index];
-
+        _statCards.push(card);
       }
     }
 
-    return statCards;
+    return _statCards;
   }
 
 
   static addPointToStatistic(appData, word, type) {
-    // console.log('Statistic @PlusPointToStatistic', appData, word, type);
-
-    const category = appData.statCards[0].indexOf(appData.page) + 1;
-    for (const card of appData.statCards[category]) {
+    
+    for (const card of appData.statCards) {
       if (card.word === word) {
         card[type] += 1;
       }
     }
     this.saveStatistics(appData);
+
   }
 
   static saveStatistics(appData) {
