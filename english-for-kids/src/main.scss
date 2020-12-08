@@ -17,10 +17,10 @@ body {
 	display: flex;
 	justify-content: end;
 	flex-wrap: nowrap;
-	overflow-x: auto ;
+	overflow-x: auto;
 	align-items: center;
 	height: 3rem;
-	
+
 	margin-bottom: 0.7rem;
 	padding: 0 2.4rem;
 
@@ -42,11 +42,11 @@ body {
 
 .star-grey {
 	flex: 0 0 auto;
-//	display: inline-block;
+	//	display: inline-block;
 	width: 3rem;
 	height: 3rem;
 	background-image: url('./assets/img/icon/star_grey.png');
-background-size: cover;
+	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
 	margin: 0 0.3rem;
@@ -233,15 +233,15 @@ background-size: cover;
 .tgl-skewed {
 	+.tgl-btn {
 		overflow: hidden;
-		
+
 		backface-visibility: hidden;
 		transition: all .2s ease;
-	
+
 		background: linear-gradient(#0099ae, #00bf82);
 
 		&:after,
 		&:before {
-		
+
 			display: inline-block;
 			transition: all .2s ease;
 			width: 100%;
@@ -309,14 +309,14 @@ background-size: cover;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	justify-content: space-between;
-	
+
 	align-items: center;
 
 }
 
 .container__inner {
 	display: grid;
-	
+
 
 	grid-template-columns: repeat(auto-fill, minmax(15.75rem, 18.75rem));
 	grid-template-rows: 1fr 1fr;
@@ -357,7 +357,9 @@ background-size: cover;
 	background-position: center;
 
 }
-.card__play:hover, .card__train:hover  {
+
+.card__play:hover,
+.card__train:hover {
 	box-shadow: 0 10px 20px rgba(0, 0, 0, .4);
 	transition: 0.3s;
 
@@ -484,7 +486,7 @@ background-size: cover;
 
 	display: flex;
 	flex-direction: column;
-	padding:2rem;
+	padding: 2rem;
 
 	position: fixed;
 	top: 50%;
@@ -494,16 +496,17 @@ background-size: cover;
 	transform: translate(-50%, -50%);
 	z-index: 999;
 	transition: opacity 0.25s linear, visibility 0.25s linear;
-	background-color: rgba(255, 255,255, 0.7);
+	background-color: rgba(255, 255, 255, 0.7);
 
 	border-radius: 9px;
 	justify-content: space-around;
-	
+
 }
 
 .popup__img {
-height: 20rem;       
+	height: 20rem;
 }
+
 .popup div {
 	margin: 0.5rem;
 }
@@ -519,11 +522,13 @@ height: 20rem;
 .arrows {
 	position: relative;
 	cursor: pointer;
-  }
-  #stateInput {
+}
+
+#stateInput {
 	display: none;
-  }
-  #stateInput + .arrows:after {
+}
+
+#stateInput+.arrows:after {
 	content: ' ';
 	position: absolute;
 	left: 10px;
@@ -531,8 +536,9 @@ height: 20rem;
 	border: 10px solid transparent;
 	border-top: 10px solid black;
 	border-width: 12px 7px;
-  }
-  #stateInput:checked + .arrows:after {
+}
+
+#stateInput:checked+.arrows:after {
 	content: ' ';
 	position: absolute;
 	left: 10px;
@@ -540,8 +546,9 @@ height: 20rem;
 	border: 10px solid transparent;
 	border-top: 10px solid gray;
 	border-width: 12px 7px;
-  }
-  #stateInput + .arrows:before {
+}
+
+#stateInput+.arrows:before {
 	content: ' ';
 	position: absolute;
 	left: 10px;
@@ -549,8 +556,9 @@ height: 20rem;
 	border: 10px solid transparent;
 	border-bottom: 10px solid gray;
 	border-width: 12px 7px;
-  }
-  #stateInput:checked + .arrows:before {
+}
+
+#stateInput:checked+.arrows:before {
 	content: ' ';
 	position: absolute;
 	left: 10px;
@@ -558,4 +566,34 @@ height: 20rem;
 	border: 10px solid transparent;
 	border-bottom: 10px solid black;
 	border-width: 12px 7px;
-  }
+}
+
+.github {
+
+	width: 30px;
+	height: 30px;
+	// border: 1px solid red;
+	background-image: url('./assets/img/github-logo.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center;
+	padding: 2px;
+
+}
+
+.rsschool {
+
+	width: 80px;
+	height: 30px;
+	//  border: 1px solid red;
+	background-image: url('./assets/img/rs_school_js.svg');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center;
+	padding: 2px;
+
+
+}
+
+// /assets/img/github-logo.png
+// /assets/img/rs_school_js.svg
