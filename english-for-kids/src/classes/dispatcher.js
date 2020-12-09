@@ -7,7 +7,7 @@ import Statistics from './statistics';
 
 export default class Dispatcher {
     static clickDispatcher(e) {
-        // console.log('dispatcher', e.target);
+         console.log('dispatcher', e.target);
 
         const appData = this.appData;
         let page;
@@ -17,7 +17,7 @@ export default class Dispatcher {
 
 
         // close menu
-        if (typeof e == 'object' && e.target.parentElement.tagName == 'DIV' || typeof e == 'object' && e.target.tagName == 'IMG' || e.target.tagName == 'A') {
+        if (typeof e == 'object' && e.target.parentElement.tagName == 'DIV' || e.target.tagName == 'DIV' || typeof e == 'object' && e.target.tagName == 'IMG' || e.target.tagName == 'A') {
             Menu.close();
         }
 
