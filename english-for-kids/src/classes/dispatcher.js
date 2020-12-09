@@ -7,10 +7,13 @@ import Statistics from './statistics';
 
 export default class Dispatcher {
     static clickDispatcher(e) {
-      //  console.log('dispatcher', e.target);
+        // console.log('dispatcher', e.target);
 
         const appData = this.appData;
         let page;
+
+        // console.log('dispatcher', appData);
+
 
 
         // close menu
@@ -91,15 +94,14 @@ export default class Dispatcher {
                 Router.route(appData);
             }
         }
-        //handle sort
-        if (typeof stateInput !== 'undefined') {
-            if (e.target == stateInput) {
 
-              //  console.log('if');
-               
-                Statistics.sortStatistics(appData, stateInput.checked);
-            }
-        }   
+        if (e.target.classList.contains('stateInput')) {
+
+    
+            Statistics.sortStatistics(appData, e.target);
+
+
+        }
 
     }
 }

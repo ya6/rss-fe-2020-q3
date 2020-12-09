@@ -7,7 +7,7 @@ import Menu from './menu'
 export default class Controller {
 
     static index(appData) {
-        //   console.log('Controller @index');
+         //  console.log('Controller @index', appData);
 
         //model 
         appData = MakeData.makePage(appData);
@@ -22,7 +22,7 @@ export default class Controller {
 
 
     static statistics(appData) {
-         //  console.log('Controller @statistics', appData);
+        // console.log('Controller @statistics', appData);
 
         // view
         const cards_container = document.querySelector('.container__inner');

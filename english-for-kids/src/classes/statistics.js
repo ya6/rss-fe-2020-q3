@@ -34,22 +34,64 @@ export default class Statistics {
               <th class="th-sm "><div class="d-flex justify-content-between align-items-center p-1">
               <div class=""> Category </div >
               <div  class="" style="width: 30px; height:30px">
-              <input  type="radio" id="stateInput">
-              <label  for="stateInput" class="arrows"></label>
+              <input  type="checkbox" class="stateInput"   id="stateInput_1" name='sort' ${appData.cardFilter.category}  value='category' >
+              <label  for="stateInput_1" class="arrows"></label>
               </div>
               </div>
                 </th>
-                <th class="th-sm"> Word
+                <th class="th-sm">
+                <div class="d-flex justify-content-between align-items-center p-1"> 
+                <div class=""> Word </div >
+                <div  class="" style="width: 30px; height:30px">
+                <input  type="checkbox" class="stateInput" id="stateInput_2" name='sort'  ${appData.cardFilter.word} value='word'>
+                <label  for="stateInput_2" class="arrows"></label>
+                </div>
+                </div>
                 </th>
-                <th class="th-sm">Transl
+                <th class="th-sm">
+                <div class="d-flex justify-content-between align-items-center p-1"> 
+                <div class=""> Translation </div >
+                <div  class="" style="width: 30px; height:30px">
+                <input  type="checkbox" class="stateInput" id="stateInput_3" name='sort' ${appData.cardFilter.translation} value='translation' ">
+                <label  for="stateInput_3" class="arrows"></label>
+                </div>
+                </div>
                 </th>
-                <th class="th-sm">Hit
+                <th class="th-sm">
+                <div class="d-flex justify-content-between align-items-center p-1"> 
+                <div class=""> Hit </div >
+                <div  class="" style="width: 30px; height:30px">
+                <input  type="checkbox" class="stateInput" id="stateInput_4" name='sort' ${appData.cardFilter.hit} value='hit' >
+                <label  for="stateInput_4" class="arrows"></label>
+                </div>
+                
                 </th>
-                <th class="th-sm">Miss
+                <th class="th-sm">
+                <div class="d-flex justify-content-between align-items-center p-1"> 
+                <div class=""> Miss </div >
+                <div  class="" style="width: 30px; height:30px">
+                <input  type="checkbox" class="stateInput" id="stateInput_5" name='sort' ${appData.cardFilter.miss} value='miss'>
+                <label  for="stateInput_5" class="arrows"></label>
+                </div>
+                </div>
                 </th>
-                <th class="th-sm">% of Hits
+                <th class="th-sm">
+                <div class="d-flex justify-content-between align-items-center p-1"> 
+                <div class=""> % of Hits </div >
+                <div  class="" style="width: 30px; height:30px">
+                <input  type="checkbox" class="stateInput" id="stateInput_6" name='sort' ${appData.cardFilter.percent} value='percent'>
+                <label  for="stateInput_6" class="arrows"></label>
+                </div>
+                </div>
                 </th>
-                <th class="th-sm">Train
+                <th class="th-sm">
+                <div class="d-flex justify-content-between align-items-center p-1"> 
+                <div class=""> Train </div >
+                <div  class="" style="width: 30px; height:30px">
+                <input  type="checkbox" class="stateInput" id="stateInput_7" name='sort' ${appData.cardFilter.train} value='train'>
+                <label  for="stateInput_7" class="arrows"></label>
+                </div>
+                </div>
                 </th>
               </tr>
             </thead>
@@ -57,37 +99,17 @@ export default class Statistics {
 
     content.push(part_1);
 
-    //inner content
-    // for (let index = 0; index < statCards[0].length; index++) {
-    
-    //   for (let card of statCards[index + 1]) {
-
-    //     let hitPercent = card.hit == 0 ? 0 : Math.round(card.hit / (card.hit + card.mis) * 100);
-    //     let part_2_2 = `
-    //     <tr>
-    //     <td>${card.category}</td>
-    //     <td>${card.word}</td>
-    //     <td>${card.translation}</td>
-    //     <td>${card.hit}</td>
-    //     <td>${card.mis}</td>
-    //     <td>${hitPercent}</td>
-    //     <td>${card.train}</td>
-    //     </tr>
-    //      `
-
-    
-    
       for (let card of statCards) {
 
-        let hitPercent = card.hit == 0 ? 0 : Math.round(card.hit / (card.hit + card.mis) * 100);
+       // let hitPercent = card.hit == 0 ? 0 : Math.round(card.hit / (card.hit + card.miss) * 100);
         let part_2_2 = `
         <tr>
         <td>${card.category}</td>
         <td>${card.word}</td>
         <td>${card.translation}</td>
         <td>${card.hit}</td>
-        <td>${card.mis}</td>
-        <td>${hitPercent}</td>
+        <td>${card.miss}</td>
+        <td>${card.percent}</td>
         <td>${card.train}</td>
         </tr>
          `
@@ -126,28 +148,29 @@ export default class Statistics {
 
 
   static makeStatisticsData(appData) {
-   //   console.log('Statistic @makeStatisticsData -> statCards ', appData);
+     // console.log('Statistic @makeStatisticsData', appData);
 const _statCards = [];
     for (let index = 0; index < statCards[0].length; index++) {
 
       for (let card of statCards[index + 1]) {
 
         card.hit = 0;
-        card.mis = 0;
+        card.miss = 0;
         card.train = 0;
+        card.percent = 0;
         card.category = statCards[0][index];
         _statCards.push(card);
       }
     }
 appData.statCards = _statCards;
 
-const cardFilter = {'category': false,
-'word': false,
-'Translate': false,
-'Hit': false,
-'Miss': false,
-'percent': false,
-'train': false
+const cardFilter = {'category': 'checked',
+'word': '',
+'translation': '',
+'hit': '',
+'miss':'',
+'percent': '',
+'train': ''
 
 }
 appData.cardFilter = cardFilter;
@@ -157,62 +180,87 @@ appData.cardFilter = cardFilter;
 
 
   static addPointToStatistic(appData, word, type) {
+   // console.log('Statistic @addPointToStatistic', appData);
+    
     
     for (const card of appData.statCards) {
       if (card.word === word) {
         card[type] += 1;
+        card.percent = card.hit == 0 ? 0 : Math.round(card.hit / (card.hit + card.miss) * 100);
+        
       }
     }
+    
     this.saveStatistics(appData);
 
   }
 
   static saveStatistics(appData) {
-    // console.log('Statistics @saveStatistics', appData.statCards);
+    // console.log('Statistics @saveStatistics', appData);
 
     localStorage.setItem('statistics', JSON.stringify(appData.statCards));
+    localStorage.setItem('filter', JSON.stringify(appData.cardFilter));
 
   }
 
   static loadStatistics(appData) {
-  //  console.log('Statistics @loadStatistics', appData);
+   // console.log('Statistics @loadStatistics', appData);
 
 
     const statCards = JSON.parse(localStorage.getItem('statistics'));
+    const cardFilter = JSON.parse(localStorage.getItem('filter'));
     //  console.log('Statistics @loadStatistics statCards', statCards);
 
     if (statCards !== null) {
 
       appData.statCards = statCards;
-
-     // console.log('Statistics @loadStatistics -1-');
+      appData.cardFilter = cardFilter;
 
       return appData;
     }
     else {
-     // console.log('Statistics @loadStatistics ');
+
       return this.makeStatisticsData(appData);
     }
    
   }
 
-  static sortStatistics(appData,asc) {
-   // console.log('Statistics @sortStatistics statCards',  asc);
+  static sortStatistics(appData, el) {
+   // console.log('Statistics @sortStatistics statCards',  el);
+  
+    const param = el.value;
+  
+    appData.cardFilter = {'category': '',
+    'word': '',
+    'translation': '',
+    'hit': '',
+    'miss':'',
+    'percent': '',
+    'train': ''
+    
+    }
 
-    if(asc) {appData.statCards= appData.statCards.sort(function(a,b){
-      if ( a.word>b.word) return 1;
-      if ( a.word==b.word) return 0;
-      if ( a.word<b.word) return -1;
+    if ( el.checked) {
+      appData.cardFilter[param] = 'checked';
+      
+    } else  appData.cardFilter[param] = '';
+
+
+    if( el.checked) {appData.statCards= appData.statCards.sort(function(a,b){
+
+      if ( a[param]>b[param]) return 1;
+      if ( a[param]==b[param]) return 0;
+      if (a[param]<b[param]) return -1;
       // a.category>b.category
     })} else {
     appData.statCards= appData.statCards.sort(function(a,b){
-      if ( a.word<b.word) return 1;
-      if ( a.word==b.word) return 0;
-      if ( a.word>b.word) return -1;
-      // a.category>b.category
+      if ( a[param]<b[param]) return 1;
+      if ( a[param]==b[param]) return 0;
+      if ( a[param]>b[param]) return -1;
+    
     })};
-    // console.log('Statistics @sortStatistics statCards', appData.statCards);
-     this.saveStatistics(appData);
+
+    
 
 Router.route(appData);
   }
