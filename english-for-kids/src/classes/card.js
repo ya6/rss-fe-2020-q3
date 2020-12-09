@@ -10,6 +10,10 @@ export default class Card {
             table.parentElement.removeChild(table);
         }
 
+        if (typeof empty_page !== 'undefined') {
+            empty_page.parentElement.removeChild(empty_page);
+        }
+
 
         if (appData['page'] === 'Main Page') {
             let orange_class = '';
@@ -33,6 +37,7 @@ export default class Card {
 
             // train
             game.innerHTML = ``;
+
 
             for (let card of appData['cards']) {
                 let div = document.createElement('div');
@@ -67,10 +72,32 @@ export default class Card {
     }
 
     static play(scr) {
+       
+            
+            const audio = new Audio();
+            audio.src = `./assets/${scr}`;
+            audio.currentTime = 0;
+            audio.play();
+      
 
-        const audio = new Audio();
-        audio.src = `./assets/${scr}`;
-        audio.currentTime = 0;
-        audio.play();
+       
     }
+
+
+    static renderEmptyPage(container) {
+
+        if (typeof table !== 'undefined') {
+            table.parentElement.removeChild(table);
+        }
+        if (typeof empty_page !== 'undefined') {
+            empty_page.parentElement.removeChild(empty_page);
+        }
+
+        let div = document.createElement('div');
+
+        div.innerHTML = `<div id = 'empty_page' class="mx-5 d-flex p-5 justify-content-center align-items-center flex-wrap"> <h1 class="text-success"><strong>You have no mistakes!!! </strong> <h1></div>`;
+
+        container.parentElement.append(div);
+    }
+
 }

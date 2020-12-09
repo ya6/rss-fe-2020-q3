@@ -38,7 +38,7 @@ export default class MakeData {
   static makeDifficultPage(appData, col = 8) {
 
     // menu
-    appData['menu'] = ['Main Page', ...cards[0], 'delimiter', 'Repeat difficult words', 'delimiter', 'Statistics'];
+    appData['menu'] = ['Main Page', ...cards[0], 'delimiter', 'Statistics'];
     appData['cards'] = [];
 
     appData.statCards = appData.statCards.sort(function (a, b) {

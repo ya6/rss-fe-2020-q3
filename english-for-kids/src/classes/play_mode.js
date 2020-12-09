@@ -86,7 +86,7 @@
              starContainer.appendChild(div);
              Card.play('audio/error.mp3');
              //statistic
-             Statistics.addPointToStatistic(this.appData, this.appData['playCards'].last().word, 'miss');
+             Statistics.addPointToStatistic(this.appData, this.appData['playCards'].last().word, 'mis');
 
          }
      }
@@ -117,6 +117,12 @@
 
 
      static makePopup(src, mess) {
+
+       // console.log('makePopup', document.querySelectorAll('.popup').length);
+
+         if ( document.querySelectorAll('.popup').length == 0 ) {
+            
+        
          const content =[];
      
        
@@ -140,6 +146,8 @@
          const btb_warning = document.querySelector('.btn-warning');
 
          btb_warning.addEventListener('click', PlayMode.goToMainPage);//maybe from dispatcher
+
+         }
 
      }
 

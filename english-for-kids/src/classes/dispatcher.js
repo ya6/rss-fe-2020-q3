@@ -7,11 +7,13 @@ import Statistics from './statistics';
 
 export default class Dispatcher {
     static clickDispatcher(e) {
-      //  console.log('dispatcher', e.target);
+       // console.log('dispatcher', e.target);
+
+      
 
         const appData = this.appData;
         let page;
-
+      
         // close menu
         if (typeof e == 'object' && e.target.parentElement.tagName == 'DIV' || e.target.tagName == 'DIV' || typeof e == 'object' && e.target.tagName == 'IMG' || e.target.tagName == 'A') {
             Menu.close();
@@ -35,15 +37,21 @@ export default class Dispatcher {
             Router.route(appData);
         }
 
+
+
         //block toggler for play
-        if (e.target == cb && appData['play']) {
+
+        // if (e.target == cb && appData['play'] || e.target==cb && appData.cards.length == 0)
+        if (e.target == cb && appData['play'] ) {
 
             e.preventDefault();
         }
 
+    
 
         // handle sounds for train
         if (e.target.classList.contains('front')) {
+            
 
             Card.play(e.target.dataset.sound || e.target.parentElement.dataset.sound);
 
@@ -100,6 +108,10 @@ export default class Dispatcher {
 
         }
 
+        // if (appData.page == "Repeat difficult words" && e.target == cb && appData.cards.length == 0) {
+        //     console.log('tut');
+        //     e.preventDefault();
+        // }
 
         // handle difficult page
         if (typeof difficult !== 'undefined') {
@@ -112,6 +124,7 @@ export default class Dispatcher {
               
             }
         }
+
 
 
     }

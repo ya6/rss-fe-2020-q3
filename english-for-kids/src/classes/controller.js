@@ -7,7 +7,7 @@ import Menu from './menu'
 export default class Controller {
 
     static index(appData) {
-         //  console.log('Controller @index', appData);
+        //  console.log('Controller @index', appData);
 
         //model 
         appData = MakeData.makePage(appData);
@@ -33,17 +33,21 @@ export default class Controller {
     }
 
     static difficult(appData) {
-  console.log('Controller @difficult', appData);
+      //  console.log('Controller @difficult', appData);
 
-   //model 
-    appData  = MakeData.makeDifficultPage(appData, 8);
+        //model 
+        appData = MakeData.makeDifficultPage(appData, 8);
 
-   // view
-   const cards_container = document.querySelector('.container__inner');
-   const menu_container = document.querySelector('.menu__box');
+        // view
+        const cards_container = document.querySelector('.container__inner');
+        const menu_container = document.querySelector('.menu__box');
 
-   Card.renderCards(cards_container, appData);
-   Menu.render(menu_container, appData);
+
+        Menu.render(menu_container, appData);
+
+        if (appData.cards.length > 0) {
+            Card.renderCards(cards_container, appData);
+        } else Card.renderEmptyPage(cards_container)
 
     }
 }
