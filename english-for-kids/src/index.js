@@ -7,11 +7,18 @@ import './main.scss';
 
 
 //init
+// const appData = {
+//  // page: 'Main Page',
+//  page: 'Statistics',
+//   statCards: Statistics.loadStatistics()
+// };
+
 const appData = {
-  page: 'Main Page',
- //page: 'Statistics',
-  statCards: Statistics.loadStatistics()
-};
+   page: 'Main Page',
+ // page: 'Statistics'
+ };
+ Statistics.loadStatistics(appData);
+ 
 
 const tracked_field = document.querySelector('.container-fluid');
 

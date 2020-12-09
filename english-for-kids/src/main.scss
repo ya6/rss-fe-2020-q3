@@ -525,7 +525,8 @@ body {
 }
 
 #stateInput {
-	display: none;
+	// display: none;
+	display: block;
 }
 
 #stateInput+.arrows:after {

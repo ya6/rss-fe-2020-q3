@@ -22,7 +22,7 @@ export default class Controller {
 
 
     static statistics(appData) {
-        //   console.log('Controller @statistics');
+           console.log('Controller @statistics', appData);
 
         // view
         const cards_container = document.querySelector('.container__inner');

@@ -1,12 +1,20 @@
 import statCards from './../data/cards';
+import Router from './router';
 
 
 export default class Statistics {
-  static renderStatistics(container, addData) {
 
+  static renderStatistics(container, appData) {
+    console.log('Statistics @renderStatistics', appData);
 
-    const statCards = this.loadStatistics();
-    // console.log('Statistics @renderStatistics', statCards);
+    
+   // console.log('renderStatistics--test--',Statistics.loadStatistics(appData));
+
+   // const statCards = this.loadStatistics(appData);
+   console.log('Statistics @renderStatistics ->statCards', appData.statCards);
+   const statCards = appData.statCards;
+
+    
 
     container.innerHTML = '';
     if (typeof table !== 'undefined') {
@@ -20,7 +28,10 @@ export default class Statistics {
 
 
 
-    const part_1 = `<div class="d-flex justify-content-end mb-2">
+    const part_1 = ` <input  type="radio" id="2">
+    <label  for="2" class="arrows"></label>
+    
+    <div class="d-flex justify-content-end mb-2">
     <button id ="difficult" class="btn btn-warning m-2" type="button">Repeat difficult words</button>
     <button  id= "reset" class="btn btn-danger m-2" type="button">Reset</button>
     </div> 
@@ -30,7 +41,7 @@ export default class Statistics {
               <th class="th-sm "><div class="d-flex justify-content-between align-items-center p-1">
               <div class=""> Category </div >
               <div  class="" style="width: 30px; height:30px">
-              <input  type="checkbox" id="stateInput">
+              <input  type="radio" id="stateInput">
               <label  for="stateInput" class="arrows"></label>
               </div>
               </div>
@@ -121,7 +132,7 @@ export default class Statistics {
   }
 
 
-  static makeStatisticsData() {
+  static makeStatisticsData(appData) {
     //  console.log('Statistic @makeStatisticsData -> statCards ', statCards);
 const _statCards = [];
     for (let index = 0; index < statCards[0].length; index++) {
@@ -135,8 +146,20 @@ const _statCards = [];
         _statCards.push(card);
       }
     }
+appData.statCards = _statCards;
 
-    return _statCards;
+const cardFilter = {'category': false,
+'word': false,
+'Translate': false,
+'Hit': false,
+'Miss': false,
+'percent': false,
+'train': false
+
+}
+appData.cardFilter = cardFilter;
+
+    return appData;
   }
 
 
@@ -158,18 +181,50 @@ const _statCards = [];
 
   }
 
-  static loadStatistics() {
+  static loadStatistics(appData) {
+    console.log('Statistics @loadStatistics', appData);
+
 
     const statCards = JSON.parse(localStorage.getItem('statistics'));
     //  console.log('Statistics @loadStatistics statCards', statCards);
 
     if (statCards !== null) {
 
-      return (statCards);
+      appData.statCards = statCards;
 
-    } else {
+      console.log('Statistics @loadStatistics -1-');
 
-      return this.makeStatisticsData();
+      return appData;
+    } if(appData.statCards)
+    {  console.log('Statistics @loadStatistics -2-');
+      return appData;
+    }
+
+     else {
+      console.log('Statistics @loadStatistics -3-');
+      return this.makeStatisticsData(appData);
     }
   }
+
+  static sortStatistics(appData,asc) {
+    console.log('Statistics @sortStatistics statCards',  asc);
+
+    if(asc) {appData.statCards= appData.statCards.sort(function(a,b){
+      if ( a.word>b.word) return 1;
+      if ( a.word==b.word) return 0;
+      if ( a.word<b.word) return -1;
+      // a.category>b.category
+    })} else {
+    appData.statCards= appData.statCards.sort(function(a,b){
+      if ( a.word<b.word) return 1;
+      if ( a.word==b.word) return 0;
+      if ( a.word>b.word) return -1;
+      // a.category>b.category
+    })};
+     console.log('Statistics @sortStatistics statCards', appData.statCards);
+     this.saveStatistics(appData);
+
+Router.route(appData);
+  }
+
 }
