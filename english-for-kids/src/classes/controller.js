@@ -33,8 +33,12 @@ export default class Controller {
     }
 
     static difficult(appData) {
- // console.log('Controller @difficult', appData);
- 
+  console.log('Controller @difficult', appData);
+
+   //model 
+    appData  = MakeData.makeDifficultPage(appData, 8);
+
+   // view
    const cards_container = document.querySelector('.container__inner');
    const menu_container = document.querySelector('.menu__box');
 
