@@ -8,7 +8,7 @@ import './main.scss';
 
 
 const appData = {
-   page: 'Main Page',
+  page: 'Main Page',
   //page: 'Statistics'
  };
  Statistics.loadStatistics(appData);
@@ -34,5 +34,4 @@ Router.route(appData);
 
 //todo 
 //icons on menu
-//footer
-//Hacker scope: 50 ok
+//Hacker scope: 75 ok

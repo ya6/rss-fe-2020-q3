@@ -5,7 +5,7 @@ export default class MakeData {
   static makePage(appData) {
 
     // menu
-    appData['menu'] = ['Main Page', ...cards[0], 'delimiter', 'Statistics']; // todo method
+    appData['menu'] = ['Main Page', ...cards[0], 'delimiter', 'Statistics'];
 
     appData['cards'] = [];
 
@@ -33,5 +33,30 @@ export default class MakeData {
       }
     }
     return appData;
+  }
+
+  static makeDifficultPage(appData, col = 8) {
+
+    // menu
+    appData['menu'] = ['Main Page', ...cards[0], 'delimiter', 'Repeat difficult words', 'delimiter', 'Statistics'];
+    appData['cards'] = [];
+
+    appData.statCards = appData.statCards.sort(function (a, b) {
+      if (a.miss < b.miss) return 1;
+      if (a.miss == b.miss) return 0;
+      if (a.miss > b.miss) return -1;
+
+    });
+
+    //console.log('statCards --', appData.statCards);
+    for (let index = 0; index < 8; index++) {
+     if (appData.statCards[index].miss>0) {
+      appData['cards'].push(appData.statCards[index]);
+     }
+      
+    }
+
+    return  appData;
+
   }
 }

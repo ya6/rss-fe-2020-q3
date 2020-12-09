@@ -9,6 +9,10 @@ export default class Router {
 
             return Controller.statistics(appData);
 
+        }else if(appData['page'] == 'Repeat difficult words') {
+
+            return Controller.difficult(appData);
+
         } else
 
             return Controller.index(appData);

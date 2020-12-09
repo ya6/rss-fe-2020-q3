@@ -31,4 +31,15 @@ export default class Controller {
         Statistics.renderStatistics(cards_container, appData);
         Menu.render(menu_container, appData);
     }
+
+    static difficult(appData) {
+ // console.log('Controller @difficult', appData);
+ 
+   const cards_container = document.querySelector('.container__inner');
+   const menu_container = document.querySelector('.menu__box');
+
+   Card.renderCards(cards_container, appData);
+   Menu.render(menu_container, appData);
+
+    }
 }

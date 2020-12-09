@@ -7,14 +7,10 @@ import Statistics from './statistics';
 
 export default class Dispatcher {
     static clickDispatcher(e) {
-         console.log('dispatcher', e.target);
+      //  console.log('dispatcher', e.target);
 
         const appData = this.appData;
         let page;
-
-        // console.log('dispatcher', appData);
-
-
 
         // close menu
         if (typeof e == 'object' && e.target.parentElement.tagName == 'DIV' || e.target.tagName == 'DIV' || typeof e == 'object' && e.target.tagName == 'IMG' || e.target.tagName == 'A') {
@@ -95,13 +91,28 @@ export default class Dispatcher {
             }
         }
 
+        // handle filter on statistics
         if (e.target.classList.contains('stateInput')) {
 
-    
+
             Statistics.sortStatistics(appData, e.target);
 
 
         }
+
+
+        // handle difficult page
+        if (typeof difficult !== 'undefined') {
+            if (e.target == difficult) {
+
+                appData.page = 'Repeat difficult words';
+
+                   Router.route(appData);
+
+              
+            }
+        }
+
 
     }
 }
