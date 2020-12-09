@@ -5,16 +5,10 @@ import Router from './router';
 export default class Statistics {
 
   static renderStatistics(container, appData) {
-    console.log('Statistics @renderStatistics', appData);
+   // console.log('Statistics @renderStatistics', appData);
 
-    
-   // console.log('renderStatistics--test--',Statistics.loadStatistics(appData));
-
-   // const statCards = this.loadStatistics(appData);
-   console.log('Statistics @renderStatistics ->statCards', appData.statCards);
    const statCards = appData.statCards;
 
-    
 
     container.innerHTML = '';
     if (typeof table !== 'undefined') {
@@ -28,8 +22,7 @@ export default class Statistics {
 
 
 
-    const part_1 = ` <input  type="radio" id="2">
-    <label  for="2" class="arrows"></label>
+    const part_1 = ` 
     
     <div class="d-flex justify-content-end mb-2">
     <button id ="difficult" class="btn btn-warning m-2" type="button">Repeat difficult words</button>
@@ -133,7 +126,7 @@ export default class Statistics {
 
 
   static makeStatisticsData(appData) {
-    //  console.log('Statistic @makeStatisticsData -> statCards ', statCards);
+   //   console.log('Statistic @makeStatisticsData -> statCards ', appData);
 const _statCards = [];
     for (let index = 0; index < statCards[0].length; index++) {
 
@@ -182,7 +175,7 @@ appData.cardFilter = cardFilter;
   }
 
   static loadStatistics(appData) {
-    console.log('Statistics @loadStatistics', appData);
+  //  console.log('Statistics @loadStatistics', appData);
 
 
     const statCards = JSON.parse(localStorage.getItem('statistics'));
@@ -192,22 +185,19 @@ appData.cardFilter = cardFilter;
 
       appData.statCards = statCards;
 
-      console.log('Statistics @loadStatistics -1-');
+     // console.log('Statistics @loadStatistics -1-');
 
-      return appData;
-    } if(appData.statCards)
-    {  console.log('Statistics @loadStatistics -2-');
       return appData;
     }
-
-     else {
-      console.log('Statistics @loadStatistics -3-');
+    else {
+     // console.log('Statistics @loadStatistics ');
       return this.makeStatisticsData(appData);
     }
+   
   }
 
   static sortStatistics(appData,asc) {
-    console.log('Statistics @sortStatistics statCards',  asc);
+   // console.log('Statistics @sortStatistics statCards',  asc);
 
     if(asc) {appData.statCards= appData.statCards.sort(function(a,b){
       if ( a.word>b.word) return 1;
@@ -221,7 +211,7 @@ appData.cardFilter = cardFilter;
       if ( a.word>b.word) return -1;
       // a.category>b.category
     })};
-     console.log('Statistics @sortStatistics statCards', appData.statCards);
+    // console.log('Statistics @sortStatistics statCards', appData.statCards);
      this.saveStatistics(appData);
 
 Router.route(appData);

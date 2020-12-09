@@ -7,7 +7,7 @@ import Statistics from './statistics';
 
 export default class Dispatcher {
     static clickDispatcher(e) {
-        console.log('dispatcher', e.target);
+      //  console.log('dispatcher', e.target);
 
         const appData = this.appData;
         let page;
@@ -86,7 +86,7 @@ export default class Dispatcher {
         if (typeof reset !== 'undefined') {
             if (e.target == reset) {
 
-                appData.statCards = Statistics.makeStatisticsData();
+                Statistics.makeStatisticsData(appData);
                 Statistics.saveStatistics(appData);
                 Router.route(appData);
             }

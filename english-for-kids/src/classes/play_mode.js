@@ -117,12 +117,24 @@
 
 
      static makePopup(src, mess) {
+         const content =[];
+     
+       
          const div = document.createElement('div');
          div.className = 'popup';
-         div.innerHTML = `<div class="mx-auto">
+         content.push(`<div class="mx-auto">
          <img src="./assets/img/${src}" class="popup__img">
          </div>
-         <div class=""><button  class="btn btn-warning" type="button">${mess}</button></div>`;
+         <div class=""><button  class="btn btn-warning" type="button">${mess}`);
+        
+
+         if (this.appData.errors>0) {
+            content.push(` You have ${this.appData.errors} miss`);
+         }
+          
+         content.push(`</button></div>`);
+
+         div.innerHTML = `${content.join('')}`;
 
          document.body.appendChild(div);
          const btb_warning = document.querySelector('.btn-warning');
