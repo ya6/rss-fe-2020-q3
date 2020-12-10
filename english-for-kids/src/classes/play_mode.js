@@ -86,7 +86,7 @@
              starContainer.appendChild(div);
              Card.play('audio/error.mp3');
              //statistic
-             Statistics.addPointToStatistic(this.appData, this.appData['playCards'].last().word, 'mis');
+             Statistics.addPointToStatistic(this.appData, this.appData['playCards'].last().word, 'miss');
 
          }
      }
