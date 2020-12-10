@@ -595,5 +595,15 @@ body {
 
 }
 
-// /assets/img/github-logo.png
-// /assets/img/rs_school_js.svg
+.menu__icon {
+
+	width: 45px;
+	height: 45px;
+	// border: 1px solid red;
+	
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center;
+	padding: 2px;
+
+}
