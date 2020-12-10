@@ -136,9 +136,12 @@ body {
 
 
 	transition: 0.5s;
-	padding: 9rem 1rem 5rem 5rem;
+	padding: 6rem 1rem 5rem 5rem;
+	overflow-y: auto;
 
 }
+
+
 
 @media (max-width: 768px) {
 
