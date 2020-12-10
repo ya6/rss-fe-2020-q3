@@ -159,6 +159,14 @@ body {
 	margin-bottom: 2rem;
 }
 
+
+
+@media (max-height: 1000px) {
+
+	.menu__box li {	margin-bottom: 1rem;}
+
+}
+
 #menu__toggle:checked~.menu__box {
 
 	left: 0;
