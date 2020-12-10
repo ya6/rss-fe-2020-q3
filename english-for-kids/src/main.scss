@@ -14,13 +14,8 @@ body {
 }
 
 .stars {
-	display: flex;
-	justify-content: end;
-	flex-wrap: nowrap;
-	overflow-x: auto;
-	align-items: center;
+	overflow-x: auto !important;
 	height: 3rem;
-
 	margin-bottom: 0.7rem;
 	padding: 0 2.4rem;
 
