@@ -135,7 +135,7 @@
         
 
          if (this.appData.errors>0) {
-            content.push(`You have ${this.appData.errors} miss`);
+            content.push(` You have ${this.appData.errors} miss`);
          }
           
          content.push(`</button></div>`);

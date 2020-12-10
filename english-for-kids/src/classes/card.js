@@ -95,7 +95,7 @@ export default class Card {
 
         let div = document.createElement('div');
 
-        div.innerHTML = `<div id = 'empty_page' class="mx-5 d-flex p-5 justify-content-center align-items-center flex-wrap"> <h1 class="text-success"><strong>You have no mistakes!!! </strong> <h1></div>`;
+        div.innerHTML = `<div id = 'empty_page' class="mx-5 d-flex p-5 justify-content-center align-items-center flex-wrap text-center"> <h1 class="text-success"><strong>You have no mistakes!!! </strong> <h1></div>`;
 
         container.parentElement.append(div);
     }

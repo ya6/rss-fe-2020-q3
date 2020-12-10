@@ -151,6 +151,14 @@ body {
 		padding: 9rem 1rem 2rem 2rem;
 	}
 
+	.stars {
+	
+	
+	
+		padding: 0 0.1rem;
+	
+	}
+
 }
 
 .menu__box li {
@@ -515,6 +523,7 @@ body {
 }
 
 .popup__img {
+
 	height: 20rem;
 }
 
@@ -522,11 +531,30 @@ body {
 	margin: 0.5rem;
 }
 
+
+
 .popup button {
 	display: block !important;
 	width: 100%;
 	margin: 0 auto;
 	font-size: 2rem;
+}
+
+
+@media (max-width: 768px) {
+
+	.popup button {
+	
+		max-width: 300px;
+		margin: 0 auto;
+		font-size: 1.5rem;
+	}
+
+	.popup__img {
+		max-width: 300px;
+	
+	}
+
 }
 
 // arrows vendor
