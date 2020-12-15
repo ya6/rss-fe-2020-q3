@@ -5,8 +5,7 @@ import Router from './router';
 export default class Statistics {
 
   static renderStatistics(container, appData) {
-    // console.log('Statistics @renderStatistics');
-
+ 
     const statCards = appData.statCards;
 
 
@@ -145,7 +144,6 @@ export default class Statistics {
 
 
   static makeStatisticsData(appData) {
-    // console.log('Statistic @makeStatisticsData');
 
     const _statCards = [];
     for (let index = 0; index < statCards[0].length; index++) {
@@ -179,8 +177,7 @@ export default class Statistics {
 
 
   static addPointToStatistic(appData, word, type) {
-    // console.log('Statistic @addPointToStatistic');
-
+  
     for (const card of appData.statCards) {
       if (card.word === word) {
         card[type] += 1;
@@ -194,7 +191,6 @@ export default class Statistics {
   }
 
   static saveStatistics(appData) {
-    // console.log('Statistics @saveStatistics');
 
     localStorage.setItem('statistics', JSON.stringify(appData.statCards));
     localStorage.setItem('filter', JSON.stringify(appData.cardFilter));
@@ -202,7 +198,6 @@ export default class Statistics {
   }
 
   static loadStatistics(appData) {
-    // console.log('Statistics @loadStatistics');
 
     const statCards = JSON.parse(localStorage.getItem('statistics'));
     const cardFilter = JSON.parse(localStorage.getItem('filter'));
@@ -221,7 +216,6 @@ export default class Statistics {
   }
 
   static sortStatistics(appData, el) {
-    // console.log('Statistics @sortStatistics');
 
     const param = el.value;
 
@@ -257,6 +251,6 @@ export default class Statistics {
     };
 
     Router.route(appData);
-    
+
   }
 }

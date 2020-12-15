@@ -7,22 +7,16 @@ import Statistics from './statistics';
 
 export default class Dispatcher {
     static clickDispatcher(e) {
-       // console.log('dispatcher', e.target);
-
-      
 
         const appData = this.appData;
         let page;
-      
-        // close menu
-        if (typeof e ===  'object' && e.target.parentElement.tagName ===  'DIV' || e.target.tagName ===  'DIV' || typeof e ===  'object' && e.target.tagName ===  'IMG' || e.target.tagName ===  'A') {
+
+        if (typeof e === 'object' && e.target.parentElement.tagName === 'DIV' || e.target.tagName === 'DIV' || typeof e === 'object' && e.target.tagName === 'IMG' || e.target.tagName === 'A') {
             Menu.close();
         }
 
-
-        //route pages
-        if (e.target.tagName ===  'A' || e.target.tagName ===  'IMG') {
-            page = e.target.dataset.name || e.target.alt || e.target.tagName ===  'A' && e.target.innerText || appData['page'];
+        if (e.target.tagName === 'A' || e.target.tagName === 'IMG') {
+            page = e.target.dataset.name || e.target.alt || e.target.tagName === 'A' && e.target.innerText || appData['page'];
 
             TrainMode.clearPlayAttributes();
             appData['page'] = page;
@@ -30,68 +24,54 @@ export default class Dispatcher {
             Router.route(appData);
         }
 
-
-        // handle  mode toggler
-        if (e.target ===  cb && !appData['play']) {
+        if (e.target === cb && !appData['play']) {
 
             Router.route(appData);
         }
 
 
-
-        //block toggler for play
-
-        // if (e.target ===  cb && appData['play'] || e.target==cb && appData.cards.length ===  0)
-        if (e.target ===  cb && appData['play'] ) {
+        if (e.target === cb && appData['play']) {
 
             e.preventDefault();
         }
 
-    
 
-        // handle sounds for train
+
         if (e.target.classList.contains('front')) {
-            
 
             Card.play(e.target.dataset.sound || e.target.parentElement.dataset.sound);
 
-            // statistic+1 to train
             const word = e.target.dataset.name || e.target.parentElement.dataset.name;
             Statistics.addPointToStatistic(appData, word, 'train');
         }
 
-        // handle rotate card  for train
+
         if (e.target.classList.contains('rotate')) {
 
             const trainCart = e.target;
             TrainMode.rotateCard(trainCart);
-
         }
 
-        // handle button for play
         if (e.target.classList.contains('game__button')) {
 
             appData['play'] = true;
             PlayMode.appData = appData;
             PlayMode.setGame();
-
         }
 
-        // handle button for play
         if (e.target.classList.contains('repeat__button')) {
 
             PlayMode.playGame();
         }
 
-        //  handle check card for play
+
         if (e.target.classList.contains('card__play') && appData['play'] && !e.target.classList.contains('card__correct')) {
 
             PlayMode.checkCard(e.target);
         }
 
-        // handle reset statistic button
         if (typeof reset !== 'undefined') {
-            if (e.target ===  reset) {
+            if (e.target === reset) {
 
                 Statistics.makeStatisticsData(appData);
                 Statistics.saveStatistics(appData);
@@ -99,33 +79,19 @@ export default class Dispatcher {
             }
         }
 
-        // handle filter on statistics
         if (e.target.classList.contains('stateInput')) {
 
-
             Statistics.sortStatistics(appData, e.target);
-
-
         }
 
-        // if (appData.page ===  "Repeat difficult words" && e.target ===  cb && appData.cards.length ===  0) {
-        //     console.log('tut');
-        //     e.preventDefault();
-        // }
-
-        // handle difficult page
         if (typeof difficult !== 'undefined') {
-            if (e.target ===  difficult) {
+            if (e.target === difficult) {
 
                 appData.page = 'Repeat difficult words';
 
-                   Router.route(appData);
-
-              
+                Router.route(appData);
             }
         }
-
-
 
     }
 }

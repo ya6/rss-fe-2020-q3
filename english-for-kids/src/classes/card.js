@@ -1,11 +1,10 @@
 export default class Card {
 
     static renderCards(container, appData) {
-        //  console.log('Card @renderCards');
 
         const game = document.querySelector('.game');
         const empty_page = document.querySelector('.empty_page');
-    
+
 
         container.innerHTML = '';
         if (typeof table !== 'undefined') {
@@ -18,7 +17,7 @@ export default class Card {
 
 
         if (appData['page'] === 'Main Page') {
-           
+
             for (let card of appData['cards']) {
                 let div = document.createElement('div');
                 div.innerHTML = `
@@ -32,7 +31,6 @@ export default class Card {
 
         } else if (!cb.checked) {
 
-            // train
             game.innerHTML = ``;
 
 
@@ -53,7 +51,6 @@ export default class Card {
             }
         } else {
 
-            //play  
             game.innerHTML = `<button type="button" class="game__button btn text-light mx-auto">Start Play</button>`;
 
             for (let card of appData['cards']) {
@@ -68,15 +65,11 @@ export default class Card {
     }
 
     static play(scr) {
-       
-            
-            const audio = new Audio();
-            audio.src = `./assets/${scr}`;
-            audio.currentTime = 0;
-            audio.play();
-      
 
-       
+        const audio = new Audio();
+        audio.src = `./assets/${scr}`;
+        audio.currentTime = 0;
+        audio.play();
     }
 
 
@@ -95,5 +88,4 @@ export default class Card {
 
         container.parentElement.append(div);
     }
-
 }

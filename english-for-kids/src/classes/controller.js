@@ -7,12 +7,9 @@ import Menu from './menu'
 export default class Controller {
 
     static index(appData) {
-        //  console.log('Controller @index', appData);
 
-        //model 
         appData = MakeData.makePage(appData);
 
-        // view
         const cards_container = document.querySelector('.container__inner');
         const menu_container = document.querySelector('.menu__box');
 
@@ -22,9 +19,7 @@ export default class Controller {
 
 
     static statistics(appData) {
-        // console.log('Controller @statistics', appData);
-
-        // view
+     
         const cards_container = document.querySelector('.container__inner');
         const menu_container = document.querySelector('.menu__box');
 
@@ -33,15 +28,11 @@ export default class Controller {
     }
 
     static difficult(appData) {
-      //  console.log('Controller @difficult', appData);
-
-        //model 
+  
         appData = MakeData.makeDifficultPage(appData, 8);
 
-        // view
         const cards_container = document.querySelector('.container__inner');
         const menu_container = document.querySelector('.menu__box');
-
 
         Menu.render(menu_container, appData);
 
