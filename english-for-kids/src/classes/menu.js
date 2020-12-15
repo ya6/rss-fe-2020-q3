@@ -1,8 +1,7 @@
 export default class Menu {
 
     static render(container, pageData) {
-        let active = '';
-
+     
         if (cb.checked) {
 
             container.classList.add('background--orange');
@@ -14,18 +13,16 @@ export default class Menu {
         let ind = 1;
         for (let menu_item of pageData['menu']) {
             let li = document.createElement('li')
-            if (menu_item === pageData['page']) {
-                active = 'active'
-            }
+          
             if (menu_item === 'delimiter') {
                 li.innerHTML = `<hr class="bg-light">`;
             } else {
                 li.innerHTML = `<div class="d-flex">
                 <div class="menu__icon mx-1" style="background-image: url(./assets/img/icon/icon_menu_${ind}.png)"></div>
-                <a class="menu__item ${active}" href="#">${menu_item}</a>
+                <a class="menu__item ${menu_item === pageData['page'] ? 'active' : ''}" href="#">${menu_item}</a>
                 </div>`;
             }
-            active = '';
+         
             container.appendChild(li);
             ind += 1;
         }

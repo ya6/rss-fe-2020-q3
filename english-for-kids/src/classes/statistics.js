@@ -5,9 +5,9 @@ import Router from './router';
 export default class Statistics {
 
   static renderStatistics(container, appData) {
-   // console.log('Statistics @renderStatistics', appData);
+    // console.log('Statistics @renderStatistics');
 
-   const statCards = appData.statCards;
+    const statCards = appData.statCards;
 
 
     container.innerHTML = '';
@@ -17,9 +17,6 @@ export default class Statistics {
     let content = [];
     let div = document.createElement('div');
     div.setAttribute('id', 'table');
-
-
-
 
 
     const part_1 = ` 
@@ -99,10 +96,10 @@ export default class Statistics {
 
     content.push(part_1);
 
-      for (let card of statCards) {
+    for (let card of statCards) {
 
-       // let hitPercent = card.hit == 0 ? 0 : Math.round(card.hit / (card.hit + card.miss) * 100);
-        let part_2_2 = `
+
+      let part_2_2 = `
         <tr>
         <td>${card.category}</td>
         <td>${card.word}</td>
@@ -114,9 +111,9 @@ export default class Statistics {
         </tr>
          `
 
-        content.push(part_2_2);
-      }
-    
+      content.push(part_2_2);
+    }
+
 
     const part_3 = ` </tbody>
   <tfoot>
@@ -148,12 +145,12 @@ export default class Statistics {
 
 
   static makeStatisticsData(appData) {
-     // console.log('Statistic @makeStatisticsData', appData);
-const _statCards = [];
+    // console.log('Statistic @makeStatisticsData');
+
+    const _statCards = [];
     for (let index = 0; index < statCards[0].length; index++) {
 
       for (let card of statCards[index + 1]) {
-
         card.hit = 0;
         card.miss = 0;
         card.train = 0;
@@ -162,41 +159,42 @@ const _statCards = [];
         _statCards.push(card);
       }
     }
-appData.statCards = _statCards;
 
-const cardFilter = {'category': 'checked',
-'word': '',
-'translation': '',
-'hit': '',
-'miss':'',
-'percent': '',
-'train': ''
+    appData.statCards = _statCards;
 
-}
-appData.cardFilter = cardFilter;
+    const cardFilter = {
+      'category': 'checked',
+      'word': '',
+      'translation': '',
+      'hit': '',
+      'miss': '',
+      'percent': '',
+      'train': ''
+
+    }
+    appData.cardFilter = cardFilter;
 
     return appData;
   }
 
 
   static addPointToStatistic(appData, word, type) {
-   // console.log('Statistic @addPointToStatistic', appData);
-    
-    
+    // console.log('Statistic @addPointToStatistic');
+
     for (const card of appData.statCards) {
       if (card.word === word) {
         card[type] += 1;
-        card.percent = card.hit == 0 ? 0 : Math.round(card.hit / (card.hit + card.miss) * 100);
-        
+        card.percent = card.hit === 0 ? 0 : Math.round(card.hit / (card.hit + card.miss) * 100);
+
       }
     }
-    
+
     this.saveStatistics(appData);
 
   }
 
   static saveStatistics(appData) {
-    // console.log('Statistics @saveStatistics', appData);
+    // console.log('Statistics @saveStatistics');
 
     localStorage.setItem('statistics', JSON.stringify(appData.statCards));
     localStorage.setItem('filter', JSON.stringify(appData.cardFilter));
@@ -204,12 +202,11 @@ appData.cardFilter = cardFilter;
   }
 
   static loadStatistics(appData) {
-   // console.log('Statistics @loadStatistics', appData);
-
+    // console.log('Statistics @loadStatistics');
 
     const statCards = JSON.parse(localStorage.getItem('statistics'));
     const cardFilter = JSON.parse(localStorage.getItem('filter'));
-    //  console.log('Statistics @loadStatistics statCards', statCards);
+
 
     if (statCards !== null) {
 
@@ -217,49 +214,49 @@ appData.cardFilter = cardFilter;
       appData.cardFilter = cardFilter;
 
       return appData;
-    }
-    else {
+    } else {
 
       return this.makeStatisticsData(appData);
     }
-   
   }
 
   static sortStatistics(appData, el) {
-   // console.log('Statistics @sortStatistics statCards',  el);
-  
+    // console.log('Statistics @sortStatistics');
+
     const param = el.value;
-  
-    appData.cardFilter = {'category': '',
-    'word': '',
-    'translation': '',
-    'hit': '',
-    'miss':'',
-    'percent': '',
-    'train': ''
-    
+
+    appData.cardFilter = {
+      'category': '',
+      'word': '',
+      'translation': '',
+      'hit': '',
+      'miss': '',
+      'percent': '',
+      'train': ''
+
     }
 
-    if ( el.checked) {
+    if (el.checked) {
       appData.cardFilter[param] = 'checked';
-      
-    } else  appData.cardFilter[param] = '';
+
+    } else appData.cardFilter[param] = '';
 
 
-    if( el.checked) {appData.statCards= appData.statCards.sort(function(a,b){
+    if (el.checked) {
+      appData.statCards = appData.statCards.sort(function (a, b) {
 
-      return a[param]>b[param];
+        return a[param] > b[param];
 
-    })} else {
-    appData.statCards= appData.statCards.sort(function(a,b){
+      });
+    } else {
+      appData.statCards = appData.statCards.sort(function (a, b) {
 
-      return a[param]<b[param];
-          
-    })};
+        return a[param] < b[param];
 
+      });
+    };
+
+    Router.route(appData);
     
-
-Router.route(appData);
   }
-
 }

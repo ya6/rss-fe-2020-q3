@@ -49,7 +49,6 @@ export default class Card {
               ${card.translation}  
                 </div>                             
                 </div>`;
-
                 container.append(div);
             }
         } else {
@@ -92,7 +91,7 @@ export default class Card {
 
         let div = document.createElement('div');
 
-        div.innerHTML = `<div class="empty_page mx-5 d-flex p-5 justify-content-center align-items-center flex-wrap text-center"> <h1 class="text-success"><strong>You have no mistakes!!! </strong> <h1></div>`;
+        div.innerHTML = `<div class="empty_page mx-5 d-flex p-5 justify-content-center align-items-center flex-wrap text-center"> <h1 class="text-success">You have no mistakes!!!<h1></div>`;
 
         container.parentElement.append(div);
     }
