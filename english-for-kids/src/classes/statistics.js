@@ -248,16 +248,13 @@ appData.cardFilter = cardFilter;
 
     if( el.checked) {appData.statCards= appData.statCards.sort(function(a,b){
 
-      if ( a[param]>b[param]) return 1;
-      if ( a[param]==b[param]) return 0;
-      if (a[param]<b[param]) return -1;
-      // a.category>b.category
+      return a[param]>b[param];
+
     })} else {
     appData.statCards= appData.statCards.sort(function(a,b){
-      if ( a[param]<b[param]) return 1;
-      if ( a[param]==b[param]) return 0;
-      if ( a[param]>b[param]) return -1;
-    
+
+      return a[param]<b[param];
+          
     })};
 
     

@@ -35,21 +35,20 @@ export default class MakeData {
     return appData;
   }
 
-  static makeDifficultPage(appData, col = 8) {
+  static makeDifficultPage(appData, col) {
 
     // menu
     appData['menu'] = ['Main Page', ...cards[0], 'delimiter', 'Statistics'];
     appData['cards'] = [];
 
     appData.statCards = appData.statCards.sort(function (a, b) {
-      if (a.miss < b.miss) return 1;
-      if (a.miss == b.miss) return 0;
-      if (a.miss > b.miss) return -1;
+
+      return a.miss < b.miss;
 
     });
 
-    //console.log('statCards --', appData.statCards);
-    for (let index = 0; index < 8; index++) {
+   
+    for (let index = 0; index < col; index++) {
      if (appData.statCards[index].miss>0) {
       appData['cards'].push(appData.statCards[index]);
      }

@@ -1,9 +1,11 @@
- import './../../helpers/_setArrayCustomMethods';
- //import _delay from './../../helpers/_delay';
- import Card from "./card";
- import Router from './router';
- import Statistics from './statistics';
- import TrainMode from './train_mode';
+import Card from './card';
+import Router from './router';
+import Statistics from './statistics';
+import TrainMode from './train_mode';
+
+import './../../helpers/_setArrayCustomMethods';
+
+ 
 
  export default class PlayMode {
 

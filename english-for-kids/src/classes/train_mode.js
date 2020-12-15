@@ -15,8 +15,8 @@ export default class TrainMode {
             popup.parentElement.removeChild(popup);
         }
 
-        game.innerHTML = ``;
-        stars.innerHTML = ``;
+        game.innerHTML = '';
+        stars.innerHTML = '';
     }
 
 

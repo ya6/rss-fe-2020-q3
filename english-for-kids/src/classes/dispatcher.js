@@ -15,14 +15,14 @@ export default class Dispatcher {
         let page;
       
         // close menu
-        if (typeof e == 'object' && e.target.parentElement.tagName == 'DIV' || e.target.tagName == 'DIV' || typeof e == 'object' && e.target.tagName == 'IMG' || e.target.tagName == 'A') {
+        if (typeof e ===  'object' && e.target.parentElement.tagName ===  'DIV' || e.target.tagName ===  'DIV' || typeof e ===  'object' && e.target.tagName ===  'IMG' || e.target.tagName ===  'A') {
             Menu.close();
         }
 
 
         //route pages
-        if (e.target.tagName == 'A' || e.target.tagName == 'IMG') {
-            page = e.target.dataset.name || e.target.alt || e.target.tagName == 'A' && e.target.innerText || appData['page'];
+        if (e.target.tagName ===  'A' || e.target.tagName ===  'IMG') {
+            page = e.target.dataset.name || e.target.alt || e.target.tagName ===  'A' && e.target.innerText || appData['page'];
 
             TrainMode.clearPlayAttributes();
             appData['page'] = page;
@@ -32,7 +32,7 @@ export default class Dispatcher {
 
 
         // handle  mode toggler
-        if (e.target == cb && !appData['play']) {
+        if (e.target ===  cb && !appData['play']) {
 
             Router.route(appData);
         }
@@ -41,8 +41,8 @@ export default class Dispatcher {
 
         //block toggler for play
 
-        // if (e.target == cb && appData['play'] || e.target==cb && appData.cards.length == 0)
-        if (e.target == cb && appData['play'] ) {
+        // if (e.target ===  cb && appData['play'] || e.target==cb && appData.cards.length ===  0)
+        if (e.target ===  cb && appData['play'] ) {
 
             e.preventDefault();
         }
@@ -91,7 +91,7 @@ export default class Dispatcher {
 
         // handle reset statistic button
         if (typeof reset !== 'undefined') {
-            if (e.target == reset) {
+            if (e.target ===  reset) {
 
                 Statistics.makeStatisticsData(appData);
                 Statistics.saveStatistics(appData);
@@ -108,14 +108,14 @@ export default class Dispatcher {
 
         }
 
-        // if (appData.page == "Repeat difficult words" && e.target == cb && appData.cards.length == 0) {
+        // if (appData.page ===  "Repeat difficult words" && e.target ===  cb && appData.cards.length ===  0) {
         //     console.log('tut');
         //     e.preventDefault();
         // }
 
         // handle difficult page
         if (typeof difficult !== 'undefined') {
-            if (e.target == difficult) {
+            if (e.target ===  difficult) {
 
                 appData.page = 'Repeat difficult words';
 

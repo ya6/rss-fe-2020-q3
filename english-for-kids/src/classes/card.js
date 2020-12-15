@@ -4,28 +4,25 @@ export default class Card {
         //  console.log('Card @renderCards');
 
         const game = document.querySelector('.game');
+        const empty_page = document.querySelector('.empty_page');
+    
 
         container.innerHTML = '';
         if (typeof table !== 'undefined') {
             table.parentElement.removeChild(table);
         }
 
-        if (typeof empty_page !== 'undefined') {
+        if (empty_page !== null) {
             empty_page.parentElement.removeChild(empty_page);
         }
 
 
         if (appData['page'] === 'Main Page') {
-            let orange_class = '';
+           
             for (let card of appData['cards']) {
                 let div = document.createElement('div');
-
-                if (cb.checked) {
-                    orange_class = 'card--orange';
-                };
-
                 div.innerHTML = `
-            <a href="#" class="card card__main border-0 rounded ${orange_class}" data-name="${card.name}">
+            <a href="#" class="card card__main border-0 rounded ${cb.checked ? 'card--orange' : ''}" data-name="${card.name}">
             <img src="./assets/${card.src}" alt="${card.name}">
             ${card.name}
             </a>`;
@@ -95,7 +92,7 @@ export default class Card {
 
         let div = document.createElement('div');
 
-        div.innerHTML = `<div id = 'empty_page' class="mx-5 d-flex p-5 justify-content-center align-items-center flex-wrap text-center"> <h1 class="text-success"><strong>You have no mistakes!!! </strong> <h1></div>`;
+        div.innerHTML = `<div class="empty_page mx-5 d-flex p-5 justify-content-center align-items-center flex-wrap text-center"> <h1 class="text-success"><strong>You have no mistakes!!! </strong> <h1></div>`;
 
         container.parentElement.append(div);
     }
